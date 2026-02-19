@@ -427,7 +427,7 @@ const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className
 
 let currentTab="overview";
 const TABS=["overview","challenges","faculty","heatmap","teams","methodology"];
-const TAB_LABELS={"overview":"Overview","challenges":"Challenges","faculty":"Faculty Profiles","heatmap":"Heat Map","teams":"Proposal Concepts","methodology":"Methodology"};
+const TAB_LABELS={"overview":"Overview","challenges":"Challenges","faculty":"Faculty Profiles","heatmap":"Heat Map","teams":"Strategic Proposal Ideas","methodology":"Methodology"};
 
 function renderTabs(){
   const tabs=$("tabs");tabs.innerHTML="";
@@ -452,40 +452,36 @@ function renderOverview(root){
   // About This Platform section
   const howCard=el("div","card");howCard.style.marginBottom="24px";
   const tabGuides=[
-    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"Explore all 26 DOE Genesis S&T challenge areas with detailed overviews, AI/ML approaches, and matched faculty."},
-    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter the full roster of mapped faculty. View each researcher's expertise, department, and challenge alignment scores."},
-    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Interactive scoring matrix showing every faculty member's alignment with every challenge. Sort by total, strong matches, or name."},
-    {tab:"teams",icon:ICONS.lightbulb,label:"Proposal Concepts",desc:"Three data-driven proposal concepts with recommended research teams, competitive positioning, and methods for Genesis-aligned proposals."},
-    {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Scoring criteria, data sources, team-building algorithm, and transparency notes behind every assessment on this platform."}
+    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"Explore the 26 DOE S&T areas, detailing AI/ML approaches and aligned faculty."},
+    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter the roster by expertise, department, and challenge alignment scores."},
+    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Visualize the scoring matrix. Sort alignments by total score, strong matches, or name."},
+    {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposal Ideas",desc:"Review three data-driven concepts featuring recommended teams and competitive positioning."}
   ];
   howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.compass}</div>About This Platform</div>
-    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px">
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px">
       <div>
-        <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} carefully selected UTEP faculty</strong> against all 26 DOE Genesis Science & Technology Challenges. Each faculty-challenge pair receives a score from 0 (no match) to 3 (strong match), revealing where UTEP holds genuine competitive advantage.</p>
-        <p style="font-size:13px;color:var(--text);line-height:1.8">This analysis powers three strategic proposal concepts that translate institutional research strength into actionable, well-positioned funding opportunities. Nothing in this assessment was left to chance - every faculty member, score, and recommendation follows a deliberate, transparent methodology.</p>
+        <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} UTEP faculty</strong> against the <strong>26 DOE Genesis Science & Technology Challenges</strong>.</p>
+        <p style="font-size:13px;color:var(--text);line-height:1.8">By scoring each faculty-challenge pair on a 0 to 3 scale, the platform identifies UTEP\u2019s competitive advantages. This data drives three strategic proposal concepts, translating institutional research strength into actionable funding opportunities. Every recommendation is built on a deliberate, transparent methodology.</p>
       </div>
       <div>
-        <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">How the ${F.length} Faculty Were Selected</div>
-        <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px">How the ${F.length} Faculty Were Selected</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
           <div style="display:flex;gap:12px;align-items:flex-start">
             <div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
-            <div><div style="font-size:12px;font-weight:700;color:var(--navy)">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Researchers currently affiliated with the Army Applications of AI Institute - the core research community with established AI expertise.</div></div>
+            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Core researchers affiliated with the Institute for Applied AI Innovation, providing established AI expertise.</div></div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start">
             <div style="width:30px;height:30px;border-radius:8px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
-            <div><div style="font-size:12px;font-weight:700;color:var(--orange)">Previous AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Faculty who have partnered successfully with AAII in the past and bring proven collaborative track records and relevant domain knowledge.</div></div>
+            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--orange);margin-bottom:3px">Past AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Proven partners with a track record of successful joint projects and relevant domain knowledge.</div></div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start">
             <div style="width:30px;height:30px;border-radius:8px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <div><div style="font-size:12px;font-weight:700;color:var(--blue)">Recommended for Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Faculty identified through systematic review as having the strongest alignment with Genesis challenges - strategically selected to expand UTEP's competitive coverage.</div></div>
+            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:3px">Strategic Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Faculty systematically identified for their strong alignment with Genesis challenges, expanding our competitive reach.</div></div>
           </div>
         </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px">
-      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;margin-bottom:8px">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px">${g.label}</div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
-    </div>
-    <div style="padding:12px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border)">
+    <div style="padding:12px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border);margin-bottom:16px">
       <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">Scoring at a Glance</div>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
         <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:#E0E0E0;border:1px solid var(--border)"></div><span style="font-size:11px;color:var(--text2)"><b>0</b> No match</span></div>
@@ -493,6 +489,13 @@ function renderOverview(root){
         <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#3B82F6,#2563EB)"></div><span style="font-size:11px;color:var(--text2)"><b>2</b> Moderate</span></div>
         <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#FF9500,#FF7A00)"></div><span style="font-size:11px;color:var(--text2)"><b>3</b> Strong</span></div>
       </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy)">${g.label}</div></div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
+    </div>
+    <div class="how-card" data-tab="methodology" style="display:flex;align-items:center;gap:10px;padding:12px 16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:var(--ltbg);border:1px solid var(--border);color:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0">${ICONS.clipboard}</div>
+      <div><span style="font-size:12px;font-weight:700;color:var(--navy)">Methodology</span><span style="font-size:11px;color:var(--text2);margin-left:8px">Understand the scoring criteria, data sources, and team-building logic behind the platform.</span></div>
     </div>`;
   root.appendChild(howCard);
   howCard.querySelectorAll(".how-card").forEach(c=>{
@@ -780,7 +783,7 @@ function renderTeams(root){
     root.innerHTML="";
 
     const hero=el("div","card team-hero");
-    hero.innerHTML=`<div class="label">Proposal Concepts</div><h2>Strategic Research Proposals for DOE Genesis</h2><p>These proposal concepts emerge from natural clusters in UTEP faculty expertise aligned with Genesis challenges. Each concept outlines what the proposal is about, why it matters, the methods involved, and who would lead the effort. They are starting points for refinement, not prescriptions.</p>`;
+    hero.innerHTML=`<div class="label">Strategic Proposal Ideas</div><h2>Strategic Research Proposals for DOE Genesis</h2><p>These proposal ideas emerge from natural clusters in UTEP faculty expertise aligned with Genesis challenges. Each concept outlines what the proposal is about, why it matters, the methods involved, and who would lead the effort. They are starting points for refinement, not prescriptions.</p>`;
     root.appendChild(hero);
 
     const btns=el("div","cluster-btns");
@@ -828,7 +831,7 @@ function renderTeams(root){
         <div class="card" style="border-left:4px solid var(--green)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
-            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">Evaluator Appeal</span>
+            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">What Reviewers Will Find Compelling</span>
           </div>
           <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.utepStrength}</p>
         </div>
