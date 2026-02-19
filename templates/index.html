@@ -47,13 +47,13 @@ h1{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 .card-title .icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FFF;flex-shrink:0;line-height:0}
 
 /* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.stat-card{text-align:center;padding:20px}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat-card{text-align:center;padding:16px 12px}
 .stat-label{font-size:10px;font-weight:700;color:var(--text2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
 .stat-value{font-size:34px;font-weight:800;letter-spacing:-0.02em;line-height:1}
 .stat-sub{font-size:11px;color:var(--text2);margin-top:6px}
 
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-bottom:24px}
 
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase}
@@ -61,7 +61,7 @@ h1{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 /* BARS */
 .bar-row{display:flex;align-items:center;gap:10px;margin-bottom:5px}
 .bar-label{width:150px;font-size:11px;color:var(--text);text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-track{flex:1;height:16px;background:var(--ltbg);border-radius:4px;overflow:hidden}
+.bar-track{flex:1;height:18px;background:var(--ltbg);border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px;transition:width 0.4s ease}
 .bar-value{font-size:11px;font-weight:700;color:var(--text2);width:28px;text-align:right;flex-shrink:0}
 
@@ -185,6 +185,7 @@ h1{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 @media(max-width:900px){
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .grid-2,.team-layout{grid-template-columns:1fr}
+  div[style*="grid-template-columns:1fr 1fr 1fr"],div[style*="grid-template-columns: 1fr 1fr 1fr"]{grid-template-columns:1fr!important}
   .explorer-grid{grid-template-columns:1fr}
   .header,.content,.footer{padding-left:20px;padding-right:20px}
   .header-art{display:none}
@@ -356,12 +357,13 @@ const ICONS={
 
 const CLUSTERS=[
 {id:"quantum-materials",title:"AI-Accelerated Quantum Materials Discovery",
-conceptSummary:"This proposal uses artificial intelligence to dramatically speed up the discovery of new materials - quantum, magnetic, and electronic - that are critical for national security, clean energy, and advanced technology. Instead of the traditional trial-and-error approach that can take years, UTEP researchers combine advanced computational methods (including a technique called FLOSIC, co-developed right here at UTEP) with machine learning to predict which materials will have the desired properties before ever stepping into a lab. The team then validates these AI predictions through hands-on experiments, creating a complete pipeline from computer prediction to physical proof.",
-whyItMatters:"The United States needs new advanced materials for everything from quantum computers and defense systems to clean energy technology. Discovering these materials traditionally takes years of expensive experimentation. AI-accelerated methods can compress that timeline dramatically. Furthermore, many standard computational approaches have known blind spots when predicting important material properties like band gaps and magnetic behavior. UTEP\u2019s unique FLOSIC method corrects these weaknesses, producing higher-quality data to train AI models. This means better predictions, fewer failed experiments, and faster paths to the materials the nation needs.",
+subtitle:"Physics-Corrected AI",
+conceptSummary:"This proposal deploys an \u201cAI-Physicist Agent\u201d to dramatically compress the discovery timeline for new quantum, magnetic, and electronic materials critical to national security and clean energy. Unlike purely data-driven models that suffer from \u201cblind spots\u201d or physical hallucinations, this project embeds fundamental quantum mechanics directly into the AI. Led by former DOE program managers and AI-physics specialists (incorporating expertise from Dr. Pederson, Dr. Hoyer, and Dr. Zope), the team uses the UTEP-developed FLOSIC method to generate high-fidelity training data. The result is an end-to-end pipeline that discovers, simulates, and verifies novel materials with guaranteed scientific utility before physical lab testing begins.",
+whyItMatters:"The U.S. faces a strategic bottleneck\u2014the \u201cValley of Death\u201d between discovering a material and proving its functionality. Traditional trial-and-error takes years. By generating higher-quality training data (correcting known weaknesses in predicting band gaps and magnetic behavior), this AI pipeline reduces failed lab experiments and accelerates the deployment of technologies essential for the Genesis Mission\u2019s goals in advanced manufacturing and deterrence.",
 narrative:"This proposal leverages UTEP\u2019s nationally recognized computational materials science and quantum chemistry cluster to accelerate the discovery of strategic materials through AI-driven methods. The core approach combines self-interaction corrected density functional theory (the FLOSIC method, co-developed at UTEP by Pederson and Zope) with machine-learned interatomic potentials (MLIPs) that achieve DFT-level accuracy at orders of magnitude lower computational cost. UTEP is uniquely positioned because FLOSIC provides unusually accurate band gap and magnetic property predictions, generating high-fidelity training data that improves ML surrogate model reliability. The experimental capabilities of El-Gendy and Nair close the loop from computational prediction to physical validation.",
 challenges:["C8","C9","C12","C14","C4"],
-utepStrength:"UTEP is one of very few institutions where the people who invented a key computational method (FLOSIC) work alongside experimentalists who can grow crystals and test predictions in the lab. This rare combination of theory creators and hands-on scientists means the team can go from AI prediction to validated material in one place, matching exactly what DOE looks for in competitive proposals.",
-aiAngle:"<b>Machine-learned interatomic potentials</b> trained on high-accuracy computational data to predict material behavior thousands of times faster than traditional methods. <b>Graph neural networks</b> to screen millions of candidate crystal structures and identify the most promising ones. <b>Generative AI models</b> to design entirely new materials with specific target properties. <b>Bayesian optimization</b> to guide lab experiments intelligently, reducing wasted effort and accelerating discovery cycles.",
+utepStrength:"Reviewers are highly skeptical of \u201cblack box\u201d AI in the physical sciences. UTEP offers a rare \u201cbilingual\u201d team: the physicists who invented the baseline computational method (FLOSIC) working alongside AI specialists who can scale it. This creates a tightly closed loop from quantum theory to AI prediction to lab validation, matching the DOE\u2019s exact requirement for trustworthy, science-grounded AI.",
+aiAngle:"<b>Machine-Learned Interatomic Potentials:</b> Trained on high-accuracy FLOSIC data to predict material behavior at unprecedented speeds. <b>Graph Neural Networks (GNNs):</b> Scalable screening of millions of candidate crystal structures. <b>Automated Verification:</b> Formal software engineering methods to mathematically verify the AI-generated quantum algorithms. <b>Bayesian Optimization:</b> Intelligent guidance of downstream physical lab experiments.",
 edge:"Strong",
 roles:{
 "Mark R. Pederson":"Lead PI. Co-developer of the FLOSIC computational method that provides uniquely accurate predictions of material properties. Leads the overall research vision and theoretical development.",
@@ -372,12 +374,13 @@ roles:{
 "Rajendra R. Zope":"Co-developer of FLOSIC methods. Calculates optical and magnetic properties using corrected computational approaches, ensuring AI models are trained on the most accurate data available."}
 },
 {id:"nuclear-security",title:"AI-Driven Cybersecurity for Nuclear Safeguards",
-conceptSummary:"This proposal develops an AI-powered cybersecurity and strategic defense framework for nuclear safeguards, detection, and threat response. The approach brings together UTEP\u2019s deep strength in cybersecurity AI - including game theory, adversarial machine learning, and threat intelligence - with nuclear science expertise to build systems that can outsmart adversaries, verify compliance at nuclear facilities, and rapidly assess threats. The key innovation is using game-theoretic models (the same mathematical frameworks used to optimize border security) to design smarter inspection and monitoring strategies for nuclear materials.",
-whyItMatters:"Nuclear security is one of the highest-stakes domains for AI. Threats range from terrorism to state-level proliferation, and the systems designed to counter them must be both highly accurate and resistant to manipulation by sophisticated adversaries. Current AI approaches to nuclear security often treat it as a simple pattern-matching problem without accounting for the adversarial, strategic nature of the threat landscape. This proposal fills that gap by combining cybersecurity thinking - how adversaries behave, how to anticipate their moves, how to make systems robust against attack - with real nuclear science grounding.",
+subtitle:"Trustworthy AI Agents for Threat Detection & Nuclear Security",
+conceptSummary:"This proposal shifts nuclear cybersecurity from reactive pattern-matching to proactive adversarial reasoning. By combining UTEP\u2019s deep bench in game theory and adversarial machine learning with specific nuclear domain expertise, this project develops a strategic defense framework for safeguards and threat response. The system models how sophisticated adversaries think, adapt, and attempt to deceive monitoring systems. Integrating the expertise of researchers like Dr. Kiekintveld, Dr. Xu (bringing direct Idaho National Lab experience), Dr. Piplai, and Dr. Tosh, the platform synthesizes intelligence, optimizes inspection schedules, and secures the operational technology (OT) of nuclear facilities against manipulation.",
+whyItMatters:"Nuclear security is the highest-stakes domain for AI; the cost of a false negative is catastrophic. Current monitoring systems treat threat detection as a static problem, leaving them vulnerable to state-level actors who actively manipulate data to hide proliferation. This proposal ensures that the AI systems safeguarding America\u2019s nuclear enterprise are mathematically robust against deception, ensuring compliance and rapid threat attribution.",
 narrative:"This proposal builds a multi-layered AI framework for nuclear security spanning detection, attribution, and safeguards verification. The approach integrates game-theoretic optimization, adversarial ML, computer vision, and domain-specific nuclear science into a unified system. Kiekintveld\u2019s game-theoretic security optimization has been proven in physical security contexts and represents a novel methodological contribution when applied to nuclear safeguards. Rahman\u2019s adversarial ML expertise ensures robustness against deliberate manipulation, while domain scientists ground the AI in real nuclear physics and chemistry.",
 challenges:["C20","C24","C25","C26","C21"],
-utepStrength:"UTEP has one of the strongest cybersecurity AI clusters in the region, with researchers spanning game theory, adversarial robustness, threat intelligence, and deception technology. Pairing this cybersecurity depth with nuclear science experts who understand the actual physics and chemistry of nuclear materials creates a uniquely competitive team. The AAII provides the coordination infrastructure to bridge these disciplines effectively.",
-aiAngle:"<b>Game-theoretic Stackelberg models</b> to design optimal inspection and monitoring schedules that account for how adversaries think. <b>Computer vision</b> for automated analysis of nuclear facility imagery and safeguards verification. <b>Adversarial robustness testing</b> to ensure AI systems cannot be tricked or manipulated in high-stakes nuclear environments. <b>LLM-based threat intelligence agents</b> that synthesize information from multiple sources to support rapid threat assessment. <b>Machine learning classifiers</b> for nuclear material attribution based on isotopic signatures.",
+utepStrength:"UTEP holds a distinct asymmetric advantage in adversarial AI. Rather than pitching generic cybersecurity, this team leverages world-class game theory and direct National Lab data analytics experience. Evaluators will recognize that this team isn\u2019t just building a sensor; they are building a \u201cStrategic AI Partner\u201d capable of outsmarting adversaries in the highly specialized non-proliferation landscape.",
+aiAngle:"<b>Game-Theoretic Stackelberg Models:</b> Designing mathematically optimal, randomized inspection schedules that anticipate adversary evasion tactics. <b>Adversarial Robustness Testing:</b> Continuous \u201cred-teaming\u201d to ensure AI vision and sensor networks cannot be tricked in high-consequence environments. <b>LLM-Based Threat Agents:</b> Synthesizing multimodal intelligence (imagery, sensors, open-source) for rapid triage. <b>OT Network Slicing:</b> Securing the physical control systems of nuclear facilities.",
 edge:"Strong",
 roles:{
 "Chris Kiekintveld":"Lead PI. Leads the game-theoretic security optimization program, applying mathematical models of strategic adversarial interaction to design smarter nuclear inspection and monitoring strategies.",
@@ -388,12 +391,13 @@ roles:{
 "Aritran Piplai":"Develops AI-powered threat intelligence agents that can rapidly synthesize information from diverse sources to support nuclear threat assessment and response."}
 },
 {id:"water-energy",title:"AI-Powered Water-Energy Nexus for Resilient Infrastructure",
-conceptSummary:"This proposal uses AI to solve one of the most pressing infrastructure challenges: the deeply interconnected relationship between water and energy systems, especially in water-scarce regions. The team builds predictive models that forecast water availability for energy production, optimize power grid operations under water constraints, and support climate-resilient infrastructure planning. Uniquely, the AI models are designed to be scientifically transparent (not \"black boxes\"), and the team includes social scientists to ensure that AI-driven resource management serves communities equitably.",
-whyItMatters:"Water and energy systems are tightly coupled - power plants need water to operate, and water treatment needs energy. Climate change is disrupting both simultaneously, especially in arid regions that serve hundreds of millions of people worldwide. Purely data-driven AI approaches fail in these environments because hydrological data in dry regions is sparse and the underlying climate patterns are shifting. This proposal addresses that by embedding physical science knowledge directly into AI models, making predictions more reliable even with limited data. The inclusion of equity analysis reflects DOE\u2019s growing emphasis on ensuring technology benefits all communities.",
+subtitle:"Explainable GeoAI for the Water-Energy Nexus",
+conceptSummary:"Water and energy systems are inextricably linked\u2014power plants require water, and water processing requires energy. This proposal develops predictive, \u201cExplainable GeoAI\u201d to forecast water availability and optimize grid operations under severe climate constraints. Because traditional data-driven AI fails in arid regions where historical data is sparse and climate patterns are shifting, this team (featuring Dr. Moreno, Dr. Fuentes, Dr. Alvarez, and Dr. Mayer) embeds physical hydrology laws directly into the machine learning models. This approach delivers scientifically transparent forecasts for infrastructure planning, ensuring energy resilience and equitable resource management in water-scarce environments.",
+whyItMatters:"Expanding U.S. energy production (especially for data centers and advanced manufacturing) is entirely dependent on water availability. As climate change disrupts these systems, infrastructure planners need reliable forecasts spanning weeks to years. By solving the \u201csparse data\u201d problem in arid regions using physics-informed models, this project directly addresses the Genesis Mission\u2019s mandate to scale the grid and predict water for energy without sacrificing reliability.",
 narrative:"This proposal applies UTEP\u2019s convergent expertise in hydrology, environmental sensing, energy systems, and geochemistry to build AI models that predict water availability for energy production, optimize grid operations under water constraints, and support climate-resilient infrastructure. The approach uses physics-informed deep learning, ensuring predictions are scientifically interpretable. UTEP\u2019s location in the Chihuahuan Desert provides both urgency and a living laboratory for arid-region challenges.",
 challenges:["C17","C18","C19","C2"],
-utepStrength:"This team spans the full water-energy-society spectrum: hydrologists, climate scientists, power systems engineers, geochemists, smart building researchers, efficient AI developers, and a social scientist focused on equity. UTEP\u2019s location in the Chihuahuan Desert means this research is not abstract - it addresses challenges the university\u2019s own community faces daily, giving the work authenticity and urgency that resonates with evaluators.",
-aiAngle:"<b>Physics-informed neural networks</b> that embed scientific laws directly into AI, making predictions more reliable with limited data. <b>Explainable GeoAI</b> for transparent water availability forecasting that decision-makers can trust. <b>Smart grid optimization</b> using machine learning to balance energy and water needs in real time. <b>Digital twins</b> for building-level water-energy management. <b>Satellite imagery deep learning</b> for monitoring water resources at scale. <b>Surrogate models</b> that compress complex simulations into fast tools for real-time decision support.",
+utepStrength:"UTEP offers a true \u201cLiving Laboratory.\u201d Located in the Chihuahuan Desert, the team is tackling these exact water-energy challenges daily. Reviewers look for institutional authenticity; UTEP\u2019s established GeoSenSE group provides a proven, cohesive track record. Furthermore, the commitment to \u201cExplainable\u201d AI directly addresses the hesitation earth scientists have toward adopting black-box algorithms.",
+aiAngle:"<b>Physics-Informed Neural Networks (PINNs):</b> Embedding scientific laws into AI to guarantee reliable predictions even with limited historical data. <b>Explainable GeoAI:</b> Transparent forecasting tools that civil engineers and policymakers can interpret and trust. <b>Intelligent Sensor Fusion:</b> Combining satellite imagery (computer vision) with drone and in-situ environmental sensors. <b>Hydrologic Surrogate Models:</b> Compressing complex climate simulations into rapid, real-time decision-support tools.",
 edge:"Strong",
 roles:{
 "Alex Simon Mayer":"Lead PI. Directs the integrated water-energy-climate modeling effort, developing fast surrogate models for real-time decision support and quantifying how climate change affects both water availability and energy demand.",
@@ -455,47 +459,31 @@ function renderOverview(root){
     {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"Explore the 26 DOE S&T areas, detailing AI/ML approaches and aligned faculty."},
     {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter the roster by expertise, department, and challenge alignment scores."},
     {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Visualize the scoring matrix. Sort alignments by total score, strong matches, or name."},
-    {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposal Ideas",desc:"Review three data-driven concepts featuring recommended teams and competitive positioning."}
+    {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposal Ideas",desc:"Review three data-driven concepts featuring recommended teams and competitive positioning."},
+    {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Understand the scoring criteria, data sources, and team-building logic behind the platform."}
   ];
   howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.compass}</div>About This Platform</div>
-    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:20px">
-      <div>
-        <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} UTEP faculty</strong> against the <strong>26 DOE Genesis Science & Technology Challenges</strong>.</p>
-        <p style="font-size:13px;color:var(--text);line-height:1.8">By scoring each faculty-challenge pair on a 0 to 3 scale, the platform identifies UTEP\u2019s competitive advantages. This data drives three strategic proposal concepts, translating institutional research strength into actionable funding opportunities. Every recommendation is built on a deliberate, transparent methodology.</p>
-      </div>
-      <div>
-        <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px">How the ${F.length} Faculty Were Selected</div>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
-            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Core researchers affiliated with the Institute for Applied AI Innovation, providing established AI expertise.</div></div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="width:30px;height:30px;border-radius:8px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
-            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--orange);margin-bottom:3px">Past AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Proven partners with a track record of successful joint projects and relevant domain knowledge.</div></div>
-          </div>
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <div style="width:30px;height:30px;border-radius:8px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <div style="padding-bottom:4px"><div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:3px">Strategic Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.7">Faculty systematically identified for their strong alignment with Genesis challenges, expanding our competitive reach.</div></div>
-          </div>
+    <div style="margin-bottom:20px">
+      <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} UTEP faculty</strong> against the <strong>26 DOE Genesis Science & Technology Challenges</strong>. By scoring each faculty-challenge pair on a 0\u20133 scale\u2014from no match to strong alignment\u2014the platform identifies UTEP\u2019s competitive advantages and drives three strategic proposal concepts.</p>
+      <p style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:16px">Every recommendation is built on a deliberate, transparent methodology. The ${F.length} faculty were drawn from three deliberately selected pools:</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px">
+        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">1</div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--navy)">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Core researchers at the Institute for Applied AI Innovation with established AI expertise.</div></div>
+        </div>
+        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">2</div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--orange)">Past AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Proven partners with successful joint projects and relevant domain knowledge.</div></div>
+        </div>
+        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
+          <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">3</div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--blue)">Strategic Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Faculty systematically identified for strong Genesis challenge alignment, expanding competitive reach.</div></div>
         </div>
       </div>
     </div>
-    <div style="padding:12px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border);margin-bottom:16px">
-      <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">Scoring at a Glance</div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:#E0E0E0;border:1px solid var(--border)"></div><span style="font-size:11px;color:var(--text2)"><b>0</b> No match</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#C8C8C8,#A0A0A0)"></div><span style="font-size:11px;color:var(--text2)"><b>1</b> Tangential</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#3B82F6,#2563EB)"></div><span style="font-size:11px;color:var(--text2)"><b>2</b> Moderate</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#FF9500,#FF7A00)"></div><span style="font-size:11px;color:var(--text2)"><b>3</b> Strong</span></div>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy)">${g.label}</div></div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
-    </div>
-    <div class="how-card" data-tab="methodology" style="display:flex;align-items:center;gap:10px;padding:12px 16px">
-      <div style="width:24px;height:24px;border-radius:6px;background:var(--ltbg);border:1px solid var(--border);color:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0">${ICONS.clipboard}</div>
-      <div><span style="font-size:12px;font-weight:700;color:var(--navy)">Methodology</span><span style="font-size:11px;color:var(--text2);margin-left:8px">Understand the scoring criteria, data sources, and team-building logic behind the platform.</span></div>
+    <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">${ICONS.layers} &nbsp;Key Features</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:28px;height:28px;border-radius:7px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy)">${g.label}</div></div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
     </div>`;
   root.appendChild(howCard);
   howCard.querySelectorAll(".how-card").forEach(c=>{
@@ -529,7 +517,7 @@ function renderOverview(root){
 
   const affEntries=Object.entries(affMap);
   const total=F.length;
-  let donutSvg=`<svg viewBox="0 0 200 200" width="160" height="160">`;
+  let donutSvg=`<svg viewBox="0 0 200 200" width="140" height="140">`;
   let startAngle=-90;
   affEntries.forEach(([name,count])=>{
     const angle=count/total*360;const endAngle=startAngle+angle;
@@ -555,7 +543,7 @@ function renderOverview(root){
   const covCard=el("div","card");
   covCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--green)">${ICONS.trendingUp}</div>Challenge Coverage (Faculty with Score 2+)</div>`;
   const covChart=el("div","");
-  covChart.style.cssText="display:flex;align-items:flex-end;gap:3px;height:180px;padding-top:16px";
+  covChart.style.cssText="display:flex;align-items:flex-end;gap:4px;height:200px;padding-top:16px";
   covData.forEach((d,i)=>{
     const h=Math.max(4,(d.count/maxCov*160));
     const color=i<5?"var(--orange)":i<15?"var(--navy)":"#C4C4C4";
@@ -799,41 +787,40 @@ function renderTeams(root){
     const team=buildTeams(selId);
     const showFull=showNarrative[selId]||false;
 
-    // Concept overview cards
+    // Concept overview cards — Hero + 3-Column layout
     const conceptSection=el("div","");
     conceptSection.innerHTML=`
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-        <div class="card" style="border-left:4px solid var(--orange)">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-            <div style="width:28px;height:28px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
-            <span style="font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.04em">What Is This Concept?</span>
-          </div>
-          <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.4">${cl.title}</div>
-          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.conceptSummary}</p>
-          <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">${cl.challenges.map(c=>`<span class="challenge-tag"><span class="code">${c}</span><span class="desc">${CK[c].split(" ").slice(0,4).join(" ")}...</span></span>`).join("")}</div>
+      <div class="card" style="border-left:4px solid var(--orange);margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div style="width:28px;height:28px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
+          <span style="font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.04em">What Is This Concept?</span>
         </div>
-        <div class="card" style="border-left:4px solid var(--navy)">
+        <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px;line-height:1.4">${cl.title}</div>
+        ${cl.subtitle?`<div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;font-style:italic">${cl.subtitle}</div>`:""}
+        <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.conceptSummary}</p>
+        <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">${cl.challenges.map(c=>`<span class="challenge-tag"><span class="code">${c}</span><span class="desc">${CK[c].split(" ").slice(0,4).join(" ")}...</span></span>`).join("")}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="card" style="border-top:3px solid var(--navy)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
-            <span style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em">Why Does It Matter?</span>
+            <span style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em">Why Does It Matter?</span>
           </div>
-          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.whyItMatters}</p>
+          <p style="font-size:12px;color:var(--text);line-height:1.8">${cl.whyItMatters}</p>
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-        <div class="card" style="border-left:4px solid var(--blue)">
+        <div class="card" style="border-top:3px solid var(--blue)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <span style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Proposed Methods & Approaches</span>
+            <span style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Proposed Methods</span>
           </div>
-          <div style="font-size:13px;color:var(--text);line-height:1.8">${cl.aiAngle}</div>
+          <div style="font-size:12px;color:var(--text);line-height:1.8">${cl.aiAngle}</div>
         </div>
-        <div class="card" style="border-left:4px solid var(--green)">
+        <div class="card" style="border-top:3px solid var(--green)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
-            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">What Reviewers Will Find Compelling</span>
+            <span style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">What Reviewers Will Find Compelling</span>
           </div>
-          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.utepStrength}</p>
+          <p style="font-size:12px;color:var(--text);line-height:1.8">${cl.utepStrength}</p>
         </div>
       </div>`;
     root.appendChild(conceptSection);
