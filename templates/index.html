@@ -227,6 +227,10 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
 .subview-btn.active{color:#FFF;background:linear-gradient(135deg,rgba(255,130,0,0.25),rgba(255,130,0,0.1));box-shadow:0 2px 8px rgba(255,130,0,0.15)}
 .subview-btn svg{width:16px;height:16px}
 
+/* ═══ HERO ANIMATED BACKGROUND ═══ */
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden}
+.hero-bg canvas{width:100%;height:100%;opacity:0.35}
+
 .hidden{display:none}
 
 @media(max-width:900px){
@@ -554,11 +558,11 @@ function renderOverview(root){
   });
   root.appendChild(statRow);
 
-  // ── Hero (full-width, prominent) ──
+  // ── Hero (full-width, prominent, animated background) ──
   const heroCard=el("div","card");
   heroCard.style.cssText="position:relative;overflow:hidden;padding:48px 44px;min-height:260px;display:flex;flex-direction:column;justify-content:center;margin-bottom:20px";
   heroCard.innerHTML=`
-    <div style="content:'';position:absolute;top:0;right:0;bottom:0;width:50%;background:linear-gradient(135deg,transparent 0%,rgba(11,197,234,0.06) 50%,rgba(255,130,0,0.08) 100%);pointer-events:none"></div>
+    <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
     <div style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:10px;position:relative;z-index:1">What This Platform Does</div>
     <h2 style="font-size:28px;font-weight:800;color:#FFF;line-height:1.3;margin-bottom:18px;max-width:800px;position:relative;z-index:1">Identifies UTEP\u2019s strongest research teams for competitive DOE Genesis proposals</h2>
     <p style="font-size:14px;color:var(--text2);line-height:1.85;max-width:820px;position:relative;z-index:1">The platform maps <strong style="color:#FFF">${F.length} UTEP faculty</strong> against <strong style="color:#FFF">26 DOE Genesis Science & Technology Challenges</strong>, scoring each faculty-challenge pair on a 0\u20133 alignment scale. From this analysis, it surfaces competitive advantages and generates three strategic proposal concepts with recommended teams.</p>
@@ -569,6 +573,97 @@ function renderOverview(root){
       <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2)"><span style="width:20px;height:14px;border-radius:4px;background:var(--accent);display:inline-block"></span><strong style="color:#FFF">3</strong> Strong</div>
     </div>`;
   root.appendChild(heroCard);
+
+  // ── Neural network / constellation animation ──
+  (function(){
+    const cvs=document.getElementById("heroCanvas");
+    if(!cvs)return;
+    const ctx=cvs.getContext("2d");
+    const parent=cvs.parentElement.parentElement;
+    let W,H,nodes=[];
+    const NUM=45,CONNECT_DIST=120,SPEED=0.4;
+    const colors=["#0BC5EA","#FF8200","#7B61FF","#01B574","#4299E1"];
+
+    function resize(){
+      W=parent.offsetWidth;H=parent.offsetHeight;
+      cvs.width=W*2;cvs.height=H*2;
+      ctx.scale(2,2);
+    }
+
+    function initNodes(){
+      nodes=[];
+      for(let i=0;i<NUM;i++){
+        const angle=Math.random()*Math.PI*2;
+        const speed=SPEED*(0.3+Math.random()*0.7);
+        nodes.push({
+          x:Math.random()*W,y:Math.random()*H,
+          vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+          r:1.5+Math.random()*2.5,
+          color:colors[Math.floor(Math.random()*colors.length)],
+          pulse:Math.random()*Math.PI*2
+        });
+      }
+    }
+
+    function draw(t){
+      ctx.clearRect(0,0,W,H);
+
+      // Update positions
+      nodes.forEach(n=>{
+        n.x+=n.vx;n.y+=n.vy;
+        n.pulse+=0.02;
+        if(n.x<-10)n.x=W+10;if(n.x>W+10)n.x=-10;
+        if(n.y<-10)n.y=H+10;if(n.y>H+10)n.y=-10;
+      });
+
+      // Draw connections
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const dx=nodes[i].x-nodes[j].x;
+          const dy=nodes[i].y-nodes[j].y;
+          const dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<CONNECT_DIST){
+            const alpha=(1-dist/CONNECT_DIST)*0.4;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x,nodes[i].y);
+            ctx.lineTo(nodes[j].x,nodes[j].y);
+            ctx.strokeStyle=nodes[i].color.replace(")",","+alpha+")").replace("rgb","rgba").replace("#","")||"rgba(11,197,234,"+alpha+")";
+            // Use hex to rgba
+            const hex=nodes[i].color;
+            const r2=parseInt(hex.slice(1,3),16),g2=parseInt(hex.slice(3,5),16),b2=parseInt(hex.slice(5,7),16);
+            ctx.strokeStyle="rgba("+r2+","+g2+","+b2+","+alpha+")";
+            ctx.lineWidth=0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes with pulse glow
+      nodes.forEach(n=>{
+        const glowR=n.r+Math.sin(n.pulse)*1.5;
+        // Glow
+        const hex=n.color;
+        const r2=parseInt(hex.slice(1,3),16),g2=parseInt(hex.slice(3,5),16),b2=parseInt(hex.slice(5,7),16);
+        const grad=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,glowR*4);
+        grad.addColorStop(0,"rgba("+r2+","+g2+","+b2+",0.3)");
+        grad.addColorStop(1,"rgba("+r2+","+g2+","+b2+",0)");
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,glowR*4,0,Math.PI*2);
+        ctx.fillStyle=grad;
+        ctx.fill();
+        // Core
+        ctx.beginPath();
+        ctx.arc(n.x,n.y,glowR,0,Math.PI*2);
+        ctx.fillStyle=n.color;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();initNodes();draw(0);
+    window.addEventListener("resize",()=>{resize();initNodes()});
+  })();
 
   // ── Quick navigation ──
   const tabGuides=[
