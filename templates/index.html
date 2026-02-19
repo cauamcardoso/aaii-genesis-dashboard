@@ -22,14 +22,18 @@ button{font-family:var(--font);cursor:pointer}
 a{color:var(--blue);text-decoration:none}
 
 /* HEADER */
-.header{background:var(--navy);color:#FFF;padding:28px 40px 0}
-.header-top{display:flex;align-items:center;gap:16px;margin-bottom:4px}
+.header{background:linear-gradient(135deg,var(--navy) 0%,#0A2E5C 60%,#0D3463 100%);color:#FFF;padding:28px 40px 0;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:-80px;right:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,130,0,0.15) 0%,transparent 70%);pointer-events:none}
+.header::after{content:'';position:absolute;bottom:-100px;right:160px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,130,0,0.08) 0%,transparent 70%);pointer-events:none}
+.header-top{display:flex;align-items:center;gap:16px;margin-bottom:4px;position:relative;z-index:1}
 .header-logo{display:flex;align-items:center;gap:10px}
 .logo-bar{width:4px;height:32px;background:var(--orange);border-radius:2px}
 .logo-text{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange)}
-h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:#FFF}
-.header p{font-size:13px;color:rgba(255,255,255,0.7);max-width:700px;margin-bottom:20px}
-.tabs{display:flex;gap:0;border-bottom:none}
+h1{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:#FFF;position:relative;z-index:1}
+.header p{font-size:13px;color:rgba(255,255,255,0.7);max-width:700px;margin-bottom:6px;position:relative;z-index:1}
+.header-accent{width:60px;height:3px;background:linear-gradient(90deg,var(--orange),transparent);border-radius:2px;margin-bottom:16px;position:relative;z-index:1}
+.header-art{position:absolute;top:0;right:0;opacity:0.07;pointer-events:none}
+.tabs{display:flex;gap:0;border-bottom:none;position:relative;z-index:1}
 .tab-btn{padding:10px 18px;border:none;font-size:12px;font-weight:600;background:transparent;color:rgba(255,255,255,0.6);border-bottom:3px solid transparent;transition:all 0.2s;letter-spacing:0.02em}
 .tab-btn:hover{color:rgba(255,255,255,0.9)}
 .tab-btn.active{color:#FFF;border-bottom-color:var(--orange);background:rgba(255,255,255,0.06)}
@@ -40,7 +44,7 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 
 .card{background:var(--white);border-radius:10px;border:1px solid var(--border);padding:24px;margin-bottom:0;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 .card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.card-title .icon{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FFF;flex-shrink:0}
+.card-title .icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#FFF;flex-shrink:0;line-height:0}
 
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
@@ -88,7 +92,7 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 
 .hm-wrap{padding:0;overflow:auto;max-height:65vh}
 .hm-table{border-collapse:collapse;width:100%;font-size:11px}
-.hm-table thead th{position:sticky;top:0;z-index:2;background:var(--navy);color:rgba(255,255,255,0.8);padding:8px 4px;text-align:center;font-weight:600;font-size:10px;min-width:32px}
+.hm-table thead th{position:sticky;top:0;z-index:2;background:linear-gradient(180deg,#0A2E5C,var(--navy));color:rgba(255,255,255,0.8);padding:8px 4px;text-align:center;font-weight:600;font-size:10px;min-width:32px;border-right:1px solid rgba(255,255,255,0.06)}
 .hm-table thead th:first-child{position:sticky;left:0;z-index:3;text-align:left;padding:8px 12px;min-width:170px}
 .hm-table thead th:last-child{color:var(--orange);font-weight:800;padding:8px}
 .hm-table tbody td{padding:2px;border-bottom:1px solid var(--borderLight);text-align:center}
@@ -96,7 +100,9 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 .hm-name{font-weight:600;color:var(--text);font-size:11px}
 .hm-dept{font-size:9px;color:var(--text2)}
 .hm-cell{width:24px;height:24px;border-radius:3px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;transition:transform 0.15s;cursor:default}
-.hm-cell:hover{transform:scale(1.3)}
+.hm-cell:hover{transform:scale(1.35);box-shadow:0 2px 8px rgba(0,0,0,0.18);z-index:5;position:relative}
+.hm-table tbody tr:hover td{background:rgba(255,130,0,0.03)!important}
+.hm-table tbody tr:hover td:first-child{background:rgba(255,130,0,0.06)!important}
 .hm-total{font-weight:800;font-size:12px;padding:6px !important}
 
 /* CHALLENGE EXPLORER / TAB */
@@ -120,8 +126,8 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 
 /* FACULTY CARDS */
 .fac-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.fac-card{padding:20px;transition:box-shadow 0.2s}
-.fac-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.fac-card{padding:20px;transition:all 0.2s}
+.fac-card:hover{box-shadow:0 6px 16px rgba(0,0,0,0.1);transform:translateY(-2px)}
 .fac-card .name{font-size:14px;font-weight:700;color:var(--navy)}
 .fac-card .title-dept{font-size:12px;color:var(--text2);margin-bottom:8px}
 .fac-card .expertise{font-size:12px;color:var(--text);line-height:1.6;margin-bottom:10px}
@@ -181,6 +187,8 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
   .grid-2,.team-layout{grid-template-columns:1fr}
   .explorer-grid{grid-template-columns:1fr}
   .header,.content,.footer{padding-left:20px;padding-right:20px}
+  .header-art{display:none}
+  .about-grid{grid-template-columns:1fr!important}
   div[style*="grid-template-columns: 1fr 1fr"],div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
 </style>
@@ -188,10 +196,16 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 <body>
 
 <div class="header">
+  <svg class="header-art" width="420" height="200" viewBox="0 0 420 200">
+    <circle cx="320" cy="40" r="3" fill="#FF8200"/><circle cx="370" cy="75" r="2" fill="#FFF"/><circle cx="280" cy="90" r="4" fill="#FF8200"/><circle cx="345" cy="140" r="2.5" fill="#FFF"/><circle cx="240" cy="50" r="2" fill="#FF8200"/><circle cx="390" cy="28" r="1.5" fill="#FFF"/><circle cx="300" cy="160" r="3" fill="#FF8200"/><circle cx="260" cy="130" r="1.5" fill="#FFF"/><circle cx="400" cy="110" r="2" fill="#FF8200"/>
+    <line x1="320" y1="40" x2="370" y2="75" stroke="#FF8200" stroke-width="0.5"/><line x1="320" y1="40" x2="280" y2="90" stroke="#FFF" stroke-width="0.5"/><line x1="370" y1="75" x2="345" y2="140" stroke="#FF8200" stroke-width="0.5"/><line x1="280" y1="90" x2="240" y2="50" stroke="#FFF" stroke-width="0.5"/><line x1="280" y1="90" x2="300" y2="160" stroke="#FF8200" stroke-width="0.5"/><line x1="345" y1="140" x2="300" y2="160" stroke="#FFF" stroke-width="0.5"/><line x1="260" y1="130" x2="300" y2="160" stroke="#FF8200" stroke-width="0.5"/><line x1="400" y1="110" x2="370" y2="75" stroke="#FFF" stroke-width="0.5"/>
+    <polygon points="355,8 372,18 372,36 355,46 338,36 338,18" fill="none" stroke="rgba(255,130,0,0.35)" stroke-width="1"/><polygon points="252,118 267,126 267,142 252,150 237,142 237,126" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  </svg>
   <div class="header-top">
     <div class="header-logo"><div class="logo-bar"></div><span class="logo-text">AAII × DOE Genesis Mission</span></div>
   </div>
   <h1>Genesis Opportunity Intelligence Platform</h1>
+  <div class="header-accent"></div>
   <p>A data-driven platform helping UTEP identify the strongest research teams and build competitive proposal concepts for DOE Genesis Science &amp; Technology challenges.</p>
   <div class="tabs" id="tabs"></div>
 </div>
@@ -316,10 +330,29 @@ bio:"Associate Professor. Studies two-dimensional quantum materials and van der 
 
 const F=FR.map(f=>({...f,total:f.s.reduce((a,b)=>a+b,0),strong:f.s.filter(x=>x===3).length,moderate:f.s.filter(x=>x===2).length}));
 
-const SC=["transparent","#C4C4C4","#F48221","#FF8200"];
+const SC=["transparent","#B0B0B0","#2563EB","#FF8200"];
 const SL=["No match","Tangential","Moderate","Strong"];
 const AC={"AAII Affiliate":"#041E42","Previous AAII":"#FF8200","Recommended":"#1565C0"};
 const AB={"AAII Affiliate":"rgba(4,30,66,0.08)","Previous AAII":"rgba(255,130,0,0.08)","Recommended":"rgba(21,101,192,0.08)"};
+
+const ICONS={
+  target:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  users:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  grid:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+  lightbulb:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>',
+  clipboard:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>',
+  barChart:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>',
+  pieChart:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>',
+  trendingUp:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+  award:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+  search:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+  info:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>',
+  compass:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+  shield:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  zap:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  beaker:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg>',
+  layers:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>'
+};
 
 const CLUSTERS=[
 {id:"quantum-materials",title:"AI-Accelerated Quantum Materials Discovery",
@@ -414,9 +447,61 @@ function renderContent(){
 function renderOverview(root){
   const totalStrong=F.reduce((s,f)=>s+f.strong,0);
   const avg=(F.reduce((s,f)=>s+f.total,0)/F.length).toFixed(1);
+  const affCount=a=>F.filter(f=>f.a===a).length;
+
+  // About This Platform section
+  const howCard=el("div","card");howCard.style.marginBottom="24px";
+  const tabGuides=[
+    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"Explore all 26 DOE Genesis S&T challenge areas with detailed overviews, AI/ML approaches, and matched faculty."},
+    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter the full roster of mapped faculty. View each researcher's expertise, department, and challenge alignment scores."},
+    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Interactive scoring matrix showing every faculty member's alignment with every challenge. Sort by total, strong matches, or name."},
+    {tab:"teams",icon:ICONS.lightbulb,label:"Proposal Concepts",desc:"Three data-driven proposal concepts with recommended research teams, competitive positioning, and methods for Genesis-aligned proposals."},
+    {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Scoring criteria, data sources, team-building algorithm, and transparency notes behind every assessment on this platform."}
+  ];
+  howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.compass}</div>About This Platform</div>
+    <div class="about-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:20px">
+      <div>
+        <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} carefully selected UTEP faculty</strong> against all 26 DOE Genesis Science & Technology Challenges. Each faculty-challenge pair receives a score from 0 (no match) to 3 (strong match), revealing where UTEP holds genuine competitive advantage.</p>
+        <p style="font-size:13px;color:var(--text);line-height:1.8">This analysis powers three strategic proposal concepts that translate institutional research strength into actionable, well-positioned funding opportunities. Nothing in this assessment was left to chance - every faculty member, score, and recommendation follows a deliberate, transparent methodology.</p>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px">How the ${F.length} Faculty Were Selected</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
+            <div><div style="font-size:12px;font-weight:700;color:var(--navy)">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Researchers currently affiliated with the Army Applications of AI Institute - the core research community with established AI expertise.</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:8px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
+            <div><div style="font-size:12px;font-weight:700;color:var(--orange)">Previous AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Faculty who have partnered successfully with AAII in the past and bring proven collaborative track records and relevant domain knowledge.</div></div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="width:30px;height:30px;border-radius:8px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
+            <div><div style="font-size:12px;font-weight:700;color:var(--blue)">Recommended for Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6;margin-top:2px">Faculty identified through systematic review as having the strongest alignment with Genesis challenges - strategically selected to expand UTEP's competitive coverage.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:16px">
+      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="width:30px;height:30px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;margin-bottom:8px">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:3px">${g.label}</div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
+    </div>
+    <div style="padding:12px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border)">
+      <div style="font-size:11px;font-weight:700;color:var(--navy);margin-bottom:6px">Scoring at a Glance</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:#E0E0E0;border:1px solid var(--border)"></div><span style="font-size:11px;color:var(--text2)"><b>0</b> No match</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#C8C8C8,#A0A0A0)"></div><span style="font-size:11px;color:var(--text2)"><b>1</b> Tangential</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#3B82F6,#2563EB)"></div><span style="font-size:11px;color:var(--text2)"><b>2</b> Moderate</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:18px;height:18px;border-radius:4px;background:linear-gradient(135deg,#FF9500,#FF7A00)"></div><span style="font-size:11px;color:var(--text2)"><b>3</b> Strong</span></div>
+      </div>
+    </div>`;
+  root.appendChild(howCard);
+  howCard.querySelectorAll(".how-card").forEach(c=>{
+    c.style.cursor="pointer";
+    c.onclick=()=>{currentTab=c.dataset.tab;renderTabs();renderContent()};
+  });
 
   const sr=el("div","stats-row");
-  [[`Faculty Mapped`,F.length,"across 3 affiliation tiers","var(--navy)"],[`Genesis Challenges`,26,"DOE mission areas","var(--orange)"],[`Strong Matches`,totalStrong,"score = 3","var(--green)"],[`Avg. Score`,avg,"per faculty member","var(--blue)"]].forEach(([l,v,s,c])=>{
+  [[`Faculty Mapped`,F.length,"across 3 affiliation tiers","var(--navy)"],[`Genesis Challenges`,26,"DOE mission areas","var(--orange)"],[`Strong Matches`,totalStrong,"score = 3","var(--green)"],[`Avg. Score`,avg,"out of 78 possible","var(--blue)"]].forEach(([l,v,s,c])=>{
     sr.innerHTML+=`<div class="card stat-card"><div class="stat-label">${l}</div><div class="stat-value" style="color:${c}">${v}</div><div class="stat-sub">${s}</div></div>`;
   });
   root.appendChild(sr);
@@ -426,7 +511,7 @@ function renderOverview(root){
   // Top 10
   const top10=[...F].sort((a,b)=>b.total-a.total).slice(0,10);
   const maxTotal=top10[0].total;
-  let barHtml=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--navy)">T</div>Top 10 Faculty by Total Score</div>`;
+  let barHtml=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.barChart}</div>Top 10 Faculty by Total Score</div>`;
   top10.forEach(f=>{
     const pct=(f.total/maxTotal*100).toFixed(0);
     barHtml+=`<div class="bar-row"><div class="bar-label">${f.n}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${AC[f.a]}"></div></div><div class="bar-value">${f.total}</div></div>`;
@@ -456,7 +541,7 @@ function renderOverview(root){
   let legendHtml=affEntries.map(([name,count])=>`<div class="donut-legend-item"><div class="donut-dot" style="background:${AC[name]}"></div><div><div style="font-size:13px;font-weight:600">${name}</div><div style="font-size:11px;color:var(--text2)">${count} faculty</div></div></div>`).join("");
   let deptHtml=depts.map(([d,c])=>`<div class="dept-row"><div class="dept-label">${d.split(" ").slice(0,2).join(" ")}</div><div class="dept-track"><div class="dept-fill" style="width:${(c/F.length*100).toFixed(0)}%"></div></div><div class="dept-count">${c}</div></div>`).join("");
 
-  grid.innerHTML+=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--orange)">A</div>Faculty by Affiliation</div>
+  grid.innerHTML+=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--orange)">${ICONS.pieChart}</div>Faculty by Affiliation</div>
     <div class="donut-section"><div>${donutSvg}</div><div>${legendHtml}</div></div>
     <div style="margin-top:20px"><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Department Distribution</div>${deptHtml}</div></div>`;
   root.appendChild(grid);
@@ -465,7 +550,7 @@ function renderOverview(root){
   const covData=CH.map((c,ci)=>({code:c,count:F.filter(f=>f.s[ci]>=2).length})).sort((a,b)=>b.count-a.count);
   const maxCov=Math.max(...covData.map(d=>d.count));
   const covCard=el("div","card");
-  covCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--green)">C</div>Challenge Coverage (Faculty with Score 2+)</div>`;
+  covCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--green)">${ICONS.trendingUp}</div>Challenge Coverage (Faculty with Score 2+)</div>`;
   const covChart=el("div","");
   covChart.style.cssText="display:flex;align-items:flex-end;gap:3px;height:180px;padding-top:16px";
   covData.forEach((d,i)=>{
@@ -476,35 +561,6 @@ function renderOverview(root){
   covCard.appendChild(covChart);
   root.appendChild(covCard);
 
-  // How It Works section
-  const howCard=el("div","card");howCard.style.marginTop="24px";
-  const tabGuides=[
-    {tab:"challenges",icon:"\uD83C\uDFAF",label:"Challenges",desc:"Explore all 26 DOE Genesis Science & Technology challenge areas with detailed overviews, AI/ML approaches, and matched faculty."},
-    {tab:"faculty",icon:"\uD83D\uDC65",label:"Faculty Profiles",desc:"Search and filter the full roster of mapped faculty. View each researcher's expertise, department, and challenge alignment scores."},
-    {tab:"heatmap",icon:"\uD83D\uDDFA",label:"Heat Map",desc:"Interactive scoring matrix showing every faculty member's alignment with every challenge. Sort by total score, strong matches, or name."},
-    {tab:"teams",icon:"\uD83D\uDCA1",label:"Proposal Concepts",desc:"Three data-driven proposal concepts with recommended research teams, competitive positioning, and methods for Genesis-aligned proposals."},
-    {tab:"methodology",icon:"\uD83D\uDCD0",label:"Methodology",desc:"Scoring criteria, data sources, team-building algorithm, and transparency notes behind every assessment on this platform."}
-  ];
-  howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">?</div>How This Platform Works</div>
-    <p style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:20px">This platform analyzes the research expertise of ${F.length} UTEP faculty members against 26 DOE Genesis Science & Technology Challenges. It scores each faculty-challenge pair from 0 (no match) to 3 (strong match), then uses those scores to identify optimal research teams and generate competitive proposal concepts. Use the tabs below to explore different views of the data.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px">
-      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="font-size:20px;margin-bottom:6px">${g.icon}</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">${g.label}</div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
-    </div>
-    <div style="padding:14px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border)">
-      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px">Scoring at a Glance</div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#E0E0E0;border:1px solid var(--border)"></div><span style="font-size:12px;color:var(--text2)"><b>0</b> No match</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#C4C4C4"></div><span style="font-size:12px;color:var(--text2)"><b>1</b> Tangential</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:var(--orange2)"></div><span style="font-size:12px;color:var(--text2)"><b>2</b> Moderate</span></div>
-        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:var(--orange)"></div><span style="font-size:12px;color:var(--text2)"><b>3</b> Strong</span></div>
-      </div>
-    </div>`;
-  root.appendChild(howCard);
-  // Make how-cards clickable to navigate to tabs
-  howCard.querySelectorAll(".how-card").forEach(c=>{
-    c.style.cursor="pointer";
-    c.onclick=()=>{currentTab=c.dataset.tab;renderTabs();renderContent()};
-  });
 }
 
 // ── CHALLENGES ──
@@ -541,21 +597,21 @@ function renderChallenges(root){
       <div style="display:grid;grid-template-columns:1fr;gap:14px">
         <div style="padding:16px;border-radius:8px;background:rgba(4,30,66,0.025);border-left:4px solid var(--navy)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <div style="width:26px;height:26px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2139</div>
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${ICONS.info}</div>
             <span style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em">Challenge Overview</span>
           </div>
           <p style="font-size:13px;color:var(--text);line-height:1.7">${info.sum}</p>
         </div>
         <div style="padding:16px;border-radius:8px;background:rgba(255,130,0,0.025);border-left:4px solid var(--orange)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <div style="width:26px;height:26px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2699</div>
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${ICONS.zap}</div>
             <span style="font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.06em">AI/ML Approach</span>
           </div>
           <p style="font-size:13px;color:var(--text);line-height:1.7">${info.ai}</p>
         </div>
         <div style="padding:16px;border-radius:8px;background:rgba(46,125,50,0.025);border-left:4px solid var(--green)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-            <div style="width:26px;height:26px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2605</div>
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${ICONS.shield}</div>
             <span style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.06em">National Impact</span>
           </div>
           <p style="font-size:13px;color:var(--text);line-height:1.7">${info.impact}</p>
@@ -592,9 +648,13 @@ function renderFaculty(root){
 
     // Search + filter bar
     const bar=el("div","");bar.style.cssText="display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap";
+    const searchWrap=el("div","");searchWrap.style.cssText="position:relative;flex:1;min-width:280px";
+    searchWrap.innerHTML=`<div style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text2);pointer-events:none;line-height:0">${ICONS.search}</div>`;
     const inp=el("input","fac-search");inp.type="text";inp.placeholder="Search faculty by name, department, or expertise...";inp.value=search;
+    inp.style.paddingLeft="36px";
     inp.oninput=e=>{search=e.target.value.toLowerCase();render()};
-    bar.appendChild(inp);
+    searchWrap.appendChild(inp);
+    bar.appendChild(searchWrap);
     ["All","AAII Affiliate","Previous AAII","Recommended"].forEach(a=>{
       const b=el("button","hm-btn"+(filterAff===a?" active-filter":""),a);
       b.onclick=()=>{filterAff=a;render()};
@@ -611,16 +671,30 @@ function renderFaculty(root){
     list.forEach(f=>{
       const topChallenges=f.s.map((sc,ci)=>({code:CH[ci],sc})).filter(x=>x.sc>=2).sort((a,b)=>b.sc-a.sc).slice(0,6);
       const chipsHtml=topChallenges.map(tc=>`<span class="fac-chip" style="background:${tc.sc===3?"rgba(255,130,0,0.12);color:var(--orange)":"rgba(4,30,66,0.08);color:var(--navy)"}">${tc.code}:${tc.sc}</span>`).join("");
+      const initials=f.n.split(" ").map(w=>w[0]).join("").slice(0,2);
+      const pct=(f.total/78*100).toFixed(0);
 
-      cards.innerHTML+=`<div class="card fac-card">
-        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
-          <div><div class="name">${f.n}</div><div class="title-dept">${f.d}</div></div>
+      cards.innerHTML+=`<div class="card fac-card" style="border-top:3px solid ${AC[f.a]}">
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px">
+          <div style="width:44px;height:44px;border-radius:50%;background:${AC[f.a]};color:#FFF;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0;letter-spacing:-0.02em">${initials}</div>
+          <div style="flex:1;min-width:0">
+            <div class="name">${f.n}</div>
+            <div class="title-dept">${f.d}</div>
+          </div>
           <span class="badge" style="color:${AC[f.a]};background:${AB[f.a]}">${f.a}</span>
         </div>
         <div class="expertise">${f.bio}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid var(--borderLight)">
+        <div style="margin-top:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.06em">Alignment Score</span>
+            <span style="font-size:12px;font-weight:800;color:var(--navy)">${f.total}<span style="font-size:10px;font-weight:500;color:var(--text2)"> / 78</span></span>
+          </div>
+          <div style="height:4px;background:var(--borderLight);border-radius:2px;overflow:hidden;margin-bottom:8px">
+            <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,${AC[f.a]},var(--orange));border-radius:2px;transition:width 0.4s ease"></div>
+          </div>
+        </div>
+        <div style="padding-top:8px;border-top:1px solid var(--borderLight)">
           <div class="score-row">${chipsHtml||'<span style="font-size:10px;color:var(--text2)">No strong/moderate matches</span>'}</div>
-          <div style="text-align:right"><div style="font-size:18px;font-weight:800;color:var(--navy)">${f.total}</div><div style="font-size:9px;color:var(--text2);text-transform:uppercase">Total Score</div></div>
         </div>
       </div>`;
     });
@@ -667,8 +741,9 @@ function renderHeatmap(root){
     root.appendChild(ctrl);
 
     const leg=el("div","legend-row");
+    const legBg=["var(--ltbg)","linear-gradient(135deg,#C8C8C8,#A0A0A0)","linear-gradient(135deg,#3B82F6,#2563EB)","linear-gradient(135deg,#FF9500,#FF7A00)"];
     [0,1,2,3].forEach(s=>{
-      leg.innerHTML+=`<div class="legend-item"><div class="legend-swatch" style="background:${s===0?"var(--ltbg)":SC[s]};${s===0?"border:1px solid var(--border)":""}"></div>${s}  - ${SL[s]}</div>`;
+      leg.innerHTML+=`<div class="legend-item"><div class="legend-swatch" style="background:${legBg[s]};${s===0?"border:1px solid var(--border)":""}"></div>${s}  - ${SL[s]}</div>`;
     });
     root.appendChild(leg);
 
@@ -681,9 +756,9 @@ function renderHeatmap(root){
       html+=`<tr style="background:${rowBg}">`;
       html+=`<td style="background:${rowBg}"><div class="hm-name">${f.n}</div><div class="hm-dept">${f.d.split(" ").slice(0,2).join(" ")}</div></td>`;
       f.s.forEach((s,ci)=>{
-        const bg=s===0?"transparent":SC[s];
-        const clr=s===0?"#DDD":s>=2?"#FFF":"var(--text)";
-        const fw=s>=2?700:400;
+        const bg=s===0?"transparent":s===1?"linear-gradient(135deg,#C8C8C8,#A0A0A0)":s===2?"linear-gradient(135deg,#3B82F6,#2563EB)":"linear-gradient(135deg,#FF9500,#FF7A00)";
+        const clr=s===0?"#DDD":s>=2?"#FFF":s===1?"#FFF":"var(--text)";
+        const fw=s>=2?700:500;
         html+=`<td><div class="hm-cell" style="background:${bg};color:${clr};font-weight:${fw}" title="${f.n} \u00d7 ${CK[CH[ci]]}: ${SL[s]}">${s}</div></td>`;
       });
       const tc=f.total>=20?"var(--orange)":f.total>=10?"var(--navy)":"var(--text2)";
@@ -746,14 +821,14 @@ function renderTeams(root){
         <div class="card" style="border-left:4px solid var(--blue)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <span style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Potential Methods</span>
+            <span style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Proposed Methods & Approaches</span>
           </div>
           <div style="font-size:13px;color:var(--text);line-height:1.8">${cl.aiAngle}</div>
         </div>
         <div class="card" style="border-left:4px solid var(--green)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
-            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">Why Attractive to Genesis Evaluators?</span>
+            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">Evaluator Appeal</span>
           </div>
           <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.utepStrength}</p>
         </div>
@@ -837,7 +912,7 @@ function renderMethodology(root){
         <tbody>
           <tr><td style="background:transparent">0</td><td>No Match</td><td>No discernible connection between the faculty member\u2019s expertise and the challenge requirements. The faculty member\u2019s skills, methods, and domain knowledge do not apply to the challenge area.</td></tr>
           <tr><td style="background:#C4C4C4;color:#FFF">1</td><td>Tangential</td><td>Indirect or peripheral relevance. The faculty member possesses transferable methods or adjacent domain knowledge that could be adapted with effort, but there is no direct expertise match. Example: a general ML researcher applied to a domain-specific challenge.</td></tr>
-          <tr><td style="background:#F48221;color:#FFF">2</td><td>Moderate</td><td>Clear, relevant expertise with direct applicability to the challenge. The faculty member\u2019s research methods, tools, or domain knowledge are directly useful, and they could contribute meaningfully to a proposal team. Example: a DFT researcher applied to a materials discovery challenge.</td></tr>
+          <tr><td style="background:#2563EB;color:#FFF">2</td><td>Moderate</td><td>Clear, relevant expertise with direct applicability to the challenge. The faculty member\u2019s research methods, tools, or domain knowledge are directly useful, and they could contribute meaningfully to a proposal team. Example: a DFT researcher applied to a materials discovery challenge.</td></tr>
           <tr><td style="background:#FF8200;color:#FFF">3</td><td>Strong</td><td>Deep, direct expertise. The faculty member is one of the strongest possible matches at UTEP for this challenge - their published work, active research, and/or unique capabilities position them as a potential PI or lead contributor. Example: a nuclear theorist applied to a nuclear attribution challenge.</td></tr>
         </tbody>
       </table>
