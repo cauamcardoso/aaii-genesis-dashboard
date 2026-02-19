@@ -564,28 +564,7 @@ function renderOverview(root){
       <p style="font-size:12px;color:var(--text2);line-height:1.8;max-width:520px;position:relative;z-index:1">The platform maps <strong style="color:#FFF">${F.length} UTEP faculty</strong> against <strong style="color:#FFF">26 DOE Genesis Science & Technology Challenges</strong>, scoring each faculty-challenge pair on a 0\u20133 alignment scale. From this analysis, it surfaces competitive advantages and generates three strategic proposal concepts with recommended teams.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
-      <div class="card" style="flex:1;padding:20px">
-        <div class="section-title">Faculty Affiliation Tiers</div>
-        <div class="section-desc">Faculty are grouped into three tiers based on their relationship with UTEP's AAII.</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)">
-            <div style="width:10px;height:10px;border-radius:50%;background:var(--cyan);flex-shrink:0"></div>
-            <div style="flex:1"><div style="font-size:12px;font-weight:700;color:#FFF">AAII Affiliates</div><div style="font-size:10px;color:var(--text3);line-height:1.4">Current members with active research contributions.</div></div>
-            <div style="font-size:22px;font-weight:800;color:var(--cyan)">${affCount("AAII Affiliate")}</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)">
-            <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0"></div>
-            <div style="flex:1"><div style="font-size:12px;font-weight:700;color:#FFF">Past AAII</div><div style="font-size:10px;color:var(--text3);line-height:1.4">Former affiliates with highly relevant expertise.</div></div>
-            <div style="font-size:22px;font-weight:800;color:var(--accent)">${affCount("Previous AAII")}</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)">
-            <div style="width:10px;height:10px;border-radius:50%;background:var(--purple);flex-shrink:0"></div>
-            <div style="flex:1"><div style="font-size:12px;font-weight:700;color:#FFF">Strategic Outreach</div><div style="font-size:10px;color:var(--text3);line-height:1.4">Non-AAII faculty recommended to strengthen teams.</div></div>
-            <div style="font-size:22px;font-weight:800;color:var(--purple)">${affCount("Recommended")}</div>
-          </div>
-        </div>
-      </div>
-      <div class="card" style="padding:20px">
+      <div class="card" style="flex:1;padding:20px;display:flex;flex-direction:column;justify-content:center">
         <div class="section-title">Alignment Scoring Scale</div>
         <div class="section-desc">Each faculty member was scored 0\u20133 against every Genesis challenge.</div>
         <div style="display:flex;gap:14px;flex-wrap:wrap">
