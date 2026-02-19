@@ -191,6 +191,8 @@ h1{font-size:28px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
   .header-art{display:none}
   .about-grid{grid-template-columns:1fr!important}
   div[style*="grid-template-columns: 1fr 1fr"],div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:1.4fr 0.6fr"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(5"]{grid-template-columns:repeat(2,1fr)!important}
 }
 </style>
 </head>
@@ -358,8 +360,17 @@ const ICONS={
 const CLUSTERS=[
 {id:"quantum-materials",title:"AI-Accelerated Quantum Materials Discovery",
 subtitle:"Physics-Corrected AI",
-conceptSummary:"This proposal deploys an \u201cAI-Physicist Agent\u201d to dramatically compress the discovery timeline for new quantum, magnetic, and electronic materials critical to national security and clean energy. Unlike purely data-driven models that suffer from \u201cblind spots\u201d or physical hallucinations, this project embeds fundamental quantum mechanics directly into the AI. Led by former DOE program managers and AI-physics specialists (incorporating expertise from Dr. Pederson, Dr. Hoyer, and Dr. Zope), the team uses the UTEP-developed FLOSIC method to generate high-fidelity training data. The result is an end-to-end pipeline that discovers, simulates, and verifies novel materials with guaranteed scientific utility before physical lab testing begins.",
-whyItMatters:"The U.S. faces a strategic bottleneck\u2014the \u201cValley of Death\u201d between discovering a material and proving its functionality. Traditional trial-and-error takes years. By generating higher-quality training data (correcting known weaknesses in predicting band gaps and magnetic behavior), this AI pipeline reduces failed lab experiments and accelerates the deployment of technologies essential for the Genesis Mission\u2019s goals in advanced manufacturing and deterrence.",
+conceptSummary:`<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.target} The Problem</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">Discovering new materials (the special metals, magnets, and compounds that power everything from clean energy systems to national defense technologies) is painfully slow. The traditional approach is trial-and-error: scientists propose a material, spend weeks running computer simulations, then months testing it in the lab, only to find it does not work as hoped. The U.S. faces a <strong>strategic bottleneck</strong> often called the "Valley of Death": the gap between discovering a material on paper and proving it actually works in the real world. This bottleneck delays the development of better batteries, stronger magnets, and advanced electronics that are critical for DOE missions.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.zap} The Approach</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">A concept in this area could be further developed as an <strong>"AI-Physicist Agent"</strong>: an artificial intelligence system that has the laws of quantum mechanics built directly into it, rather than trying to learn physics from data alone. The key innovation would be leveraging UTEP's own <strong>FLOSIC method</strong> (Fermi-L\u00f6wdin Orbital Self-Interaction Correction), a computational technique co-developed by Drs. Pederson and Zope that fixes a well-known flaw in standard quantum calculations. Standard methods (called DFT, or Density Functional Theory) systematically get certain properties wrong: they predict incorrect band gaps (which determine whether a material conducts electricity) and magnetic behaviors. FLOSIC corrects these errors at the source, producing <strong>higher-fidelity training data</strong> that the AI can learn from. The AI could then use <strong>machine-learned interatomic potentials</strong> (mathematical shortcuts trained on the corrected physics data) to predict how atoms interact in new materials at speeds millions of times faster than traditional simulation. <strong>Graph neural networks</strong> could screen millions of candidate crystal structures, and the most promising predictions would be validated in UTEP labs by experimental physicists.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.award} Why It Could Stand Out</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">Most AI-for-materials approaches are "black boxes" that learn patterns from existing data without understanding the physics. When these models encounter truly novel materials, they can produce "physical hallucinations": predictions that look plausible but violate basic physics. A proposal built on this concept would be different because the AI would be <strong>grounded in corrected quantum mechanics from the start</strong>. The team that invented the correction method (FLOSIC) would be the same team training the AI, creating a tightly integrated pipeline from quantum theory \u2192 AI prediction \u2192 lab validation. This closed-loop approach could mean fewer failed experiments, faster discovery cycles, and results that DOE reviewers can trust.</p></div>
+<div style="border-top:1px solid var(--border);padding-top:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px">${ICONS.compass} Further Reading</div>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Madika, B., Saha, A., Kang, C., Buyantogtokh, B., Agar, J., Wolverton, C. M., ... & Hong, S. (2025). Artificial intelligence for materials discovery, development, and optimization. <em>ACS Nano</em>, 19(30), 27116\u201327158.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Li, Y., Zhang, X., & Shen, L. (2025). A critical review of machine learning interatomic potentials and Hamiltonian. <em>Journal of Materials Informatics</em>, 5(4), N-A.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Duo, L., Hao, Y., & He, J. (2025). Autonomous materials synthesis laboratories: Integrating artificial intelligence with advanced robotics for accelerated discovery.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Nguyen, H.-Q., Nguyen, X. B., Pandey, S., Faltermeier, T., Borys, N., Churchill, H., & Luu, K. (2025). \u03C6-Adapt: A physics-informed adaptation learning approach to 2D quantum material discovery. <em>arXiv preprint arXiv:2507.05184</em>.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0">Miao, T., Dai, J., Liu, J., Tan, J., Zhang, M., Jin, W., ... & Chen, S. (2025). PhysMaster: Building an autonomous AI physicist for theoretical and computational physics research. <em>arXiv preprint arXiv:2512.19799</em>.</p>
+</div>`,
+whyItMatters:"The U.S. faces a strategic bottleneck (the \u201cValley of Death\u201d) between discovering a material and proving its functionality. Traditional trial-and-error takes years. By generating higher-quality training data (correcting known weaknesses in predicting band gaps and magnetic behavior), this AI pipeline reduces failed lab experiments and accelerates the deployment of technologies essential for the Genesis Mission\u2019s goals in advanced manufacturing and deterrence.",
 narrative:"This proposal leverages UTEP\u2019s nationally recognized computational materials science and quantum chemistry cluster to accelerate the discovery of strategic materials through AI-driven methods. The core approach combines self-interaction corrected density functional theory (the FLOSIC method, co-developed at UTEP by Pederson and Zope) with machine-learned interatomic potentials (MLIPs) that achieve DFT-level accuracy at orders of magnitude lower computational cost. UTEP is uniquely positioned because FLOSIC provides unusually accurate band gap and magnetic property predictions, generating high-fidelity training data that improves ML surrogate model reliability. The experimental capabilities of El-Gendy and Nair close the loop from computational prediction to physical validation.",
 challenges:["C8","C9","C12","C14","C4"],
 utepStrength:"Reviewers are highly skeptical of \u201cblack box\u201d AI in the physical sciences. UTEP offers a rare \u201cbilingual\u201d team: the physicists who invented the baseline computational method (FLOSIC) working alongside AI specialists who can scale it. This creates a tightly closed loop from quantum theory to AI prediction to lab validation, matching the DOE\u2019s exact requirement for trustworthy, science-grounded AI.",
@@ -375,7 +386,16 @@ roles:{
 },
 {id:"nuclear-security",title:"AI-Driven Cybersecurity for Nuclear Safeguards",
 subtitle:"Trustworthy AI Agents for Threat Detection & Nuclear Security",
-conceptSummary:"This proposal shifts nuclear cybersecurity from reactive pattern-matching to proactive adversarial reasoning. By combining UTEP\u2019s deep bench in game theory and adversarial machine learning with specific nuclear domain expertise, this project develops a strategic defense framework for safeguards and threat response. The system models how sophisticated adversaries think, adapt, and attempt to deceive monitoring systems. Integrating the expertise of researchers like Dr. Kiekintveld, Dr. Xu (bringing direct Idaho National Lab experience), Dr. Piplai, and Dr. Tosh, the platform synthesizes intelligence, optimizes inspection schedules, and secures the operational technology (OT) of nuclear facilities against manipulation.",
+conceptSummary:`<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.target} The Problem</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">Nuclear security is arguably the highest-stakes domain for AI. The cost of a false negative (missing a real threat) could be catastrophic. Today's monitoring systems for nuclear safeguards, threat detection, and material attribution rely on <strong>static pattern-matching</strong>: they look for known signatures of suspicious activity. But sophisticated adversaries (state-level actors, proliferation networks) <strong>actively adapt and deceive</strong>. They study how monitoring works and design evasion strategies around it. Current systems also struggle with the sheer volume and variety of data (satellite imagery, sensor readings, open-source intelligence, facility operational data) that must be analyzed to detect threats. When a nuclear incident occurs, attribution (determining where the material came from) currently takes months. Deterrence demands it happen in hours.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.zap} The Approach</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">A concept in this area could be further developed as a <strong>multi-layered AI defense framework</strong> that thinks like an adversary to stay ahead of one. The core innovation would be <strong>game-theoretic security optimization</strong> using Stackelberg models: mathematical frameworks where a "defender" (IAEA inspectors, facility security) commits to a strategy first, and the model calculates the optimal response assuming an intelligent adversary will exploit any weakness. Dr. Kiekintveld's team could apply this to design <strong>mathematically optimal inspection schedules</strong> that are randomized in ways adversaries cannot predict or exploit. Layered on top of this would be <strong>adversarial machine learning</strong>: Dr. Rahman's team would continuously "red-team" the AI systems, testing whether computer vision models for facility monitoring or sensor networks for radiation detection can be tricked by deliberate manipulation. Dr. Xu brings computer vision trained for nuclear environments with extremely limited data (a critical challenge in classified domains), while Dr. Piplai's <strong>LLM-based threat intelligence agents</strong> could synthesize information across imagery, sensor feeds, and open-source reports for rapid threat triage. The framework would also secure the <strong>operational technology (OT) networks</strong>, the physical control systems that run nuclear facilities, against cyber manipulation.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.award} Why It Could Stand Out</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">Most cybersecurity proposals focus on generic threat detection. This team's potential advantage is <strong>adversarial reasoning at its core</strong>: it would not just detect known threats, but model how intelligent adversaries will try to evade detection and optimize defenses accordingly. The combination of game theory (Dr. Kiekintveld, proven in physical security contexts), adversarial ML robustness testing (Dr. Rahman), nuclear domain expertise (Dr. Fortier in actinide chemistry, Dr. Lopez in nuclear physics), and direct National Lab experience (Dr. Xu, Idaho National Lab) suggests a team that could build AI that is both <strong>mathematically robust against deception</strong> and <strong>grounded in real nuclear science</strong> rather than superficial pattern matching.</p></div>
+<div style="border-top:1px solid var(--border);padding-top:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px">${ICONS.compass} Further Reading</div>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Vasili, K., Dahm, Z. T., & Chatzidakis, S. (2025). An unsupervised deep explainable AI framework for localization of concurrent replay attacks in nuclear reactor signals. <em>IEEE Access</em>.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Kumar, S., Yim, M. S., Agarwal, A., Garg, A., & Bhatnagar, D. (2025, June). Cyber threats to nuclear safety: Game theory strategies for enhanced deterrence. In <em>European Conference on Cyber Warfare and Security</em> (pp. 302\u2013310). Academic Conferences International Limited.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Kim, C. W., Choo, D., Neoh, T. Y., & Tambe, M. (2026). Incentive-aware AI safety via strategic resource allocation: A Stackelberg security games perspective. <em>arXiv preprint arXiv:2602.07259</em>.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Pelekis, S., Koutroubas, T., Blika, A., Berdelis, A., Karakolis, E., Ntanos, C., ... & Askounis, D. (2025). Adversarial machine learning: A review of methods, tools, and critical industry sectors. <em>Artificial Intelligence Review</em>, 58(8), 226.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0">Arhouni, F. E., Abdo, M. A. S., Ouakkas, S., Bouhssa, M. L., & Boukhair, A. (2025). Artificial intelligence-driven advances in nuclear technology: Exploring innovations, applications, and future prospects. <em>Annals of Nuclear Energy</em>, 213, 111151.</p>
+</div>`,
 whyItMatters:"Nuclear security is the highest-stakes domain for AI; the cost of a false negative is catastrophic. Current monitoring systems treat threat detection as a static problem, leaving them vulnerable to state-level actors who actively manipulate data to hide proliferation. This proposal ensures that the AI systems safeguarding America\u2019s nuclear enterprise are mathematically robust against deception, ensuring compliance and rapid threat attribution.",
 narrative:"This proposal builds a multi-layered AI framework for nuclear security spanning detection, attribution, and safeguards verification. The approach integrates game-theoretic optimization, adversarial ML, computer vision, and domain-specific nuclear science into a unified system. Kiekintveld\u2019s game-theoretic security optimization has been proven in physical security contexts and represents a novel methodological contribution when applied to nuclear safeguards. Rahman\u2019s adversarial ML expertise ensures robustness against deliberate manipulation, while domain scientists ground the AI in real nuclear physics and chemistry.",
 challenges:["C20","C24","C25","C26","C21"],
@@ -392,7 +412,16 @@ roles:{
 },
 {id:"water-energy",title:"AI-Powered Water-Energy Nexus for Resilient Infrastructure",
 subtitle:"Explainable GeoAI for the Water-Energy Nexus",
-conceptSummary:"Water and energy systems are inextricably linked\u2014power plants require water, and water processing requires energy. This proposal develops predictive, \u201cExplainable GeoAI\u201d to forecast water availability and optimize grid operations under severe climate constraints. Because traditional data-driven AI fails in arid regions where historical data is sparse and climate patterns are shifting, this team (featuring Dr. Moreno, Dr. Fuentes, Dr. Alvarez, and Dr. Mayer) embeds physical hydrology laws directly into the machine learning models. This approach delivers scientifically transparent forecasts for infrastructure planning, ensuring energy resilience and equitable resource management in water-scarce environments.",
+conceptSummary:`<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.target} The Problem</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">Water and energy are deeply interconnected: power plants need massive amounts of water for cooling, data centers require water-intensive cooling systems, and treating and delivering water consumes significant energy. As the U.S. expands energy production (especially for the explosive growth of AI data centers and advanced manufacturing), <strong>water availability becomes the binding constraint</strong>. In arid regions like the American Southwest, this challenge is compounded by climate change shifting rainfall patterns in ways that break historical models. Traditional AI forecasting fails here because it needs decades of historical data to learn from, but <strong>the climate patterns of the past are no longer reliable predictors of the future</strong>. Infrastructure planners making 20- to 50-year decisions about power plants, grid capacity, and water systems need forecasts they can trust, and critically, <strong>understand and explain</strong> to policymakers and communities.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.zap} The Approach</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">A concept in this area could be further developed as an <strong>Explainable GeoAI platform</strong>: geospatial artificial intelligence that embeds the physical laws of hydrology directly into its machine learning architecture, rather than learning predictions from data alone. The key technique would be <strong>Physics-Informed Neural Networks (PINNs)</strong>, neural networks whose loss functions include conservation laws (water mass balance, energy conservation) as hard constraints. This means the AI <em>cannot</em> make predictions that violate basic physics, even in data-sparse environments. Dr. Moreno could lead the development of explainable forecasting tools where every prediction comes with a transparent, scientifically auditable reasoning chain, essential for adoption by water managers and policymakers. Dr. Alvarez would contribute physics-informed ML models for environmental sensing in arid landscapes. Dr. Mayer could develop <strong>surrogate models</strong> (fast mathematical approximations of complex climate simulations) that compress weeks of computation into real-time decision support. The system could fuse <strong>satellite imagery</strong> (analyzed by Dr. Fuentes's efficient deep learning architectures), <strong>drone data</strong>, and <strong>ground sensor networks</strong> to monitor water resources across scales from individual watersheds to regional river basins. Dr. Mandal's grid optimization work would ensure that water predictions are directly actionable for energy planning.</p></div>
+<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:6px">${ICONS.award} Why It Could Stand Out</div><p style="font-size:13px;color:var(--text);line-height:1.8;margin:0">UTEP offers a genuine <strong>"Living Laboratory"</strong>. Located in the Chihuahuan Desert, the team tackles water-energy challenges daily in one of the most water-stressed regions in North America. This is not theoretical: the GeoSenSE research group already operates environmental sensor networks across the region. The commitment to <strong>"Explainable" AI</strong> directly addresses the single biggest barrier to AI adoption in earth sciences: the reluctance of domain scientists and policymakers to trust "black box" predictions for decisions affecting millions of people. Because the physics is built into the model, every forecast can be traced back to interpretable scientific processes.</p></div>
+<div style="border-top:1px solid var(--border);padding-top:14px"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px">${ICONS.compass} Further Reading</div>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Rabie, A. B., Elhag, M., & Subyani, A. (2025). Remote sensing, GIS, and machine learning in water resources management for arid agricultural regions: A review. <em>Water</em>, 17(21), 3125.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Cao, L., Zhang, H., Yang, X., Zhang, C., Xi, C., Zhang, Y., & Yu, Z. (2025). Explainable AI-driven integration of water\u2013energy\u2013food nexus into supply\u2013demand networks. <em>Land</em>, 14(9), 1920.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Hossain, S., Rahman, A., Ahmed, S., Enam, S., & Ahmed, M. T. (2025). Interpretable physics-informed neural networks for energy consumption prediction using IoT sensors. <em>Array</em>, 100552.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0 0 4px">Schiller, J., Stiller, S., & Ryo, M. (2025). Artificial intelligence in environmental and Earth system sciences: Explainability and trustworthiness. <em>Artificial Intelligence Review</em>, 58(10), 316.</p>
+<p style="font-size:11px;color:var(--text2);line-height:1.8;margin:0">Rashid, S., Abbas, H., Ali, I., Khalid, A., Tesgera Agama, F., & Aldien, M. S. (2025). Evaluating physics informed neural networks for water contamination risk prediction and environmental sustainability. <em>Scientific Reports</em>.</p>
+</div>`,
 whyItMatters:"Expanding U.S. energy production (especially for data centers and advanced manufacturing) is entirely dependent on water availability. As climate change disrupts these systems, infrastructure planners need reliable forecasts spanning weeks to years. By solving the \u201csparse data\u201d problem in arid regions using physics-informed models, this project directly addresses the Genesis Mission\u2019s mandate to scale the grid and predict water for energy without sacrificing reliability.",
 narrative:"This proposal applies UTEP\u2019s convergent expertise in hydrology, environmental sensing, energy systems, and geochemistry to build AI models that predict water availability for energy production, optimize grid operations under water constraints, and support climate-resilient infrastructure. The approach uses physics-informed deep learning, ensuring predictions are scientifically interpretable. UTEP\u2019s location in the Chihuahuan Desert provides both urgency and a living laboratory for arid-region challenges.",
 challenges:["C17","C18","C19","C2"],
@@ -453,61 +482,103 @@ function renderOverview(root){
   const avg=(F.reduce((s,f)=>s+f.total,0)/F.length).toFixed(1);
   const affCount=a=>F.filter(f=>f.a===a).length;
 
-  // About This Platform section
-  const howCard=el("div","card");howCard.style.marginBottom="24px";
-  const tabGuides=[
-    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"Explore the 26 DOE S&T areas, detailing AI/ML approaches and aligned faculty."},
-    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter the roster by expertise, department, and challenge alignment scores."},
-    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Visualize the scoring matrix. Sort alignments by total score, strong matches, or name."},
-    {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposal Ideas",desc:"Review three data-driven concepts featuring recommended teams and competitive positioning."},
-    {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Understand the scoring criteria, data sources, and team-building logic behind the platform."}
-  ];
-  howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.compass}</div>About This Platform</div>
-    <div style="margin-bottom:20px">
-      <p style="font-size:14px;color:var(--text);line-height:1.8;margin-bottom:12px">The <strong>Genesis Opportunity Intelligence Platform</strong> maps <strong>${F.length} UTEP faculty</strong> against the <strong>26 DOE Genesis Science & Technology Challenges</strong>. By scoring each faculty-challenge pair on a 0\u20133 scale\u2014from no match to strong alignment\u2014the platform identifies UTEP\u2019s competitive advantages and drives three strategic proposal concepts.</p>
-      <p style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:16px">Every recommendation is built on a deliberate, transparent methodology. The ${F.length} faculty were drawn from three deliberately selected pools:</p>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px">
-        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
-          <div style="width:28px;height:28px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">1</div>
-          <div><div style="font-size:12px;font-weight:700;color:var(--navy)">AAII Affiliate Faculty <span style="font-weight:400;color:var(--text2)">(${affCount("AAII Affiliate")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Core researchers at the Institute for Applied AI Innovation with established AI expertise.</div></div>
-        </div>
-        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
-          <div style="width:28px;height:28px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">2</div>
-          <div><div style="font-size:12px;font-weight:700;color:var(--orange)">Past AAII Collaborators <span style="font-weight:400;color:var(--text2)">(${affCount("Previous AAII")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Proven partners with successful joint projects and relevant domain knowledge.</div></div>
-        </div>
-        <div style="flex:1;min-width:200px;display:flex;gap:10px;align-items:flex-start">
-          <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0">3</div>
-          <div><div style="font-size:12px;font-weight:700;color:var(--blue)">Strategic Outreach <span style="font-weight:400;color:var(--text2)">(${affCount("Recommended")})</span></div><div style="font-size:11px;color:var(--text2);line-height:1.6">Faculty systematically identified for strong Genesis challenge alignment, expanding competitive reach.</div></div>
+  // ── Hero value proposition ──
+  const heroSection=el("div","");
+  heroSection.innerHTML=`
+    <div style="display:grid;grid-template-columns:1.4fr 0.6fr;gap:24px;margin-bottom:24px">
+      <div class="card" style="border-left:4px solid var(--orange);display:flex;flex-direction:column;justify-content:center">
+        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">What This Platform Does</div>
+        <h2 style="font-size:22px;font-weight:800;color:var(--navy);line-height:1.35;margin-bottom:12px">Identifies UTEP\u2019s strongest research teams for competitive DOE Genesis proposals</h2>
+        <p style="font-size:13px;color:var(--text);line-height:1.8">The platform maps <strong>${F.length} UTEP faculty</strong> against <strong>26 DOE Genesis Science & Technology Challenges</strong>, scoring each faculty-challenge pair on a 0\u20133 alignment scale. From this analysis, it surfaces competitive advantages and generates three strategic proposal concepts with recommended teams.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="card stat-card"><div class="stat-label">Faculty</div><div class="stat-value" style="color:var(--navy)">${F.length}</div><div class="stat-sub">across 3 tiers</div></div>
+        <div class="card stat-card"><div class="stat-label">Challenges</div><div class="stat-value" style="color:var(--orange)">26</div><div class="stat-sub">DOE mission areas</div></div>
+        <div class="card stat-card"><div class="stat-label">Strong Matches</div><div class="stat-value" style="color:var(--green)">${totalStrong}</div><div class="stat-sub">score = 3</div></div>
+        <div class="card stat-card"><div class="stat-label">Avg. Score</div><div class="stat-value" style="color:var(--blue)">${avg}</div><div class="stat-sub">out of 78 possible</div></div>
+      </div>
+    </div>`;
+  root.appendChild(heroSection);
+
+  // ── Faculty Affiliation Tiers ──
+  const affSection=el("div","card");
+  affSection.style.cssText="margin-bottom:24px;padding:20px 24px";
+  affSection.innerHTML=`
+    <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Faculty Affiliation Tiers</div>
+    <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px">Faculty are grouped into three tiers based on their relationship with UTEP's Institute for Applied AI Innovation (AAII).</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;align-items:flex-start;gap:8px;padding:12px 16px;border-radius:8px;background:rgba(4,30,66,0.06);border:1px solid rgba(4,30,66,0.12);flex:1;min-width:200px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--navy);margin-top:4px;flex-shrink:0"></div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--navy)">AAII Affiliates (${affCount("AAII Affiliate")})</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-top:2px">Current members of UTEP's AI Institute with active research contributions.</div>
         </div>
       </div>
-    </div>
-    <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px">${ICONS.layers} &nbsp;Key Features</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
-      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:28px;height:28px;border-radius:7px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy)">${g.label}</div></div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
+      <div style="display:flex;align-items:flex-start;gap:8px;padding:12px 16px;border-radius:8px;background:rgba(255,130,0,0.06);border:1px solid rgba(255,130,0,0.12);flex:1;min-width:200px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--orange);margin-top:4px;flex-shrink:0"></div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--orange2)">Past AAII (${affCount("Previous AAII")})</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-top:2px">Former institute affiliates whose expertise remains highly relevant to Genesis challenges.</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;padding:12px 16px;border-radius:8px;background:rgba(21,101,192,0.06);border:1px solid rgba(21,101,192,0.12);flex:1;min-width:200px">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:4px;flex-shrink:0"></div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--blue)">Strategic Outreach (${affCount("Recommended")})</div>
+          <div style="font-size:11px;color:var(--text2);line-height:1.5;margin-top:2px">Non-AAII faculty recommended for inclusion to strengthen specific proposal teams.</div>
+        </div>
+      </div>
     </div>`;
-  root.appendChild(howCard);
-  howCard.querySelectorAll(".how-card").forEach(c=>{
+  root.appendChild(affSection);
+
+  // ── Scoring legend ──
+  const scoreLegend=el("div","card");
+  scoreLegend.style.cssText="margin-bottom:24px;padding:20px 24px";
+  scoreLegend.innerHTML=`
+    <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Alignment Scoring Scale</div>
+    <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px">Each faculty member was scored 0\u20133 against every Genesis challenge based on how closely their research aligns with the challenge requirements.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:transparent;border:1px dashed var(--border)"></div><span style="font-size:11px;color:var(--text2)"><strong>0</strong> No match</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#B0B0B0"></div><span style="font-size:11px;color:var(--text2)"><strong>1</strong> Tangential</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#2563EB"></div><span style="font-size:11px;color:var(--text2)"><strong>2</strong> Moderate</span></div>
+      <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#FF8200"></div><span style="font-size:11px;color:var(--text2)"><strong>3</strong> Strong</span></div>
+    </div>`;
+  root.appendChild(scoreLegend);
+
+  // ── Quick navigation ──
+  const tabGuides=[
+    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"26 DOE S&T areas with AI/ML approaches and aligned faculty."},
+    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter by expertise, department, and alignment scores."},
+    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Interactive 38\u00d726 scoring matrix with sorting and filtering."},
+    {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposals",desc:"Three data-driven concepts with recommended teams."},
+    {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Scoring criteria, data sources, and team-building logic."}
+  ];
+  const navSection=el("div","card");
+  navSection.style.cssText="margin-bottom:24px;padding:20px 24px";
+  navSection.innerHTML=`
+    <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">Explore the Platform</div>
+    <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px">Navigate through the tabs below to explore different views of the data, from individual challenges and faculty profiles to the full scoring heat map and strategic proposal concepts.</p>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+    ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}" style="text-align:center;padding:18px 12px"><div style="width:36px;height:36px;border-radius:8px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">${g.icon}</div><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px">${g.label}</div><div style="font-size:10px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
+  </div>`;
+  root.appendChild(navSection);
+  navSection.querySelectorAll(".how-card").forEach(c=>{
     c.style.cursor="pointer";
     c.onclick=()=>{currentTab=c.dataset.tab;renderTabs();renderContent()};
   });
 
-  const sr=el("div","stats-row");
-  [[`Faculty Mapped`,F.length,"across 3 affiliation tiers","var(--navy)"],[`Genesis Challenges`,26,"DOE mission areas","var(--orange)"],[`Strong Matches`,totalStrong,"score = 3","var(--green)"],[`Avg. Score`,avg,"out of 78 possible","var(--blue)"]].forEach(([l,v,s,c])=>{
-    sr.innerHTML+=`<div class="card stat-card"><div class="stat-label">${l}</div><div class="stat-value" style="color:${c}">${v}</div><div class="stat-sub">${s}</div></div>`;
-  });
-  root.appendChild(sr);
-
+  // ── Charts grid ──
   const grid=el("div","grid-2");
 
   // Top 10
   const top10=[...F].sort((a,b)=>b.total-a.total).slice(0,10);
   const maxTotal=top10[0].total;
-  let barHtml=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.barChart}</div>Top 10 Faculty by Total Score</div>`;
+  let barHtml=`<div class="card" style="display:flex;flex-direction:column"><div class="card-title"><div class="icon" style="background:var(--navy)">${ICONS.barChart}</div>Top 10 Faculty by Total Score</div><div style="flex:1;display:flex;flex-direction:column;justify-content:space-between">`;
   top10.forEach(f=>{
     const pct=(f.total/maxTotal*100).toFixed(0);
-    barHtml+=`<div class="bar-row"><div class="bar-label">${f.n}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${AC[f.a]}"></div></div><div class="bar-value">${f.total}</div></div>`;
+    barHtml+=`<div class="bar-row" style="margin-bottom:0"><div class="bar-label">${f.n}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${AC[f.a]}"></div></div><div class="bar-value">${f.total}</div></div>`;
   });
-  barHtml+=`</div>`;
+  barHtml+=`</div></div>`;
   grid.innerHTML+=barHtml;
 
   // Affiliation + Dept
@@ -532,9 +603,11 @@ function renderOverview(root){
   let legendHtml=affEntries.map(([name,count])=>`<div class="donut-legend-item"><div class="donut-dot" style="background:${AC[name]}"></div><div><div style="font-size:13px;font-weight:600">${name}</div><div style="font-size:11px;color:var(--text2)">${count} faculty</div></div></div>`).join("");
   let deptHtml=depts.map(([d,c])=>`<div class="dept-row"><div class="dept-label">${d.split(" ").slice(0,2).join(" ")}</div><div class="dept-track"><div class="dept-fill" style="width:${(c/F.length*100).toFixed(0)}%"></div></div><div class="dept-count">${c}</div></div>`).join("");
 
-  grid.innerHTML+=`<div class="card"><div class="card-title"><div class="icon" style="background:var(--orange)">${ICONS.pieChart}</div>Faculty by Affiliation</div>
-    <div class="donut-section"><div>${donutSvg}</div><div>${legendHtml}</div></div>
-    <div style="margin-top:20px"><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Department Distribution</div>${deptHtml}</div></div>`;
+  grid.innerHTML+=`<div class="card" style="display:flex;flex-direction:column"><div class="card-title"><div class="icon" style="background:var(--orange)">${ICONS.pieChart}</div>Faculty by Affiliation</div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <div class="donut-section" style="justify-content:center;margin-bottom:16px"><div>${donutSvg}</div><div>${legendHtml}</div></div>
+      <div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">Department Distribution</div>${deptHtml}</div>
+    </div></div>`;
   root.appendChild(grid);
 
   // Challenge Coverage
@@ -771,7 +844,7 @@ function renderTeams(root){
     root.innerHTML="";
 
     const hero=el("div","card team-hero");
-    hero.innerHTML=`<div class="label">Strategic Proposal Ideas</div><h2>Strategic Research Proposals for DOE Genesis</h2><p>These proposal ideas emerge from natural clusters in UTEP faculty expertise aligned with Genesis challenges. Each concept outlines what the proposal is about, why it matters, the methods involved, and who would lead the effort. They are starting points for refinement, not prescriptions.</p>`;
+    hero.innerHTML=`<div class="label">Strategic Proposal Ideas</div><h2>Strategic Research Proposals for DOE Genesis</h2><p>These proposal ideas emerge from natural clusters in UTEP faculty expertise aligned with Genesis challenges. Each concept outlines what the proposal is about, why it matters, the methods involved, and who would lead the effort. They are early-stage ideas designed to jumpstart further ideation and refinement by UTEP researchers.</p>`;
     root.appendChild(hero);
 
     const btns=el("div","cluster-btns");
@@ -797,7 +870,7 @@ function renderTeams(root){
         </div>
         <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px;line-height:1.4">${cl.title}</div>
         ${cl.subtitle?`<div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:10px;font-style:italic">${cl.subtitle}</div>`:""}
-        <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.conceptSummary}</p>
+        <div style="font-size:13px;color:var(--text);line-height:1.8">${cl.conceptSummary}</div>
         <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">${cl.challenges.map(c=>`<span class="challenge-tag"><span class="code">${c}</span><span class="desc">${CK[c].split(" ").slice(0,4).join(" ")}...</span></span>`).join("")}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px">
