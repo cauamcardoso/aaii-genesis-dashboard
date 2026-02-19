@@ -436,7 +436,7 @@ whyItMatters:"This concept directly targets Genesis Challenges C8 (AI for Scient
 narrative:"This proposal leverages UTEP\u2019s nationally recognized computational materials science and quantum chemistry cluster to accelerate the discovery of strategic materials through AI-driven methods. The core approach combines self-interaction corrected density functional theory (the FLOSIC method, co-developed at UTEP by Pederson and Zope) with machine-learned interatomic potentials (MLIPs) that achieve DFT-level accuracy at orders of magnitude lower computational cost. UTEP is uniquely positioned because FLOSIC provides unusually accurate band gap and magnetic property predictions, generating high-fidelity training data that improves ML surrogate model reliability. The experimental capabilities of El-Gendy and Nair close the loop from computational prediction to physical validation.",
 challenges:["C8","C9","C12","C14","C4"],
 utepStrength:"UTEP\u2019s team co-invented the FLOSIC method (Pederson & Zope, 200+ combined citations on self-interaction correction), giving them proprietary access to correction algorithms no competitor can replicate. El-Gendy\u2019s nanomagnetism lab and Nair\u2019s crystal growth facility provide on-campus experimental validation\u2014eliminating dependency on external labs. The team has existing collaborations with Sandia and Los Alamos National Labs. Baruah\u2019s published work on rare-earth electronic structure and Hoyer\u2019s quantum computing algorithms add capabilities that few universities can match in a single, co-located group.",
-aiAngle:"<b>Phase 1 \u2013 Data Foundation (Months 1\u201312):</b> Generate FLOSIC-corrected training datasets for 5,000+ candidate crystal structures; benchmark against experimental measurements to establish accuracy baselines. <b>Phase 2 \u2013 AI Model Development (Months 6\u201324):</b> Train machine-learned interatomic potentials and graph neural networks on the corrected data; deploy Bayesian optimization to guide which materials enter the experimental queue. <b>Phase 3 \u2013 Lab Validation Loop (Months 18\u201336):</b> Synthesize top-50 AI-predicted materials in El-Gendy\u2019s and Nair\u2019s labs; feed experimental results back into the AI to iteratively refine predictions. <b>Deliverables:</b> Open-source FLOSIC-AI toolkit, validated discovery of \u22653 novel functional materials, and a reproducible pipeline adoptable by other DOE labs.",
+aiAngle:"<b>Physics-Corrected Training Data:</b> Unlike competitors who train AI on standard DFT data (which systematically misstates band gaps and magnetic properties), this approach would use FLOSIC-corrected datasets\u2014eliminating a known error source before the AI ever begins learning. <b>Closed-Loop Validation:</b> The same institution houses both the computational originators and the experimental labs, enabling a feedback cycle where lab results directly retrain the AI\u2014a loop most proposals can only promise through multi-institution agreements. <b>Formal Verification Layer:</b> Applying software engineering proof methods to quantum algorithms addresses a gap reviewers consistently flag: how do you know the AI\u2019s physics predictions are trustworthy? <b>Scalability by Design:</b> Graph neural networks can screen millions of candidates, but the FLOSIC correction ensures this speed doesn\u2019t sacrifice the accuracy that makes predictions actionable.",
 edge:"Strong",
 roles:{
 "Mark R. Pederson":"Lead PI. Co-developer of the FLOSIC computational method that provides uniquely accurate predictions of material properties. Leads the overall research vision and theoretical development.",
@@ -462,7 +462,7 @@ whyItMatters:"This concept maps directly to Genesis Challenges C20 (Nuclear Secu
 narrative:"This proposal builds a multi-layered AI framework for nuclear security spanning detection, attribution, and safeguards verification. The approach integrates game-theoretic optimization, adversarial ML, computer vision, and domain-specific nuclear science into a unified system. Kiekintveld\u2019s game-theoretic security optimization has been proven in physical security contexts and represents a novel methodological contribution when applied to nuclear safeguards. Rahman\u2019s adversarial ML expertise ensures robustness against deliberate manipulation, while domain scientists ground the AI in real nuclear physics and chemistry.",
 challenges:["C20","C24","C25","C26","C21"],
 utepStrength:"Kiekintveld\u2019s game-theoretic security models have been deployed in real physical security contexts (published in top AI venues: AAAI, IJCAI). Xu brings direct Idaho National Lab experience in nuclear-domain computer vision with limited training data\u2014a critical classified-environment constraint most academic teams cannot address. Rahman\u2019s adversarial ML group has published robustness benchmarks adopted by industry. Fortier (actinide chemistry) and Lopez (nuclear physics) provide domain grounding that prevents the \u2018generic cybersecurity\u2019 trap reviewers penalize. UTEP\u2019s proximity to DOE/NNSA facilities in New Mexico enables rapid collaboration cycles.",
-aiAngle:"<b>Phase 1 \u2013 Threat Modeling & Red-Teaming (Months 1\u201312):</b> Build Stackelberg game models for 3 IAEA-relevant inspection scenarios; conduct adversarial red-team testing against baseline AI detection systems to quantify vulnerability gaps. <b>Phase 2 \u2013 Integrated Defense Platform (Months 8\u201324):</b> Deploy adversarially hardened computer vision for facility monitoring; integrate LLM-based threat agents that fuse satellite imagery, sensor data, and open-source intelligence into a unified triage dashboard. <b>Phase 3 \u2013 Field Validation & Transition (Months 20\u201336):</b> Pilot the platform with Idaho National Lab partners on simulated proliferation scenarios; harden OT network security layer for nuclear facility control systems. <b>Deliverables:</b> Adversarial robustness benchmark suite for nuclear AI, deployable inspection optimization tool, and peer-reviewed threat attribution framework achieving attribution within hours (vs. current months).",
+aiAngle:"<b>Adversary-Aware by Design:</b> Most nuclear AI proposals treat threat detection as pattern recognition. Stackelberg game models flip this: they assume an intelligent adversary is studying the detection system and optimizing evasion\u2014then mathematically design defenses that remain optimal under that worst case. <b>Built-In Red-Teaming:</b> Rather than testing robustness as an afterthought, adversarial ML stress-testing would be embedded from day one\u2014ensuring vision systems and sensor networks are hardened against manipulation before deployment, not after a breach. <b>Multimodal Fusion via LLMs:</b> Current triage requires analysts to manually cross-reference satellite imagery, sensor feeds, and open-source reports. LLM-based threat agents could compress this from days to minutes by reasoning across data types simultaneously. <b>OT-Layer Security:</b> Addressing the physical control systems of nuclear facilities closes a vulnerability gap that pure-software cybersecurity proposals leave open.",
 edge:"Strong",
 roles:{
 "Chris Kiekintveld":"Lead PI. Leads the game-theoretic security optimization program, applying mathematical models of strategic adversarial interaction to design smarter nuclear inspection and monitoring strategies.",
@@ -488,7 +488,7 @@ whyItMatters:"This concept targets Genesis Challenges C17 (Grid Reliability), C1
 narrative:"This proposal applies UTEP\u2019s convergent expertise in hydrology, environmental sensing, energy systems, and geochemistry to build AI models that predict water availability for energy production, optimize grid operations under water constraints, and support climate-resilient infrastructure. The approach uses physics-informed deep learning, ensuring predictions are scientifically interpretable. UTEP\u2019s location in the Chihuahuan Desert provides both urgency and a living laboratory for arid-region challenges.",
 challenges:["C17","C18","C19","C2"],
 utepStrength:"UTEP\u2019s GeoSenSE research group operates a multi-year environmental sensor network across the Chihuahuan Desert\u2014providing proprietary ground-truth data no competitor can access. Moreno has published extensively on explainable hydrologic AI (adopted by NOAA collaborators). Mayer\u2019s surrogate modeling work has been funded by NSF and DOE. Mandal brings grid optimization expertise with published results on renewable integration under uncertainty. The team has an existing MOU with El Paso Water Utilities for real-world deployment, and Heyman\u2019s border community equity research ensures proposals meet DOE\u2019s Justice40 initiative requirements\u2014a scoring criterion many competitors overlook.",
-aiAngle:"<b>Phase 1 \u2013 Sensor Network & Data Pipeline (Months 1\u201312):</b> Integrate GeoSenSE ground sensors, satellite feeds, and drone imagery into a unified data platform; establish baseline water-energy demand models for 3 Southwest watersheds. <b>Phase 2 \u2013 Physics-Informed AI Development (Months 6\u201324):</b> Build PINNs with embedded conservation laws for hydrologic forecasting; develop surrogate models that compress weeks of climate simulation into real-time outputs; create explainability layer producing auditable reasoning chains for each prediction. <b>Phase 3 \u2013 Decision-Support Deployment (Months 18\u201336):</b> Deploy digital twin platform for building-level and grid-level water-energy optimization; pilot with El Paso Water Utilities and regional grid operators for real-world validation. <b>Deliverables:</b> Open-access Explainable GeoAI toolkit, validated 6-month water availability forecasts for 3 arid watersheds, and policy-ready decision dashboards adopted by \u22651 regional utility.",
+aiAngle:"<b>Physics as a Hard Constraint:</b> Standard neural networks can produce predictions that violate conservation of mass or energy\u2014dangerous for infrastructure decisions. PINNs embed these laws as inviolable constraints, so the AI physically cannot output an impossible forecast, even in data-sparse arid regions where other models fail. <b>Explainability for Adoption:</b> The single biggest barrier to AI in earth sciences is trust. Every prediction from this platform would include a transparent, auditable reasoning chain showing which physical processes drove the output\u2014making it usable by policymakers, not just data scientists. <b>Multi-Scale Sensor Fusion:</b> Combining satellite imagery, drone surveys, and ground sensors creates a richer observational picture than any single data source, addressing the sparse-data challenge unique to arid regions. <b>Real-Time Surrogate Models:</b> Compressing weeks of climate simulation into seconds enables decision-makers to run \u2018what-if\u2019 scenarios on demand\u2014a capability current tools cannot provide at the speed infrastructure planning requires.",
 edge:"Strong",
 roles:{
 "Alex Simon Mayer":"Lead PI. Directs the integrated water-energy-climate modeling effort, developing fast surrogate models for real-time decision support and quantifying how climate change affects both water availability and energy demand.",
@@ -998,8 +998,6 @@ function renderHeatmap(root){
 // ── TEAM BUILDER ──
 function renderTeams(root){
   let selId=CLUSTERS[0].id;
-  let showNarrative={};
-
   function render(){
     root.innerHTML="";
 
@@ -1018,7 +1016,6 @@ function renderTeams(root){
 
     const cl=CLUSTERS.find(c=>c.id===selId);
     const team=buildTeams(selId);
-    const showFull=showNarrative[selId]||false;
 
     // Concept overview cards — Hero + 3-Column layout
     const conceptSection=el("div","");
@@ -1044,7 +1041,7 @@ function renderTeams(root){
         <div class="card" style="border-top:3px solid var(--blue)">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
             <div style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#4299E1,#7B61FF);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
-            <span style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Implementation Roadmap</span>
+            <span style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Key Technical Differentiators</span>
           </div>
           <div style="font-size:12px;color:var(--text2);line-height:1.8">${cl.aiAngle}</div>
         </div>
@@ -1058,20 +1055,6 @@ function renderTeams(root){
       </div>`;
     root.appendChild(conceptSection);
 
-    // Full technical narrative toggle
-    const toggleWrap=el("div","");
-    toggleWrap.style.cssText="margin-bottom:16px;text-align:center";
-    const toggleBtn=el("button","hm-btn",showFull?"\u25B2 Hide Full Technical Narrative":"\u25BC Show Full Technical Narrative");
-    toggleBtn.onclick=()=>{showNarrative[selId]=!showFull;render()};
-    toggleWrap.appendChild(toggleBtn);
-    root.appendChild(toggleWrap);
-
-    if(showFull){
-      const narCard=el("div","card");
-      narCard.style.cssText="margin-bottom:16px;border-left:4px solid rgba(255,255,255,0.1)";
-      narCard.innerHTML=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text3);margin-bottom:8px">Full Technical Narrative</div><p style="font-size:12px;color:var(--text2);line-height:1.8">${cl.narrative}</p>`;
-      root.appendChild(narCard);
-    }
 
     // Team section
     const uniqueDepts=new Set(team.map(t=>t.d)).size;
