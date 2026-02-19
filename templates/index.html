@@ -233,6 +233,7 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
 
 .hidden{display:none}
 
+/* ═══ TABLET ═══ */
 @media(max-width:900px){
   .stats-row{grid-template-columns:repeat(2,1fr)}
   .grid-2,.team-layout{grid-template-columns:1fr}
@@ -245,6 +246,77 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
   div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
   .subview-bar{width:100%;flex-wrap:wrap}
   .radial-grid{grid-template-columns:repeat(2,1fr)}
+  .header-inner{flex-direction:column;align-items:flex-start;gap:16px}
+  .header-inner>div:last-child{flex-direction:column;align-items:flex-start;gap:10px}
+  .header-sub{text-align:left!important;max-width:100%!important}
+  h1{font-size:20px}
+  .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap}
+  .tab-btn{white-space:nowrap;flex-shrink:0}
+  .cluster-btn{min-width:0!important;min-width:unset!important}
+  .cluster-btns{flex-direction:column}
+}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:480px){
+  .header,.content,.footer,.tabs{padding-left:14px;padding-right:14px}
+  .header{padding-top:16px}
+  h1{font-size:17px}
+  .logo-text{font-size:9px}
+  .stats-row{grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card{padding:14px;flex-direction:column;align-items:flex-start;gap:8px}
+  .stat-value{font-size:22px}
+  .stat-icon{width:36px;height:36px;font-size:16px;border-radius:10px}
+  .card{padding:16px;border-radius:12px}
+  .hero-card{padding:24px 18px!important;min-height:auto!important}
+  .hero-card h2{font-size:20px!important}
+  .hero-card p{font-size:12px!important}
+  .radial-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .radial-card{padding:14px 8px}
+  .radial-ring{width:80px;height:80px;margin-bottom:10px}
+  .radial-ring .center-num{font-size:20px}
+  .radial-label{font-size:11px}
+  .radial-desc{font-size:9px}
+  .bar-label{width:90px;font-size:10px}
+  .bar-track{height:16px}
+  .grid-2{gap:14px}
+  .team-hero{padding:18px}
+  .team-hero h2{font-size:16px}
+  .team-hero p{font-size:12px}
+  .cluster-btns{gap:8px}
+  .cluster-btn{padding:12px}
+  .cluster-btn-title{font-size:12px}
+  .team-member{padding:10px;gap:8px}
+  .team-member-role{font-size:11px;padding:5px 8px}
+  .subview-bar{padding:3px;gap:4px}
+  .subview-btn{padding:8px 14px;font-size:11px;gap:5px}
+  .subview-btn svg{width:14px;height:14px}
+  .how-card{padding:14px 10px!important}
+  .fac-cards{grid-template-columns:1fr!important}
+  .fac-search{font-size:14px}
+  .hm-controls{gap:6px}
+  .hm-btn{padding:4px 8px;font-size:10px}
+  .hm-sep{display:none}
+  .method-section h3{font-size:14px}
+  .explorer-grid{gap:14px}
+  .ch-list{max-height:40vh}
+  .ch-detail-head .title{font-size:15px}
+  .ch-detail-head .code{font-size:12px}
+  .footer{font-size:10px;padding:16px 14px}
+  .section-title{font-size:10px}
+  .section-desc{font-size:11px}
+  .challenge-tag{padding:4px 7px}
+  .challenge-tag .code,.challenge-tag .desc{font-size:9px}
+  div[style*="min-width:280px"]{min-width:100%!important}
+  div[style*="min-width: 280px"]{min-width:100%!important}
+  .page-content{overflow-x:hidden}
+}
+
+/* ═══ VERY SMALL PHONES ═══ */
+@media(max-width:360px){
+  .stats-row{grid-template-columns:1fr;gap:8px}
+  .radial-grid{grid-template-columns:1fr;gap:8px}
+  .tabs{gap:2px}
+  .tab-btn{padding:8px 12px;font-size:11px}
 }
 </style>
 </head>
@@ -559,7 +631,7 @@ function renderOverview(root){
   root.appendChild(statRow);
 
   // ── Hero (full-width, prominent, animated background) ──
-  const heroCard=el("div","card");
+  const heroCard=el("div","card hero-card");
   heroCard.style.cssText="position:relative;overflow:hidden;padding:48px 44px;min-height:260px;display:flex;flex-direction:column;justify-content:center;margin-bottom:20px";
   heroCard.innerHTML=`
     <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
