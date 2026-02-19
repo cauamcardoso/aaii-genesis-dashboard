@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AAII × Genesis Mission — Faculty Expertise Intelligence Dashboard</title>
+<title>AAII x Genesis - Opportunity Intelligence Platform</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -74,6 +74,8 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 .dept-count{font-size:11px;font-weight:700;color:var(--text2);width:18px;text-align:right}
 
 /* HEATMAP */
+.how-card{padding:16px;border-radius:8px;border:1px solid var(--border);background:var(--white);transition:all 0.2s}
+.how-card:hover{border-color:var(--orange);box-shadow:0 2px 8px rgba(255,130,0,0.1);transform:translateY(-1px)}
 .hm-controls{display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
 .hm-lbl{font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.06em}
 .hm-btn{padding:5px 12px;border-radius:6px;border:1px solid var(--border);background:var(--white);color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s}
@@ -179,6 +181,7 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
   .grid-2,.team-layout{grid-template-columns:1fr}
   .explorer-grid{grid-template-columns:1fr}
   .header,.content,.footer{padding-left:20px;padding-right:20px}
+  div[style*="grid-template-columns: 1fr 1fr"],div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
 </style>
 </head>
@@ -188,12 +191,12 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
   <div class="header-top">
     <div class="header-logo"><div class="logo-bar"></div><span class="logo-text">AAII × DOE Genesis Mission</span></div>
   </div>
-  <h1>Faculty Expertise Intelligence Dashboard</h1>
-  <p>Mapping UTEP faculty capabilities against 26 DOE Genesis Science &amp; Technology Challenges to identify the strongest research teams for competitive AI-relevant proposal development.</p>
+  <h1>Genesis Opportunity Intelligence Platform</h1>
+  <p>A data-driven platform helping UTEP identify the strongest research teams and build competitive proposal concepts for DOE Genesis Science &amp; Technology challenges.</p>
   <div class="tabs" id="tabs"></div>
 </div>
 <div class="content" id="content"></div>
-<div class="footer">AAII Faculty × Genesis Mission Dashboard · University of Texas at El Paso · Data: AAII Affiliate Faculty Profiles + DOE Genesis S&amp;T Challenges</div>
+<div class="footer">AAII x Genesis - Opportunity Intelligence Platform · University of Texas at El Paso · Data: AAII Affiliate Faculty Profiles + DOE Genesis S&amp;T Challenges</div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
@@ -202,26 +205,26 @@ h1{font-size:26px;font-weight:800;letter-spacing:-0.02em;margin:6px 0 4px;color:
 const CK={C1:"Reenvisioning Advanced Manufacturing and Industrial Productivity",C2:"Reimagining Construction and Operation of Buildings",C3:"Scaling the Biotechnology Revolution",C4:"Securing America\u2019s Critical Minerals Supply",C5:"Delivering Nuclear Energy that is Faster, Safer, Cheaper",C6:"Accelerating Delivery of Fusion Energy",C7:"Transforming Nuclear Cleanup and Restoration",C8:"Discovering Quantum Algorithms with AI",C9:"Realizing Quantum Systems for Discovery",C10:"Recentering Microelectronics in America",C11:"Securing U.S. Leadership in Data Centers",C12:"Accelerating Materials Discovery for Strategic Deterrence",C13:"Achieving AI-Driven Autonomous Laboratories",C14:"Designing Materials with Predictable Functionality",C15:"Enhancing Particle Accelerators for Discovery",C16:"Unifying Physics from Quarks to the Cosmos",C17:"Predicting U.S. Water for Energy",C18:"Scaling the Grid to Power the American Economy",C19:"Unleashing Subsurface Strategic Energy Assets",C20:"Accelerating Nuclear Threat Assessment, Preparedness, and Response",C21:"Harnessing America\u2019s Historic Nuclear Data and Research",C22:"Increasing Experimental Capacity at Nuclear Research Facilities",C23:"Integrating Design and Production Operations for Nuclear Deterrence",C24:"Safeguarding Nuclear Materials from Proliferation Threats",C25:"Streamlining Production and Ensuring Safety in the Nuclear Enterprise",C26:"Strengthening Deterrence Through Attribution of Nuclear/Radiological Signatures"};
 
 const CDESC={
-C1:{sum:"Develop AI-driven advanced manufacturing systems\u2014digital twins, smart factories, and autonomous production\u2014to restore U.S. industrial competitiveness.",ai:"AI/ML for real-time process optimization, predictive maintenance, digital twin simulation, supply chain resilience, and autonomous quality control.",impact:"Revitalizes domestic manufacturing, reduces dependence on foreign supply chains, and enables rapid production scaling for national security needs."},
+C1:{sum:"Develop AI-driven advanced manufacturing systems - digital twins, smart factories, and autonomous production - to restore U.S. industrial competitiveness.",ai:"AI/ML for real-time process optimization, predictive maintenance, digital twin simulation, supply chain resilience, and autonomous quality control.",impact:"Revitalizes domestic manufacturing, reduces dependence on foreign supply chains, and enables rapid production scaling for national security needs."},
 C2:{sum:"Apply AI and advanced sensing to transform how buildings are designed, constructed, operated, and retrofitted for energy efficiency and resilience.",ai:"Computer vision for construction monitoring, digital twins for building operations, ML-driven energy optimization, IoT sensor networks for smart buildings.",impact:"Buildings consume 40% of U.S. energy; AI-optimized construction and operation could save hundreds of billions in energy costs and reduce carbon emissions."},
 C3:{sum:"Leverage AI to accelerate biotechnology breakthroughs in biomanufacturing, synthetic biology, and bio-based materials at industrial scale.",ai:"Generative AI for protein/molecular design, ML-guided bioprocess optimization, computer vision for cell culture monitoring, autonomous biofoundries.",impact:"Positions the U.S. to lead the global bioeconomy, with applications spanning medicine, agriculture, materials, and national defense."},
 C4:{sum:"Apply AI to discover, extract, process, and recycle critical minerals essential for clean energy, defense, and advanced technology supply chains.",ai:"ML for mineral prospecting from geological data, AI-optimized extraction/separation processes, supply chain modeling, materials substitution prediction.",impact:"Reduces U.S. dependence on foreign-controlled mineral supplies critical for batteries, magnets, semiconductors, and defense systems."},
 C5:{sum:"Use AI and advanced simulation to accelerate nuclear reactor design, improve safety margins, reduce costs, and streamline licensing and deployment.",ai:"ML surrogate models for reactor physics, AI-driven safety analysis, natural language processing for regulatory review, predictive maintenance for plant operations.",impact:"Nuclear provides 50% of U.S. carbon-free electricity; faster, cheaper deployment is essential for clean energy targets and energy security."},
 C6:{sum:"Accelerate the path to commercial fusion energy through AI-driven plasma control, materials discovery, and facility design optimization.",ai:"Real-time ML for plasma instability prediction and control, AI-accelerated discovery of plasma-facing materials, digital twins for fusion facility optimization.",impact:"Fusion promises virtually unlimited clean energy; AI could compress the remaining scientific and engineering timeline by a decade or more."},
 C7:{sum:"Deploy AI, robotics, and advanced sensing to characterize, monitor, and remediate Cold War\u2013era nuclear waste sites more safely, quickly, and cost-effectively.",ai:"Computer vision and robotics for remote waste characterization, ML for contamination plume modeling, AI-optimized remediation strategies, autonomous monitoring systems.",impact:"The U.S. faces $400B+ in nuclear cleanup liabilities; AI-enabled approaches could dramatically reduce costs, timelines, and worker exposure risks."},
-C8:{sum:"Discover new quantum algorithms using AI/ML techniques to solve classically intractable problems in materials science, chemistry, optimization, and cryptography.",ai:"ML-guided variational quantum eigensolver (VQE) optimization, neural network quantum states, AI for quantum circuit design and error mitigation, hybrid quantum-classical workflows.",impact:"Quantum algorithms could revolutionize drug discovery, materials design, logistics, and cryptography\u2014maintaining U.S. technological leadership."},
-C9:{sum:"Realize practical quantum computing, sensing, and networking systems for scientific discovery and national security applications.",ai:"AI for quantum error correction, ML-optimized qubit control, automated calibration of quantum devices, AI-guided design of quantum materials and architectures.",impact:"Quantum systems will transform computing, secure communications, and precision measurement\u2014critical for both scientific and defense leadership."},
+C8:{sum:"Discover new quantum algorithms using AI/ML techniques to solve classically intractable problems in materials science, chemistry, optimization, and cryptography.",ai:"ML-guided variational quantum eigensolver (VQE) optimization, neural network quantum states, AI for quantum circuit design and error mitigation, hybrid quantum-classical workflows.",impact:"Quantum algorithms could revolutionize drug discovery, materials design, logistics, and cryptography - maintaining U.S. technological leadership."},
+C9:{sum:"Realize practical quantum computing, sensing, and networking systems for scientific discovery and national security applications.",ai:"AI for quantum error correction, ML-optimized qubit control, automated calibration of quantum devices, AI-guided design of quantum materials and architectures.",impact:"Quantum systems will transform computing, secure communications, and precision measurement - critical for both scientific and defense leadership."},
 C10:{sum:"Restore U.S. leadership in semiconductor design and manufacturing through AI-driven chip design, advanced packaging, and domestic fabrication.",ai:"AI/ML for electronic design automation (EDA), generative chip layout, ML-guided process control in fabs, AI for advanced 3D packaging and heterogeneous integration.",impact:"Semiconductors underpin every critical technology; reshoring and advancing U.S. microelectronics capability is a top national security priority."},
 C11:{sum:"Ensure U.S. data centers can scale to meet explosive AI compute demand while managing energy consumption, cooling, and security challenges.",ai:"AI workload scheduling for energy efficiency, ML-optimized cooling systems, predictive infrastructure maintenance, cybersecurity AI for data center protection.",impact:"AI data centers are projected to consume 12% of U.S. electricity by 2028; efficient scaling is critical for both economic competitiveness and grid stability."},
 C12:{sum:"Accelerate discovery of high-performance materials needed for nuclear weapons, hypersonics, and other strategic deterrence systems using AI and high-throughput methods.",ai:"ML-accelerated materials screening, graph neural networks for property prediction, AI-guided synthesis planning, autonomous characterization, multi-fidelity modeling.",impact:"Strategic deterrence depends on materials that perform under extreme conditions; faster discovery directly strengthens national defense capabilities."},
 C13:{sum:"Build AI-driven autonomous laboratories that can design, execute, and interpret experiments with minimal human intervention, accelerating the pace of scientific discovery.",ai:"Closed-loop ML for experiment design, robotic lab automation, natural language interfaces for hypothesis generation, computer vision for experimental monitoring.",impact:"Self-driving labs could compress scientific discovery cycles from years to weeks, transforming materials science, chemistry, and biology research."},
-C14:{sum:"Develop computational methods to design materials with specific, predictable properties from first principles\u2014moving from serendipitous discovery to rational design.",ai:"Inverse design with generative models, DFT-ML surrogate models, physics-informed neural networks for property prediction, Bayesian optimization for materials exploration.",impact:"Predictive materials design eliminates trial-and-error, enabling on-demand creation of materials with precisely tailored electronic, magnetic, optical, or mechanical properties."},
+C14:{sum:"Develop computational methods to design materials with specific, predictable properties from first principles - moving from serendipitous discovery to rational design.",ai:"Inverse design with generative models, DFT-ML surrogate models, physics-informed neural networks for property prediction, Bayesian optimization for materials exploration.",impact:"Predictive materials design eliminates trial-and-error, enabling on-demand creation of materials with precisely tailored electronic, magnetic, optical, or mechanical properties."},
 C15:{sum:"Use AI to optimize particle accelerator design, operation, and beam quality, enabling more powerful and cost-effective facilities for scientific discovery.",ai:"ML-based beam dynamics modeling, real-time AI for accelerator tuning, digital twins for facility optimization, AI-guided magnet and cavity design.",impact:"Particle accelerators drive discoveries in physics, medicine, and materials; AI optimization makes next-generation facilities more capable and affordable."},
-C16:{sum:"Apply AI and advanced computing to unify our understanding of physics across scales\u2014from subatomic particles to the cosmos\u2014integrating theory, simulation, and experiment.",ai:"ML for lattice QCD acceleration, AI-guided theoretical model selection, neural network emulators for multi-scale simulations, automated analysis of cosmological data.",impact:"Fundamental physics discoveries have historically led to transformative technologies; AI could accelerate breakthroughs in our understanding of matter and the universe."},
+C16:{sum:"Apply AI and advanced computing to unify our understanding of physics across scales - from subatomic particles to the cosmos - integrating theory, simulation, and experiment.",ai:"ML for lattice QCD acceleration, AI-guided theoretical model selection, neural network emulators for multi-scale simulations, automated analysis of cosmological data.",impact:"Fundamental physics discoveries have historically led to transformative technologies; AI could accelerate breakthroughs in our understanding of matter and the universe."},
 C17:{sum:"Build AI-powered predictive systems for U.S. water availability, quality, and demand as they relate to energy production, climate adaptation, and national resilience.",ai:"Physics-informed ML for hydrological forecasting, satellite remote sensing with deep learning, explainable AI for water-climate modeling, digital twins for watershed management.",impact:"Water scarcity threatens energy production, agriculture, and communities; AI prediction enables proactive management of this critical resource."},
 C18:{sum:"Apply AI to modernize, optimize, and secure the U.S. electrical grid to handle massive new loads from EVs, data centers, and electrification while integrating renewables.",ai:"ML for renewable forecasting and grid balancing, AI-driven demand response, reinforcement learning for grid operation, cybersecurity AI for critical infrastructure protection.",impact:"The grid must roughly double capacity while integrating variable renewables; AI is essential for managing this unprecedented transformation reliably and affordably."},
-C19:{sum:"Use AI and advanced sensing to unlock subsurface energy resources\u2014geothermal, hydrogen, carbon storage\u2014by improving characterization and modeling of underground systems.",ai:"Physics-informed deep learning for subsurface flow modeling, AI-interpreted seismic/geophysical data, ML for geothermal resource assessment, automated drilling optimization.",impact:"The subsurface holds vast untapped energy resources; AI-enhanced understanding could unlock terawatts of geothermal energy and enable gigatons of CO\u2082 storage."},
-C20:{sum:"Develop AI systems for rapid nuclear/radiological threat detection, assessment, and emergency response to protect civilian populations and military forces.",ai:"ML-enabled radiation detector analysis, AI for rapid plume modeling and evacuation planning, LLM agents for threat intelligence synthesis, computer vision for facility monitoring.",impact:"Nuclear threats\u2014from terrorism to state actors\u2014require faster-than-human assessment capabilities; AI can compress response timelines from days to minutes."},
+C19:{sum:"Use AI and advanced sensing to unlock subsurface energy resources - geothermal, hydrogen, carbon storage - by improving characterization and modeling of underground systems.",ai:"Physics-informed deep learning for subsurface flow modeling, AI-interpreted seismic/geophysical data, ML for geothermal resource assessment, automated drilling optimization.",impact:"The subsurface holds vast untapped energy resources; AI-enhanced understanding could unlock terawatts of geothermal energy and enable gigatons of CO\u2082 storage."},
+C20:{sum:"Develop AI systems for rapid nuclear/radiological threat detection, assessment, and emergency response to protect civilian populations and military forces.",ai:"ML-enabled radiation detector analysis, AI for rapid plume modeling and evacuation planning, LLM agents for threat intelligence synthesis, computer vision for facility monitoring.",impact:"Nuclear threats - from terrorism to state actors - require faster-than-human assessment capabilities; AI can compress response timelines from days to minutes."},
 C21:{sum:"Apply AI to digitize, organize, and extract insights from decades of U.S. nuclear research data, experimental records, and institutional knowledge before it is lost.",ai:"NLP/LLMs for document extraction and knowledge graphs, ML for data quality assessment, AI-powered search across heterogeneous nuclear databases, automated metadata generation.",impact:"Billions of dollars in nuclear research data risk being lost as facilities close and experts retire; AI preservation ensures this knowledge serves future missions."},
 C22:{sum:"Use AI and automation to increase throughput, efficiency, and safety at nuclear research reactors, hot cells, and other experimental facilities.",ai:"Robotic experiment execution, AI scheduling for facility optimization, computer vision for remote monitoring, digital twins for facility planning and safety analysis.",impact:"Research facility capacity is a bottleneck for nuclear innovation; AI-enhanced operations can multiply effective capacity without building new facilities."},
 C23:{sum:"Integrate AI into the design-to-production pipeline for nuclear deterrence systems, enabling faster iteration, better quality, and more agile manufacturing.",ai:"AI-driven digital engineering workflows, generative design for weapon components, ML-based quality prediction, automated inspection and testing, digital thread integration.",impact:"Modernizing the nuclear deterrence enterprise requires moving from siloed, paper-based processes to an integrated, AI-enabled digital ecosystem."},
@@ -244,11 +247,11 @@ bio:"Assistant Professor. Research in operational technology (OT) and cyber-phys
 {n:"Josiah Heyman",a:"AAII Affiliate",d:"Sociology & Anthropology",e:"Climate affordability, heat/energy cost equity, water scarcity, community decision support",
 bio:"Professor. Director of the Center for Inter-American and Border Studies. Researches the socioeconomic dimensions of energy and water access, environmental justice in arid border communities, and AI-supported decision tools for equitable resource allocation.",s:[0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0]},
 {n:"Palvi Aggarwal",a:"AAII Affiliate",d:"Computer Science",e:"Behavioral cybersecurity, attacker cognitive biases, deception tech, honeypots, cyber experiments",
-bio:"Assistant Professor. Studies human cognitive factors in cybersecurity\u2014attacker and defender biases, deception technologies (honeypots, honeytokens), and experimental methods for cyber behavior analysis. Develops AI models of adversarial decision-making.",s:[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,2,1,1]},
+bio:"Assistant Professor. Studies human cognitive factors in cybersecurity - attacker and defender biases, deception technologies (honeypots, honeytokens), and experimental methods for cyber behavior analysis. Develops AI models of adversarial decision-making.",s:[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0,0,0,2,1,1]},
 {n:"Kuldeep Singh",a:"AAII Affiliate",d:"Computer Science",e:"Phishing defense, AI-enabled cybersecurity training, attack simulation, LLM agents",
 bio:"Assistant Professor. Develops AI-powered phishing detection and defense systems, cybersecurity awareness training platforms using LLM-generated scenarios, and adversarial attack simulations for organizational resilience testing.",s:[0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,2,1,0]},
 {n:"Chris Kiekintveld",a:"AAII Affiliate",d:"Computer Science",e:"Multiagent game theory, security optimization, adversarial reasoning, human-AI decisions",
-bio:"Associate Professor. Expert in computational game theory applied to security\u2014Stackelberg games for resource allocation, adversarial reasoning, multi-agent negotiation, and human-AI collaborative decision systems. Former DARPA-funded researcher.",s:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,2,2,1]},
+bio:"Associate Professor. Expert in computational game theory applied to security - Stackelberg games for resource allocation, adversarial reasoning, multi-agent negotiation, and human-AI collaborative decision systems. Former DARPA-funded researcher.",s:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0,2,2,1]},
 {n:"Saidur Rahman",a:"AAII Affiliate",d:"Computer Science",e:"Malware analysis, synthetic data, adversarial ML, AI model security, quantum-resistant security",
 bio:"Assistant Professor. Research spans malware analysis using ML, synthetic data generation for cyber defense training, adversarial robustness of AI models, and quantum-resistant cryptographic approaches for securing AI systems against future threats.",s:[0,0,0,0,1,0,0,2,1,0,2,0,0,0,0,0,0,0,0,2,1,1,0,2,1,1]},
 {n:"Olac Fuentes",a:"AAII Affiliate",d:"Computer Science",e:"Resource-efficient deep learning, computer vision, satellite/aerial imagery, neuroimaging",
@@ -258,19 +261,19 @@ bio:"Professor. Models the coupled water-energy-climate system in arid environme
 {n:"Sajedul Talukder",a:"AAII Affiliate",d:"Computer Science",e:"Social manipulation detection, OT security, critical infrastructure digital twins",
 bio:"Assistant Professor. Researches AI detection of social engineering and manipulation campaigns, operational technology security for industrial control systems, and digital twin frameworks for critical infrastructure monitoring and protection.",s:[1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,2,1,1]},
 {n:"Anantaa Kotal",a:"AAII Affiliate",d:"Computer Science",e:"Trustworthy AI, fairness/privacy/robustness, differential privacy, neuro-symbolic reasoning",
-bio:"Assistant Professor. Works on making AI systems trustworthy\u2014formal fairness guarantees, differential privacy mechanisms, robustness certification, and neuro-symbolic approaches that combine neural learning with logical reasoning for verifiable AI.",s:[1,0,1,0,1,0,0,1,0,0,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1]},
+bio:"Assistant Professor. Works on making AI systems trustworthy - formal fairness guarantees, differential privacy mechanisms, robustness certification, and neuro-symbolic approaches that combine neural learning with logical reasoning for verifiable AI.",s:[1,0,1,0,1,0,0,1,0,0,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1]},
 {n:"Monika Akbar",a:"AAII Affiliate",d:"Computer Science",e:"Data integration, critical infrastructure cybersecurity, predictive risk analytics, public health AI",
 bio:"Associate Professor. Integrates heterogeneous data sources for critical infrastructure protection, develops predictive risk models for cyber and physical threats, and applies AI to public health surveillance and emergency response systems.",s:[1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,2,2,1,1,2,1,1]},
 {n:"Shirley V. Moore",a:"AAII Affiliate",d:"Computer Science",e:"HPC systems, hardware-software co-design, performance tuning, energy-efficient computing",
-bio:"Professor. Expert in high-performance computing systems engineering\u2014performance analysis and optimization, hardware-software co-design for scientific computing, energy-efficient HPC architectures, and precision tuning for computational science applications.",s:[1,0,0,0,1,1,0,1,1,2,3,1,1,1,2,1,0,0,0,1,1,2,1,1,0,0]},
+bio:"Professor. Expert in high-performance computing systems engineering - performance analysis and optimization, hardware-software co-design for scientific computing, energy-efficient HPC architectures, and precision tuning for computational science applications.",s:[1,0,0,0,1,1,0,1,1,2,3,1,1,1,2,1,0,0,0,1,1,2,1,1,0,0]},
 {n:"Marcelo Fabian Frias",a:"AAII Affiliate",d:"Computer Science",e:"Automated software engineering, formal verification, symbolic execution, bug detection",
-bio:"Visiting Professor. Specializes in formal methods for software reliability\u2014automated bug detection via symbolic execution, formal specification and verification, and AI-assisted software engineering for high-assurance systems.",s:[1,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,2,2,1]},
+bio:"Visiting Professor. Specializes in formal methods for software reliability - automated bug detection via symbolic execution, formal specification and verification, and AI-assisted software engineering for high-assurance systems.",s:[1,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2,2,2,1]},
 {n:"Arshad M. Khan",a:"AAII Affiliate",d:"Biological Sciences",e:"Systems neuroscience, computer vision for histology, spatial AI, brain mapping",
-bio:"Professor. Applies computer vision and spatial AI to neuroanatomical mapping\u2014automated analysis of histological brain images, systems-level circuit tracing, and AI-powered digital pathology for neuroscience research.",s:[0,0,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+bio:"Professor. Applies computer vision and spatial AI to neuroanatomical mapping - automated analysis of histological brain images, systems-level circuit tracing, and AI-powered digital pathology for neuroscience research.",s:[0,0,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0]},
 {n:"Liru Hu",a:"AAII Affiliate",d:"Education",e:"AI in education, dialogue-based teaching, learning analytics, AI literacy",
-bio:"Assistant Professor. Researches the application of AI in educational settings\u2014dialogue-based intelligent tutoring systems, learning analytics for personalized education, and frameworks for AI literacy and workforce development.",s:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+bio:"Assistant Professor. Researches the application of AI in educational settings - dialogue-based intelligent tutoring systems, learning analytics for personalized education, and frameworks for AI literacy and workforce development.",s:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
 {n:"Ashley S. Bangert",a:"AAII Affiliate",d:"Psychology",e:"Attention/timing, cognitive aging, human-AI interaction, older adult technology use",
-bio:"Associate Professor. Studies human cognitive processes\u2014attention, timing, aging\u2014and their implications for human-AI interaction design, particularly for older adult populations navigating increasingly AI-mediated environments.",s:[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+bio:"Associate Professor. Studies human cognitive processes - attention, timing, aging - and their implications for human-AI interaction design, particularly for older adult populations navigating increasingly AI-mediated environments.",s:[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
 {n:"Hernan A. Moreno",a:"AAII Affiliate",d:"Earth, Environmental & Resource Sciences",e:"Explainable GeoAI, hydrology, extreme weather events, soil moisture, satellite meteorology",
 bio:"Assistant Professor. Develops explainable geospatial AI for hydrological forecasting, leveraging satellite meteorology and soil moisture sensing. Research on extreme weather event prediction and climate-driven water resource variability in arid regions.",s:[0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,3,1,2,0,0,0,0,0,0,1]},
 {n:"Laura V. Alvarez",a:"AAII Affiliate",d:"Earth, Environmental & Resource Sciences",e:"Environmental sensing, physics-informed ML, landscape change, hydroclimatology",
@@ -278,11 +281,11 @@ bio:"Assistant Professor. Combines environmental sensor networks with physics-in
 {n:"Chad Hoyer",a:"AAII Affiliate",d:"Chemistry & Biochemistry",e:"Electronic structure, DFT, materials modeling, rare earth/critical minerals, quantum computing",
 bio:"Assistant Professor. Computational chemist specializing in electronic structure calculations using density functional theory (DFT). Research in rare earth and critical mineral chemistry, quantum computing applications for chemical simulation, and materials prediction.",s:[1,0,1,3,2,2,1,3,3,1,0,3,2,3,1,2,0,0,1,0,1,1,1,0,0,0]},
 {n:"Lela Vukovic",a:"AAII Affiliate",d:"Chemistry & Biochemistry",e:"Polymer sensors, molecular simulation, generative molecular design, carbon nanotubes",
-bio:"Associate Professor. Uses molecular simulation and generative AI for materials design\u2014polymer sensor optimization, carbon nanotube functionalization, and AI-guided sequence design for functional biomolecules and synthetic polymers.",s:[1,0,2,1,0,0,0,0,0,0,0,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0]},
+bio:"Associate Professor. Uses molecular simulation and generative AI for materials design - polymer sensor optimization, carbon nanotube functionalization, and AI-guided sequence design for functional biomolecules and synthetic polymers.",s:[1,0,2,1,0,0,0,0,0,0,0,2,2,3,0,0,0,0,0,0,0,0,0,0,0,0]},
 {n:"Ahmed El-Gendy",a:"AAII Affiliate",d:"Physics",e:"Advanced materials, nanomagnetism, quantum materials, magnetic hyperthermia, magnetic storage",
 bio:"Professor. Experimental materials physicist with expertise in nanomagnetism, quantum materials synthesis and characterization, magnetic nanoparticles for cancer therapy (hyperthermia), and advanced magnetic storage materials. Extensive publication record.",s:[1,0,1,3,1,2,0,2,3,1,0,3,2,3,1,1,0,0,1,0,0,1,0,0,0,0]},
 {n:"Fei Xu",a:"AAII Affiliate",d:"Computer Science",e:"Computer vision, generative AI, medical imaging, scarce-data learning, nuclear infrastructure CV",
-bio:"Assistant Professor. Develops computer vision and generative AI systems for domains with limited training data\u2014medical imaging, nuclear facility inspection, and infrastructure monitoring. Expertise in few-shot learning and domain adaptation for security applications.",s:[1,0,1,0,2,0,2,0,0,0,0,1,1,1,0,0,0,0,0,3,2,2,2,2,2,3]},
+bio:"Assistant Professor. Develops computer vision and generative AI systems for domains with limited training data - medical imaging, nuclear facility inspection, and infrastructure monitoring. Expertise in few-shot learning and domain adaptation for security applications.",s:[1,0,1,0,2,0,2,0,0,0,0,1,1,1,0,0,0,0,0,3,2,2,2,2,2,3]},
 {n:"Alejandra G. Castellanos",a:"Previous AAII",d:"Aerospace & Mechanical Eng.",e:"Composite materials, carbon nanotubes, high-entropy ceramics via ML, computational materials modeling",
 bio:"Associate Professor. Researches advanced composite materials, carbon nanotube integration, and ML-accelerated discovery of high-entropy ceramics for extreme environments. Computational modeling of materials under mechanical and thermal loading.",s:[3,0,0,1,1,1,0,0,0,0,0,3,1,3,0,0,0,0,0,0,0,0,1,0,0,0]},
 {n:"Mark R. Pederson",a:"Previous AAII",d:"Physics",e:"DFT pioneer, FLOSIC co-developer, condensed matter, molecular magnets, electronic structure theory",
@@ -292,7 +295,7 @@ bio:"Professor. Computational geochemist using DFT and molecular dynamics to mod
 {n:"Paras Mandal",a:"Recommended",d:"Electrical & Computer Eng.",e:"Power systems, renewable energy integration/forecasting, ML for smart grid, microgrid optimization",
 bio:"Professor. Expert in power systems engineering with focus on renewable energy integration, ML-driven forecasting for wind/solar, smart grid optimization, microgrid design, and cybersecurity for grid infrastructure.",s:[0,1,0,0,0,0,0,0,0,0,2,0,0,0,0,0,1,3,1,1,0,0,0,1,0,0]},
 {n:"Skye Fortier",a:"Recommended",d:"Chemistry & Biochemistry",e:"Actinide/uranium chemistry, nuclear fuel cycle, synthesis of uranium compounds, radioactive elements",
-bio:"Professor. Synthetic inorganic chemist specializing in actinide and uranium chemistry\u2014synthesis and characterization of novel uranium compounds, nuclear fuel cycle chemistry, and fundamental bonding in f-element systems.",s:[0,0,0,1,2,0,3,0,0,0,0,1,1,1,0,0,0,0,0,2,2,2,1,2,1,3]},
+bio:"Professor. Synthetic inorganic chemist specializing in actinide and uranium chemistry - synthesis and characterization of novel uranium compounds, nuclear fuel cycle chemistry, and fundamental bonding in f-element systems.",s:[0,0,0,1,2,0,3,0,0,0,0,1,1,1,0,0,0,0,0,2,2,2,1,2,1,3]},
 {n:"Jorge A. Lopez",a:"Recommended",d:"Physics",e:"Nuclear theory, nuclear equation of state, heavy-ion reactions, neutron star physics, nuclear matter",
 bio:"Professor. Theoretical nuclear physicist studying the nuclear equation of state, heavy-ion collision dynamics, neutron star crust structure, and nuclear matter under extreme conditions. Connects fundamental nuclear physics to astrophysical and security applications.",s:[0,0,0,0,2,1,0,0,0,0,0,0,0,0,2,3,0,0,0,2,3,2,1,1,0,3]},
 {n:"Tunna Baruah",a:"Recommended",d:"Physics",e:"DFT, computational materials science, quantum computing applications, rare-earth/critical materials",
@@ -306,7 +309,7 @@ bio:"Assistant Professor. Develops digital twin platforms for construction proje
 {n:"Ramon Ravelo",a:"Recommended",d:"Physics",e:"Materials at extreme conditions, shock-induced plasticity, molecular dynamics, stress-induced phase transformation",
 bio:"Professor. Computational physicist studying material behavior under extreme pressures and temperatures using large-scale molecular dynamics. Research on shock-induced plasticity, phase transformations, and materials for nuclear weapon and defense applications.",s:[1,0,0,0,2,2,0,0,0,0,0,2,0,2,0,1,0,0,1,0,0,0,2,0,0,0]},
 {n:"Harikrishnan S. Nair",a:"Recommended",d:"Physics",e:"Frustrated magnetism, multiferroics, quantum materials synthesis, magnetic oxides, crystal growth",
-bio:"Assistant Professor. Experimental condensed matter physicist growing and characterizing quantum materials\u2014frustrated magnets, multiferroics, magnetic oxides with exotic ground states, and crystals exhibiting topological or quantum spin liquid behavior.",s:[0,0,0,1,0,0,0,2,3,0,0,3,1,3,0,1,0,0,0,0,0,0,0,0,0,0]},
+bio:"Assistant Professor. Experimental condensed matter physicist growing and characterizing quantum materials - frustrated magnets, multiferroics, magnetic oxides with exotic ground states, and crystals exhibiting topological or quantum spin liquid behavior.",s:[0,0,0,1,0,0,0,2,3,0,0,3,1,3,0,1,0,0,0,0,0,0,0,0,0,0]},
 {n:"Srinivasa Rao Singamaneni",a:"Recommended",d:"Physics",e:"2D quantum materials, van der Waals magnets, ESR spectroscopy, energy/catalysis materials",
 bio:"Associate Professor. Studies two-dimensional quantum materials and van der Waals magnets using electron spin resonance (ESR) and other spectroscopic techniques. Research on magnetic, electronic, and catalytic properties of layered materials for energy applications.",s:[0,0,0,0,0,0,0,2,3,0,0,2,0,2,0,1,0,1,0,0,0,0,0,0,0,0]}
 ];
@@ -320,52 +323,54 @@ const AB={"AAII Affiliate":"rgba(4,30,66,0.08)","Previous AAII":"rgba(255,130,0,
 
 const CLUSTERS=[
 {id:"quantum-materials",title:"AI-Accelerated Quantum Materials Discovery",
-narrative:"This proposal leverages UTEP\u2019s nationally recognized computational materials science and quantum chemistry cluster to accelerate the discovery of strategic materials\u2014quantum, magnetic, electronic, and structural\u2014through AI-driven methods. The core approach combines self-interaction corrected density functional theory (the FLOSIC method, co-developed at UTEP by Pederson and Zope) with machine-learned interatomic potentials (MLIPs) that achieve DFT-level accuracy at 2\u20134 orders of magnitude lower computational cost. Recent work on graph neural networks for crystal structure prediction (e.g., equivariant GNN architectures such as BEE-NET) has demonstrated that multi-stage AI pipelines can screen over a million candidate structures and identify hundreds of stable compounds with validated properties. UTEP is uniquely positioned to contribute to this paradigm because FLOSIC provides unusually accurate band gap and magnetic property predictions\u2014known weaknesses of standard DFT\u2014generating high-fidelity training data that improves ML surrogate model reliability. The experimental capabilities of El-Gendy (nanomagnetism, materials synthesis) and Nair (crystal growth, frustrated magnets) close the loop from computational prediction to physical validation, aligning directly with the autonomous laboratory vision of Genesis Challenge C13. Castellanos extends the approach to extreme-environment materials through ML-guided high-entropy ceramic design, while Vukovic contributes generative molecular design for functional polymer and biomolecular materials.",
+conceptSummary:"This proposal uses artificial intelligence to dramatically speed up the discovery of new materials - quantum, magnetic, and electronic - that are critical for national security, clean energy, and advanced technology. Instead of the traditional trial-and-error approach that can take years, UTEP researchers combine advanced computational methods (including a technique called FLOSIC, co-developed right here at UTEP) with machine learning to predict which materials will have the desired properties before ever stepping into a lab. The team then validates these AI predictions through hands-on experiments, creating a complete pipeline from computer prediction to physical proof.",
+whyItMatters:"The United States needs new advanced materials for everything from quantum computers and defense systems to clean energy technology. Discovering these materials traditionally takes years of expensive experimentation. AI-accelerated methods can compress that timeline dramatically. Furthermore, many standard computational approaches have known blind spots when predicting important material properties like band gaps and magnetic behavior. UTEP\u2019s unique FLOSIC method corrects these weaknesses, producing higher-quality data to train AI models. This means better predictions, fewer failed experiments, and faster paths to the materials the nation needs.",
+narrative:"This proposal leverages UTEP\u2019s nationally recognized computational materials science and quantum chemistry cluster to accelerate the discovery of strategic materials through AI-driven methods. The core approach combines self-interaction corrected density functional theory (the FLOSIC method, co-developed at UTEP by Pederson and Zope) with machine-learned interatomic potentials (MLIPs) that achieve DFT-level accuracy at orders of magnitude lower computational cost. UTEP is uniquely positioned because FLOSIC provides unusually accurate band gap and magnetic property predictions, generating high-fidelity training data that improves ML surrogate model reliability. The experimental capabilities of El-Gendy and Nair close the loop from computational prediction to physical validation.",
 challenges:["C8","C9","C12","C14","C4"],
-utepStrength:"UTEP houses a rare combination of DFT method developers (Pederson, Zope, Baruah\u2014the FLOSIC community), computational chemists (Hoyer), experimental quantum materials physicists (El-Gendy, Nair, Singamaneni), and ML-for-materials researchers (Castellanos, Vukovic). This depth in both theory and experiment is uncommon at any single institution and directly matches the integrated computational-experimental paradigm DOE prioritizes.",
-aiAngle:"Machine-learned interatomic potentials trained on FLOSIC-quality DFT data; equivariant graph neural networks for crystal property prediction; generative models for inverse materials design; variational quantum eigensolver (VQE) development for materials Hamiltonians; Bayesian optimization for autonomous experimental validation cycles.",
+utepStrength:"UTEP is one of very few institutions where the people who invented a key computational method (FLOSIC) work alongside experimentalists who can grow crystals and test predictions in the lab. This rare combination of theory creators and hands-on scientists means the team can go from AI prediction to validated material in one place, matching exactly what DOE looks for in competitive proposals.",
+aiAngle:"<b>Machine-learned interatomic potentials</b> trained on high-accuracy computational data to predict material behavior thousands of times faster than traditional methods. <b>Graph neural networks</b> to screen millions of candidate crystal structures and identify the most promising ones. <b>Generative AI models</b> to design entirely new materials with specific target properties. <b>Bayesian optimization</b> to guide lab experiments intelligently, reducing wasted effort and accelerating discovery cycles.",
 edge:"Strong",
 roles:{
-"Chad Hoyer":"Lead PI. Directs DFT calculations and quantum algorithm development for materials screening. Bridges classical electronic structure methods with variational quantum eigensolver (VQE) approaches for simulating strongly correlated materials. Provides the computational chemistry backbone linking DFT training data to ML surrogate models.",
-"Mark R. Pederson":"Co-PI. Provides the FLOSIC self-interaction corrected DFT framework that generates uniquely accurate band gap, magnetic moment, and reaction barrier predictions\u2014critical training data that addresses known failures of standard DFT in ML workflows. Leads theoretical development of molecular magnet design rules.",
-"Ahmed El-Gendy":"Co-PI. Leads experimental synthesis and characterization of computationally predicted quantum and magnetic materials. His nanomagnetism laboratory enables rapid validation of ML-predicted candidates through magnetometry, X-ray diffraction, and spectroscopy, closing the design-make-test loop.",
-"Tunna Baruah":"Performs large-scale DFT calculations for materials Hamiltonians and develops quantum computing applications for many-body electronic structure. Contributes expertise in rare-earth and critical mineral electronic properties essential for Challenge C4.",
-"Harikrishnan S. Nair":"Grows single crystals of predicted quantum materials\u2014frustrated magnets, multiferroics, and potential quantum spin liquids. His crystal growth capabilities provide the high-quality specimens needed to validate whether computationally predicted exotic ground states are physically realized.",
-"Alejandra G. Castellanos":"Develops ML models for predicting high-entropy alloy and ceramic properties under extreme conditions. Extends the computational screening pipeline to defense-relevant materials that must withstand extreme temperatures, pressures, and radiation environments (Challenge C12).",
-"Lela Vukovic":"Contributes generative molecular design for polymer and biomolecular materials. Her molecular simulation expertise enables screening of soft materials and carbon nanotube architectures that complement the inorganic/metallic focus of other team members, broadening the materials design space.",
-"Rajendra R. Zope":"Co-developer of FLOSIC methods. Calculates optical absorption and magnetic properties with corrected DFT\u2014essential for predicting functional properties of electronic and energy materials. Validates that ML surrogate models reproduce the accuracy improvements of self-interaction correction."}
+"Mark R. Pederson":"Lead PI. Co-developer of the FLOSIC computational method that provides uniquely accurate predictions of material properties. Leads the overall research vision and theoretical development.",
+"Chad Hoyer":"Co-PI. Directs quantum algorithm development and computational chemistry, bridging traditional methods with next-generation quantum computing approaches for materials simulation.",
+"Ahmed El-Gendy":"Co-PI. Leads the experimental side, synthesizing and testing AI-predicted materials in his nanomagnetism laboratory to verify that computational predictions hold up in reality.",
+"Tunna Baruah":"Performs large-scale computational calculations and develops quantum computing applications for studying the electronic structure of materials, with special expertise in rare-earth and critical minerals.",
+"Harikrishnan S. Nair":"Grows high-quality single crystals of predicted quantum materials, providing the physical specimens needed to confirm whether AI-predicted exotic properties are actually realized.",
+"Rajendra R. Zope":"Co-developer of FLOSIC methods. Calculates optical and magnetic properties using corrected computational approaches, ensuring AI models are trained on the most accurate data available."}
 },
-{id:"nuclear-security",title:"AI for Nuclear Security, Safeguards & Attribution",
-narrative:"This proposal builds a multi-layered AI framework for nuclear security that spans detection, attribution, and safeguards verification\u2014three capabilities that NNSA has identified as critical to its nonproliferation and threat response missions. The approach integrates computer vision, game-theoretic optimization, adversarial ML, and domain-specific nuclear science into a unified system. Current AI-for-nuclear-security efforts have achieved promising results (e.g., the NNSA-Anthropic nuclear risk classifier demonstrated 96% accuracy in preliminary testing), but they largely treat nuclear AI as a pattern-matching problem divorced from underlying physics. This proposal addresses that gap by embedding domain scientists\u2014Fortier in actinide chemistry, Lopez in nuclear theory\u2014alongside AI researchers, ensuring that ML models for attribution and safeguards are grounded in the physics and chemistry of nuclear signatures. Xu\u2019s nuclear infrastructure computer vision work provides the sensing layer, while Kiekintveld\u2019s game-theoretic security optimization\u2014a proven paradigm in physical security (Stackelberg security games)\u2014has not yet been fully applied to nuclear materials safeguarding, representing a genuine methodological contribution. Rahman\u2019s adversarial ML expertise ensures these AI systems remain robust against deliberate manipulation, addressing NNSA\u2019s Trust Calibration Maturity Model requirements for high-consequence AI deployment.",
+{id:"nuclear-security",title:"AI-Driven Cybersecurity for Nuclear Safeguards",
+conceptSummary:"This proposal develops an AI-powered cybersecurity and strategic defense framework for nuclear safeguards, detection, and threat response. The approach brings together UTEP\u2019s deep strength in cybersecurity AI - including game theory, adversarial machine learning, and threat intelligence - with nuclear science expertise to build systems that can outsmart adversaries, verify compliance at nuclear facilities, and rapidly assess threats. The key innovation is using game-theoretic models (the same mathematical frameworks used to optimize border security) to design smarter inspection and monitoring strategies for nuclear materials.",
+whyItMatters:"Nuclear security is one of the highest-stakes domains for AI. Threats range from terrorism to state-level proliferation, and the systems designed to counter them must be both highly accurate and resistant to manipulation by sophisticated adversaries. Current AI approaches to nuclear security often treat it as a simple pattern-matching problem without accounting for the adversarial, strategic nature of the threat landscape. This proposal fills that gap by combining cybersecurity thinking - how adversaries behave, how to anticipate their moves, how to make systems robust against attack - with real nuclear science grounding.",
+narrative:"This proposal builds a multi-layered AI framework for nuclear security spanning detection, attribution, and safeguards verification. The approach integrates game-theoretic optimization, adversarial ML, computer vision, and domain-specific nuclear science into a unified system. Kiekintveld\u2019s game-theoretic security optimization has been proven in physical security contexts and represents a novel methodological contribution when applied to nuclear safeguards. Rahman\u2019s adversarial ML expertise ensures robustness against deliberate manipulation, while domain scientists ground the AI in real nuclear physics and chemistry.",
 challenges:["C20","C24","C25","C26","C21"],
-utepStrength:"UTEP possesses one of the deepest cybersecurity AI clusters in the region (Piplai, Tosh, Aggarwal, Kiekintveld, Rahman, Singh, Akbar, Talukder) combined with nuclear science expertise (Fortier in actinide chemistry, Lopez in nuclear theory, Xu in nuclear infrastructure CV). The AAII provides coordination infrastructure and the cross-disciplinary bridging that transforms isolated capabilities into an integrated research program.",
-aiAngle:"Computer vision for nuclear facility monitoring and safeguards verification; game-theoretic Stackelberg models for optimal inspection resource allocation; LLM agents for nuclear threat intelligence synthesis; adversarial robustness testing for nuclear AI systems; ML classifiers for isotopic/elemental attribution signatures; NLP for mining historical nuclear data repositories.",
+utepStrength:"UTEP has one of the strongest cybersecurity AI clusters in the region, with researchers spanning game theory, adversarial robustness, threat intelligence, and deception technology. Pairing this cybersecurity depth with nuclear science experts who understand the actual physics and chemistry of nuclear materials creates a uniquely competitive team. The AAII provides the coordination infrastructure to bridge these disciplines effectively.",
+aiAngle:"<b>Game-theoretic Stackelberg models</b> to design optimal inspection and monitoring schedules that account for how adversaries think. <b>Computer vision</b> for automated analysis of nuclear facility imagery and safeguards verification. <b>Adversarial robustness testing</b> to ensure AI systems cannot be tricked or manipulated in high-stakes nuclear environments. <b>LLM-based threat intelligence agents</b> that synthesize information from multiple sources to support rapid threat assessment. <b>Machine learning classifiers</b> for nuclear material attribution based on isotopic signatures.",
 edge:"Strong",
 roles:{
-"Fei Xu":"Lead PI. Develops computer vision and generative AI systems for nuclear facility inspection and safeguards verification. Her scarce-data learning techniques (few-shot, domain adaptation) are critical for nuclear domains where labeled training data is inherently limited by security classification. Leads CV-based anomaly detection for Challenge C24.",
-"Chris Kiekintveld":"Co-PI. Applies computational game theory to nuclear safeguards\u2014designing optimal inspection schedules using Stackelberg security games that account for adversarial reasoning by potential proliferators. This game-theoretic approach, proven in border security and infrastructure protection, represents a novel methodological contribution to nuclear safeguards (C24, C25).",
-"Saidur Rahman":"Ensures adversarial robustness of all nuclear AI systems. Develops quantum-resistant security protocols for protecting sensitive nuclear data and AI models from manipulation. Conducts red-team testing of the team\u2019s ML systems to identify vulnerabilities before deployment in high-consequence environments.",
-"Skye Fortier":"Provides actinide chemistry domain expertise essential for grounding attribution models in nuclear science. His knowledge of uranium compound signatures, nuclear fuel cycle chemistry, and radioactive element behavior informs the ML feature engineering for Challenges C26 and C7.",
-"Jorge A. Lopez":"Contributes nuclear physics modeling for post-detonation analysis and attribution. His equation of state calculations and nuclear reaction modeling provide the theoretical foundation for AI systems that must distinguish between nuclear material sources based on isotopic signatures (C26, C21).",
-"Aritran Piplai":"Develops LLM-based threat intelligence agents that can synthesize information from heterogeneous sources\u2014technical reports, sensor data, open-source intelligence\u2014to support rapid nuclear threat assessment (C20). His meta-learning approach enables agents that adapt to novel threat patterns without retraining.",
-"Palvi Aggarwal":"Models insider threat behavior using cognitive science-informed AI. Develops deception technologies (honeypots, honeytokens) tailored for nuclear facility security, and designs experimental protocols for testing the effectiveness of AI-based security measures against realistic adversarial behavior (C24).",
-"Monika Akbar":"Builds data integration frameworks that unify heterogeneous nuclear data repositories\u2014historical test records, facility monitoring streams, environmental samples\u2014into queryable knowledge graphs. Her predictive risk analytics support Challenge C21\u2019s goal of preserving and leveraging decades of nuclear research data."}
+"Chris Kiekintveld":"Lead PI. Leads the game-theoretic security optimization program, applying mathematical models of strategic adversarial interaction to design smarter nuclear inspection and monitoring strategies.",
+"Fei Xu":"Co-PI. Develops computer vision and AI systems for nuclear facility inspection, specializing in techniques that work with very limited training data - a key challenge in security-classified nuclear domains.",
+"Saidur Rahman":"Co-PI. Leads adversarial robustness testing, ensuring all AI systems are resistant to manipulation and attacks. Develops security protocols for protecting sensitive nuclear data and AI models.",
+"Skye Fortier":"Provides deep expertise in actinide chemistry and nuclear materials, ensuring that AI models for attribution and detection are grounded in real nuclear science rather than superficial pattern matching.",
+"Jorge A. Lopez":"Contributes nuclear physics modeling for material attribution, providing the theoretical foundation for AI systems that must distinguish between nuclear material sources.",
+"Aritran Piplai":"Develops AI-powered threat intelligence agents that can rapidly synthesize information from diverse sources to support nuclear threat assessment and response."}
 },
 {id:"water-energy",title:"AI-Powered Water-Energy Nexus for Resilient Infrastructure",
-narrative:"This proposal applies UTEP\u2019s convergent expertise in hydrology, environmental sensing, energy systems, and geochemistry to build AI models that predict water availability for energy production, optimize grid operations under water constraints, and support climate-resilient infrastructure\u2014particularly in water-stressed regions. The approach mirrors the physics-informed causal deep learning paradigm (exemplified by frameworks like PINCER) but extends it to the coupled water-energy system, where purely data-driven methods fail because of the sparse, non-stationary nature of hydrological data in arid environments. Moreno and Alvarez bring explainable GeoAI and physics-informed ML, respectively, ensuring that predictions are scientifically interpretable rather than black-box\u2014a critical requirement identified in recent reviews of ML in hydrology. Mayer\u2019s surrogate modeling approach enables real-time decision support by distilling complex coupled models into fast approximations suitable for operational deployment. The team spans the full water-energy continuum: Mandal covers grid-side renewable integration and forecasting, Kubicki models subsurface geochemistry for geothermal and CO\u2082 storage applications, and Gardea-Torresdey brings nanotechnology-based water treatment for remediation challenges. Heyman\u2019s social science perspective ensures that AI-driven water-energy management serves equitable outcomes\u2014a dimension increasingly valued by DOE reviewers but often absent from purely technical proposals. UTEP\u2019s location in the Chihuahuan Desert provides both existential urgency and a living laboratory for arid-region water-energy challenges that affect hundreds of millions globally.",
+conceptSummary:"This proposal uses AI to solve one of the most pressing infrastructure challenges: the deeply interconnected relationship between water and energy systems, especially in water-scarce regions. The team builds predictive models that forecast water availability for energy production, optimize power grid operations under water constraints, and support climate-resilient infrastructure planning. Uniquely, the AI models are designed to be scientifically transparent (not \"black boxes\"), and the team includes social scientists to ensure that AI-driven resource management serves communities equitably.",
+whyItMatters:"Water and energy systems are tightly coupled - power plants need water to operate, and water treatment needs energy. Climate change is disrupting both simultaneously, especially in arid regions that serve hundreds of millions of people worldwide. Purely data-driven AI approaches fail in these environments because hydrological data in dry regions is sparse and the underlying climate patterns are shifting. This proposal addresses that by embedding physical science knowledge directly into AI models, making predictions more reliable even with limited data. The inclusion of equity analysis reflects DOE\u2019s growing emphasis on ensuring technology benefits all communities.",
+narrative:"This proposal applies UTEP\u2019s convergent expertise in hydrology, environmental sensing, energy systems, and geochemistry to build AI models that predict water availability for energy production, optimize grid operations under water constraints, and support climate-resilient infrastructure. The approach uses physics-informed deep learning, ensuring predictions are scientifically interpretable. UTEP\u2019s location in the Chihuahuan Desert provides both urgency and a living laboratory for arid-region challenges.",
 challenges:["C17","C18","C19","C2"],
-utepStrength:"The team integrates hydrology/climate expertise (Mayer, Moreno, Alvarez), power systems engineering (Mandal), computational geochemistry (Kubicki), environmental nanotechnology (Gardea-Torresdey), smart construction (Kim), efficient deep learning (Fuentes), and socioeconomic analysis (Heyman)\u2014a genuinely interdisciplinary combination that spans the full water-energy-society nexus. UTEP\u2019s desert location makes this research both locally urgent and globally relevant to arid-region communities worldwide.",
-aiAngle:"Physics-informed neural networks for hydrological forecasting; explainable GeoAI for climate-water prediction; ML-driven smart grid optimization under water constraints; DFT-based subsurface geochemical modeling with ML acceleration; satellite imagery deep learning for water resource monitoring; digital twins for building-level water-energy optimization; surrogate models for real-time coupled system decision support.",
+utepStrength:"This team spans the full water-energy-society spectrum: hydrologists, climate scientists, power systems engineers, geochemists, smart building researchers, efficient AI developers, and a social scientist focused on equity. UTEP\u2019s location in the Chihuahuan Desert means this research is not abstract - it addresses challenges the university\u2019s own community faces daily, giving the work authenticity and urgency that resonates with evaluators.",
+aiAngle:"<b>Physics-informed neural networks</b> that embed scientific laws directly into AI, making predictions more reliable with limited data. <b>Explainable GeoAI</b> for transparent water availability forecasting that decision-makers can trust. <b>Smart grid optimization</b> using machine learning to balance energy and water needs in real time. <b>Digital twins</b> for building-level water-energy management. <b>Satellite imagery deep learning</b> for monitoring water resources at scale. <b>Surrogate models</b> that compress complex simulations into fast tools for real-time decision support.",
 edge:"Strong",
 roles:{
-"Alex Simon Mayer":"Lead PI. Directs the integrated water-energy-climate modeling effort. Develops surrogate models that distill complex coupled simulations into fast approximations for real-time decision support. His urban heat island analysis and solar-hydrological forecasting work provides the framework for quantifying how climate change affects both water availability and energy demand simultaneously.",
-"Hernan A. Moreno":"Co-PI. Leads explainable GeoAI development for hydrological prediction. His satellite meteorology and soil moisture modeling enables watershed-scale water availability forecasting, with explainability ensuring that predictions are scientifically auditable\u2014critical for adoption by water managers and policymakers (C17).",
-"Laura V. Alvarez":"Co-PI. Develops physics-informed ML models that embed conservation laws and hydrological process understanding into neural network architectures. Her environmental sensing expertise enables design of monitoring networks that generate the right data for model training and validation in data-sparse arid environments.",
-"Paras Mandal":"Leads the grid-side AI development\u2014ML for renewable energy forecasting, smart grid optimization, and microgrid design under water-constrained conditions. His power systems expertise ensures that water prediction outputs are directly actionable for grid operations and energy planning (C18).",
-"James D. Kubicki":"Provides DFT-based geochemical modeling of subsurface processes relevant to geothermal energy extraction and CO\u2082 storage. His mineral-water interface calculations inform physics-informed ML models for predicting subsurface fluid behavior, addressing Challenge C19\u2019s goal of unlocking subsurface energy assets.",
-"Josiah Heyman":"Integrates socioeconomic dimensions into AI-driven water-energy management. Analyzes climate affordability, energy cost equity, and community vulnerability in border communities. Ensures that optimization models account for distributional equity\u2014not just aggregate efficiency\u2014in resource allocation decisions.",
-"Jaeyoon Kim":"Develops digital twin platforms for building-level water-energy optimization, integrating BIM, IoT sensors, and deep learning for construction and operations monitoring. His smart building expertise addresses Challenge C2\u2019s vision of AI-transformed buildings that adaptively manage water and energy use.",
-"Olac Fuentes":"Contributes resource-efficient deep learning architectures for satellite and aerial imagery processing at scale. His edge-deployable computer vision enables real-time water resource monitoring from remote sensing data without requiring cloud compute\u2014critical for operational deployment in infrastructure-limited regions."}
+"Alex Simon Mayer":"Lead PI. Directs the integrated water-energy-climate modeling effort, developing fast surrogate models for real-time decision support and quantifying how climate change affects both water availability and energy demand.",
+"Hernan A. Moreno":"Co-PI. Leads explainable AI development for water prediction, ensuring forecasts are transparent and scientifically auditable for adoption by water managers and policymakers.",
+"Laura V. Alvarez":"Co-PI. Develops physics-informed ML models that embed conservation laws into AI architectures, with expertise in environmental sensing for data-sparse arid environments.",
+"Paras Mandal":"Leads AI development for power grid optimization under water constraints, ensuring water predictions are directly actionable for energy planning and operations.",
+"James D. Kubicki":"Provides geochemical modeling expertise for subsurface energy applications including geothermal and carbon storage, informing physics-based AI models of underground fluid behavior.",
+"Josiah Heyman":"Ensures AI-driven resource management accounts for equity and community impact, analyzing how optimization decisions affect vulnerable border communities.",
+"Jaeyoon Kim":"Develops digital twin platforms for building-level water-energy optimization, integrating sensors and AI for smart infrastructure management.",
+"Olac Fuentes":"Contributes efficient deep learning architectures for processing satellite imagery at scale, enabling real-time water resource monitoring without heavy computational infrastructure."}
 }
 ];
 
@@ -377,7 +382,7 @@ function buildTeams(cid){
   // Prioritize faculty who have defined roles
   for(const rn of roleNames){const match=scored.find(f=>f.n===rn);if(match&&!team.includes(match))team.push(match);}
   // Fill remaining with top scorers
-  for(const f of scored){if(team.length>=10)break;if(!team.includes(f)&&f.cs>=3)team.push(f);}
+  for(const f of scored){if(team.length>=8)break;if(!team.includes(f)&&f.cs>=4)team.push(f);}
   return team;
 }
 
@@ -389,7 +394,7 @@ const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className
 
 let currentTab="overview";
 const TABS=["overview","challenges","faculty","heatmap","teams","methodology"];
-const TAB_LABELS={"overview":"Overview","challenges":"Challenges","faculty":"Faculty Profiles","heatmap":"Heat Map","teams":"Team Builder","methodology":"Methodology"};
+const TAB_LABELS={"overview":"Overview","challenges":"Challenges","faculty":"Faculty Profiles","heatmap":"Heat Map","teams":"Proposal Concepts","methodology":"Methodology"};
 
 function renderTabs(){
   const tabs=$("tabs");tabs.innerHTML="";
@@ -470,6 +475,36 @@ function renderOverview(root){
   });
   covCard.appendChild(covChart);
   root.appendChild(covCard);
+
+  // How It Works section
+  const howCard=el("div","card");howCard.style.marginTop="24px";
+  const tabGuides=[
+    {tab:"challenges",icon:"\uD83C\uDFAF",label:"Challenges",desc:"Explore all 26 DOE Genesis Science & Technology challenge areas with detailed overviews, AI/ML approaches, and matched faculty."},
+    {tab:"faculty",icon:"\uD83D\uDC65",label:"Faculty Profiles",desc:"Search and filter the full roster of mapped faculty. View each researcher's expertise, department, and challenge alignment scores."},
+    {tab:"heatmap",icon:"\uD83D\uDDFA",label:"Heat Map",desc:"Interactive scoring matrix showing every faculty member's alignment with every challenge. Sort by total score, strong matches, or name."},
+    {tab:"teams",icon:"\uD83D\uDCA1",label:"Proposal Concepts",desc:"Three data-driven proposal concepts with recommended research teams, competitive positioning, and methods for Genesis-aligned proposals."},
+    {tab:"methodology",icon:"\uD83D\uDCD0",label:"Methodology",desc:"Scoring criteria, data sources, team-building algorithm, and transparency notes behind every assessment on this platform."}
+  ];
+  howCard.innerHTML=`<div class="card-title"><div class="icon" style="background:var(--navy)">?</div>How This Platform Works</div>
+    <p style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:20px">This platform analyzes the research expertise of ${F.length} UTEP faculty members against 26 DOE Genesis Science & Technology Challenges. It scores each faculty-challenge pair from 0 (no match) to 3 (strong match), then uses those scores to identify optimal research teams and generate competitive proposal concepts. Use the tabs below to explore different views of the data.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px">
+      ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}"><div style="font-size:20px;margin-bottom:6px">${g.icon}</div><div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px">${g.label}</div><div style="font-size:11px;color:var(--text2);line-height:1.5">${g.desc}</div></div>`).join("")}
+    </div>
+    <div style="padding:14px 16px;background:var(--ltbg);border-radius:8px;border:1px solid var(--border)">
+      <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px">Scoring at a Glance</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#E0E0E0;border:1px solid var(--border)"></div><span style="font-size:12px;color:var(--text2)"><b>0</b> No match</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:#C4C4C4"></div><span style="font-size:12px;color:var(--text2)"><b>1</b> Tangential</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:var(--orange2)"></div><span style="font-size:12px;color:var(--text2)"><b>2</b> Moderate</span></div>
+        <div style="display:flex;align-items:center;gap:6px"><div style="width:20px;height:20px;border-radius:4px;background:var(--orange)"></div><span style="font-size:12px;color:var(--text2)"><b>3</b> Strong</span></div>
+      </div>
+    </div>`;
+  root.appendChild(howCard);
+  // Make how-cards clickable to navigate to tabs
+  howCard.querySelectorAll(".how-card").forEach(c=>{
+    c.style.cursor="pointer";
+    c.onclick=()=>{currentTab=c.dataset.tab;renderTabs();renderContent()};
+  });
 }
 
 // ── CHALLENGES ──
@@ -498,11 +533,36 @@ function renderChallenges(root){
 
     const detailCard=el("div","card");detailCard.style.marginBottom="20px";
     detailCard.innerHTML=`<div class="ch-detail-head"><span class="code">${selected}</span><span class="title">${CK[selected]}</span></div>
-      <div class="ch-detail-section"><h4>Challenge Overview</h4><p>${info.sum}</p></div>
-      <div class="ch-detail-section"><h4>AI/ML Approach</h4><p>${info.ai}</p></div>
-      <div class="ch-detail-section"><h4>National Impact</h4><p>${info.impact}</p></div>
+      <div style="display:flex;gap:8px;margin:8px 0 20px;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;background:rgba(255,130,0,0.1);color:var(--orange)">\u25CF ${s3} Strong</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;background:rgba(4,30,66,0.08);color:var(--navy)">\u25CF ${s2} Moderate</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;background:var(--ltbg);color:var(--text2)">${ranked.length} Total Faculty</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:14px">
+        <div style="padding:16px;border-radius:8px;background:rgba(4,30,66,0.025);border-left:4px solid var(--navy)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2139</div>
+            <span style="font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em">Challenge Overview</span>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7">${info.sum}</p>
+        </div>
+        <div style="padding:16px;border-radius:8px;background:rgba(255,130,0,0.025);border-left:4px solid var(--orange)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2699</div>
+            <span style="font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.06em">AI/ML Approach</span>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7">${info.ai}</p>
+        </div>
+        <div style="padding:16px;border-radius:8px;background:rgba(46,125,50,0.025);border-left:4px solid var(--green)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+            <div style="width:26px;height:26px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">\u2605</div>
+            <span style="font-size:12px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.06em">National Impact</span>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.7">${info.impact}</p>
+        </div>
+      </div>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
-        <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px">UTEP Faculty Coverage: ${ranked.length} matched \u2014 ${s3} strong, ${s2} moderate</div>
+        <div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px">UTEP Faculty Coverage</div>
       </div>`;
 
     if(ranked.length>0){
@@ -510,7 +570,7 @@ function renderChallenges(root){
       ranked.forEach(f=>{
         const bg=f.cs===3?"rgba(255,130,0,0.06)":f.cs===2?"rgba(4,30,66,0.04)":"var(--ltbg)";
         const bdr=f.cs===3?"var(--orange)":f.cs===2?"var(--navy)":"var(--border)";
-        cards.innerHTML+=`<div class="card" style="padding:12px;background:${bg};border-left:3px solid ${bdr}"><div style="font-size:12px;font-weight:700;color:var(--navy)">${f.n}</div><div style="font-size:10px;color:var(--text2)">${f.d} \u2022 <span class="badge" style="color:${AC[f.a]};background:${AB[f.a]}">${f.a}</span></div><div style="margin-top:6px;font-size:11px;color:var(--text2)">${f.e}</div><div style="margin-top:4px;font-size:11px;font-weight:700;color:${SC[f.cs]}">Score: ${f.cs} \u2014 ${SL[f.cs]}</div></div>`;
+        cards.innerHTML+=`<div class="card" style="padding:12px;background:${bg};border-left:3px solid ${bdr}"><div style="font-size:12px;font-weight:700;color:var(--navy)">${f.n}</div><div style="font-size:10px;color:var(--text2)">${f.d} \u2022 <span class="badge" style="color:${AC[f.a]};background:${AB[f.a]}">${f.a}</span></div><div style="margin-top:6px;font-size:11px;color:var(--text2)">${f.e}</div><div style="margin-top:4px;font-size:11px;font-weight:700;color:${SC[f.cs]}">Score: ${f.cs} - ${SL[f.cs]}</div></div>`;
       });
       detailCard.appendChild(cards);
     } else {
@@ -591,13 +651,14 @@ function renderHeatmap(root){
     const list=getFiltered();
 
     const ctrl=el("div","hm-controls");
-    ctrl.innerHTML=`<span class="hm-lbl">Sort:</span>`;
+    ctrl.appendChild(el("span","hm-lbl","Sort:"));
     ["total","strong","name"].forEach(s=>{
       const b=el("button","hm-btn"+(sortBy===s?" active-sort":""),s.charAt(0).toUpperCase()+s.slice(1));
       b.onclick=()=>{sortBy=s;render()};
       ctrl.appendChild(b);
     });
-    ctrl.innerHTML+=`<div class="hm-sep"></div><span class="hm-lbl">Filter:</span>`;
+    ctrl.appendChild(el("div","hm-sep"));
+    ctrl.appendChild(el("span","hm-lbl","Filter:"));
     ["All","AAII Affiliate","Previous AAII","Recommended"].forEach(a=>{
       const b=el("button","hm-btn"+(filterAff===a?" active-filter":""),a);
       b.onclick=()=>{filterAff=a;render()};
@@ -607,7 +668,7 @@ function renderHeatmap(root){
 
     const leg=el("div","legend-row");
     [0,1,2,3].forEach(s=>{
-      leg.innerHTML+=`<div class="legend-item"><div class="legend-swatch" style="background:${s===0?"var(--ltbg)":SC[s]};${s===0?"border:1px solid var(--border)":""}"></div>${s} \u2014 ${SL[s]}</div>`;
+      leg.innerHTML+=`<div class="legend-item"><div class="legend-swatch" style="background:${s===0?"var(--ltbg)":SC[s]};${s===0?"border:1px solid var(--border)":""}"></div>${s}  - ${SL[s]}</div>`;
     });
     root.appendChild(leg);
 
@@ -638,12 +699,13 @@ function renderHeatmap(root){
 // ── TEAM BUILDER ──
 function renderTeams(root){
   let selId=CLUSTERS[0].id;
+  let showNarrative={};
 
   function render(){
     root.innerHTML="";
 
     const hero=el("div","card team-hero");
-    hero.innerHTML=`<div class="label">Proposal Team Architect</div><h2>Competitive AI Research Teams for DOE Genesis</h2><p>These proposal concepts are built on genuine patterns in UTEP\u2019s expertise data\u2014areas where faculty capabilities naturally cluster around Genesis challenges. Each narrative is grounded in current technical literature and specifies the concrete contribution expected from every team member. These are starting points for refinement, not prescriptions.</p>`;
+    hero.innerHTML=`<div class="label">Proposal Concepts</div><h2>Strategic Research Proposals for DOE Genesis</h2><p>These proposal concepts emerge from natural clusters in UTEP faculty expertise aligned with Genesis challenges. Each concept outlines what the proposal is about, why it matters, the methods involved, and who would lead the effort. They are starting points for refinement, not prescriptions.</p>`;
     root.appendChild(hero);
 
     const btns=el("div","cluster-btns");
@@ -657,38 +719,77 @@ function renderTeams(root){
 
     const cl=CLUSTERS.find(c=>c.id===selId);
     const team=buildTeams(selId);
-    const tg=el("div","team-layout");
+    const showFull=showNarrative[selId]||false;
 
-    // Left: Concept
-    let leftHtml=`<div>
-      <div class="card" style="margin-bottom:16px">
-        <div class="section-label" style="color:var(--orange)">Proposal Concept</div>
-        <div style="font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px;line-height:1.4">${cl.title}</div>
-        <div style="font-size:13px;color:var(--text);line-height:1.8;margin-bottom:14px">${cl.narrative}</div>
-        <div style="margin-bottom:12px">${cl.challenges.map(c=>`<span class="challenge-tag"><span class="code">${c}</span><span class="desc">${CK[c].split(" ").slice(0,5).join(" ")}...</span></span>`).join("")}</div>
-      </div>
-      <div class="card" style="margin-bottom:16px">
-        <div class="section-label" style="color:var(--navy)">UTEP Competitive Advantage</div>
-        <div style="font-size:13px;line-height:1.8;margin-bottom:14px">${cl.utepStrength}</div>
-        <div style="border-top:1px solid var(--border);padding-top:14px">
-          <div class="section-label" style="color:var(--orange)">AI Integration Strategy</div>
-          <div style="font-size:13px;color:var(--text);line-height:1.8">${cl.aiAngle}</div>
+    // Concept overview cards
+    const conceptSection=el("div","");
+    conceptSection.innerHTML=`
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="card" style="border-left:4px solid var(--orange)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:var(--orange);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
+            <span style="font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.04em">What Is This Concept?</span>
+          </div>
+          <div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.4">${cl.title}</div>
+          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.conceptSummary}</p>
+          <div style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap">${cl.challenges.map(c=>`<span class="challenge-tag"><span class="code">${c}</span><span class="desc">${CK[c].split(" ").slice(0,4).join(" ")}...</span></span>`).join("")}</div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--navy)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:var(--navy);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
+            <span style="font-size:13px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:0.04em">Why Does It Matter?</span>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.whyItMatters}</p>
         </div>
       </div>
-    </div>`;
-
-    // Right: Team
-    const uniqueDepts=new Set(team.map(t=>t.d)).size;
-    let rightHtml=`<div><div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-        <div><div class="section-label" style="color:var(--green)">Recommended Team</div>
-        <div style="font-size:13px;font-weight:700;color:var(--navy)">${team.length} Members \u2022 ${uniqueDepts} Departments</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="card" style="border-left:4px solid var(--blue)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:var(--blue);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
+            <span style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.04em">Potential Methods</span>
+          </div>
+          <div style="font-size:13px;color:var(--text);line-height:1.8">${cl.aiAngle}</div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--green)">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <div style="width:28px;height:28px;border-radius:6px;background:var(--green);color:#FFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
+            <span style="font-size:13px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.04em">Why Attractive to Genesis Evaluators?</span>
+          </div>
+          <p style="font-size:13px;color:var(--text);line-height:1.8">${cl.utepStrength}</p>
+        </div>
       </div>`;
+    root.appendChild(conceptSection);
+
+    // Full technical narrative toggle
+    const toggleWrap=el("div","");
+    toggleWrap.style.cssText="margin-bottom:16px;text-align:center";
+    const toggleBtn=el("button","hm-btn",showFull?"\u25B2 Hide Full Technical Narrative":"\u25BC Show Full Technical Narrative");
+    toggleBtn.onclick=()=>{showNarrative[selId]=!showFull;render()};
+    toggleWrap.appendChild(toggleBtn);
+    root.appendChild(toggleWrap);
+
+    if(showFull){
+      const narCard=el("div","card");
+      narCard.style.cssText="margin-bottom:16px;border-left:4px solid var(--border);background:var(--ltbg)";
+      narCard.innerHTML=`<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text2);margin-bottom:8px">Full Technical Narrative</div><p style="font-size:12px;color:var(--text);line-height:1.8">${cl.narrative}</p>`;
+      root.appendChild(narCard);
+    }
+
+    // Team section
+    const uniqueDepts=new Set(team.map(t=>t.d)).size;
+    const teamCard=el("div","card");
+    teamCard.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div>
+        <div class="section-label" style="color:var(--green)">Recommended Team</div>
+        <div style="font-size:13px;font-weight:700;color:var(--navy)">${team.length} Members \u2022 ${uniqueDepts} Departments</div>
+      </div>
+    </div>`;
+    let teamHtml="";
     team.forEach((f,i)=>{
-      const isPI=i===0;
       const role=cl.roles[f.n]||"";
+      const isPI=role.startsWith("Lead PI");
+      const isCopi=role.startsWith("Co-PI");
       const rankBg=isPI?"var(--orange)":"var(--navy)";
-      const rankClr="#FFF";
       const cardBg=isPI?"rgba(255,130,0,0.04)":"var(--white)";
       const borderC=isPI?"var(--orange)":"var(--border)";
       const scoreChips=cl.challenges.map(c=>{
@@ -697,10 +798,10 @@ function renderTeams(root){
         const clr=sc===3?"var(--orange)":sc===2?"var(--navy)":"var(--text2)";
         return `<span class="team-score-chip" style="background:${bg}"><span style="color:var(--text2)">${c}</span><span style="font-weight:700;color:${clr}">${sc}</span></span>`;
       }).join("");
-      rightHtml+=`<div class="team-member" style="background:${cardBg};border-color:${borderC}">
-        <div class="team-rank" style="background:${rankBg};color:${rankClr}">${i+1}</div>
+      teamHtml+=`<div class="team-member" style="background:${cardBg};border-color:${borderC}">
+        <div class="team-rank" style="background:${rankBg};color:#FFF">${i+1}</div>
         <div class="team-member-info">
-          <div><span class="team-member-name">${f.n}</span>${isPI?'<span class="team-pi">Suggested PI</span>':i<3?'<span class="team-pi" style="background:rgba(4,30,66,0.08);color:var(--navy)">Co-PI</span>':''}</div>
+          <div><span class="team-member-name">${f.n}</span>${isPI?'<span class="team-pi">Lead PI</span>':isCopi?'<span class="team-pi" style="background:rgba(4,30,66,0.08);color:var(--navy)">Co-PI</span>':''}</div>
           <div class="team-member-dept">${f.d} \u2022 ${f.a}</div>
           ${role?`<div class="team-member-role">${role}</div>`:`<div style="font-size:11px;color:var(--text2);margin-bottom:4px">${f.e}</div>`}
           <div class="team-scores">${scoreChips}</div>
@@ -708,10 +809,8 @@ function renderTeams(root){
         <div class="team-cluster-score"><div class="num" style="color:var(--orange)">${f.cs}</div><div class="lbl">cluster</div></div>
       </div>`;
     });
-    rightHtml+=`</div></div>`;
-
-    tg.innerHTML=leftHtml+rightHtml;
-    root.appendChild(tg);
+    teamCard.innerHTML+=teamHtml;
+    root.appendChild(teamCard);
   }
   render();
 }
@@ -725,8 +824,8 @@ function renderMethodology(root){
       <h3>Data Sources</h3>
       <p>This dashboard integrates two primary data sources:</p>
       <ul>
-        <li><strong>AAII Affiliate Faculty Profiles (Draft)</strong> \u2014 Detailed profiles of 37 faculty members affiliated with, previously affiliated with, or recommended for affiliation with the UTEP Army Applications of Artificial Intelligence (AAII) Institute. Profiles include research focus areas, methodological expertise, departmental affiliation, and publication/grant history.</li>
-        <li><strong>DOE Genesis Mission Science & Technology Challenges</strong> \u2014 The 26 challenge areas defined by the U.S. Department of Energy\u2019s Genesis Mission initiative, spanning advanced manufacturing, nuclear energy, quantum computing, materials science, water-energy systems, and nuclear security.</li>
+        <li><strong>AAII Affiliate Faculty Profiles (Draft)</strong>  - Detailed profiles of 37 faculty members affiliated with, previously affiliated with, or recommended for affiliation with the UTEP Army Applications of Artificial Intelligence (AAII) Institute. Profiles include research focus areas, methodological expertise, departmental affiliation, and publication/grant history.</li>
+        <li><strong>DOE Genesis Mission Science & Technology Challenges</strong>  - The 26 challenge areas defined by the U.S. Department of Energy\u2019s Genesis Mission initiative, spanning advanced manufacturing, nuclear energy, quantum computing, materials science, water-energy systems, and nuclear security.</li>
       </ul>
     </div>
 
@@ -739,7 +838,7 @@ function renderMethodology(root){
           <tr><td style="background:transparent">0</td><td>No Match</td><td>No discernible connection between the faculty member\u2019s expertise and the challenge requirements. The faculty member\u2019s skills, methods, and domain knowledge do not apply to the challenge area.</td></tr>
           <tr><td style="background:#C4C4C4;color:#FFF">1</td><td>Tangential</td><td>Indirect or peripheral relevance. The faculty member possesses transferable methods or adjacent domain knowledge that could be adapted with effort, but there is no direct expertise match. Example: a general ML researcher applied to a domain-specific challenge.</td></tr>
           <tr><td style="background:#F48221;color:#FFF">2</td><td>Moderate</td><td>Clear, relevant expertise with direct applicability to the challenge. The faculty member\u2019s research methods, tools, or domain knowledge are directly useful, and they could contribute meaningfully to a proposal team. Example: a DFT researcher applied to a materials discovery challenge.</td></tr>
-          <tr><td style="background:#FF8200;color:#FFF">3</td><td>Strong</td><td>Deep, direct expertise. The faculty member is one of the strongest possible matches at UTEP for this challenge\u2014their published work, active research, and/or unique capabilities position them as a potential PI or lead contributor. Example: a nuclear theorist applied to a nuclear attribution challenge.</td></tr>
+          <tr><td style="background:#FF8200;color:#FFF">3</td><td>Strong</td><td>Deep, direct expertise. The faculty member is one of the strongest possible matches at UTEP for this challenge - their published work, active research, and/or unique capabilities position them as a potential PI or lead contributor. Example: a nuclear theorist applied to a nuclear attribution challenge.</td></tr>
         </tbody>
       </table>
     </div>
@@ -748,26 +847,26 @@ function renderMethodology(root){
       <h3>Scoring Criteria</h3>
       <p>Scores were assigned based on analysis of the following factors for each faculty member:</p>
       <ul>
-        <li><strong>Published research</strong> \u2014 Peer-reviewed publications, conference papers, and technical reports in areas relevant to each challenge.</li>
-        <li><strong>Active research focus</strong> \u2014 Current research projects, lab capabilities, and stated research directions from faculty profiles.</li>
-        <li><strong>Methodological relevance</strong> \u2014 Whether the faculty member\u2019s primary methods (e.g., DFT, computer vision, game theory, molecular dynamics) are directly applicable to the challenge\u2019s technical needs.</li>
-        <li><strong>Domain expertise</strong> \u2014 Deep knowledge in the challenge\u2019s application domain (e.g., nuclear chemistry, hydrology, materials science) versus general methodological capability.</li>
-        <li><strong>Unique capabilities</strong> \u2014 Whether the faculty member brings a rare or distinctive skill set that would strengthen a UTEP proposal (e.g., co-developing a widely-used DFT code, operating a specialized synthesis lab).</li>
+        <li><strong>Published research</strong>  - Peer-reviewed publications, conference papers, and technical reports in areas relevant to each challenge.</li>
+        <li><strong>Active research focus</strong>  - Current research projects, lab capabilities, and stated research directions from faculty profiles.</li>
+        <li><strong>Methodological relevance</strong>  - Whether the faculty member\u2019s primary methods (e.g., DFT, computer vision, game theory, molecular dynamics) are directly applicable to the challenge\u2019s technical needs.</li>
+        <li><strong>Domain expertise</strong>  - Deep knowledge in the challenge\u2019s application domain (e.g., nuclear chemistry, hydrology, materials science) versus general methodological capability.</li>
+        <li><strong>Unique capabilities</strong>  - Whether the faculty member brings a rare or distinctive skill set that would strengthen a UTEP proposal (e.g., co-developing a widely-used DFT code, operating a specialized synthesis lab).</li>
       </ul>
       <p>Scores were intentionally conservative: a score of 3 indicates that a faculty member would be a credible PI-level contributor, not merely that they have some familiarity with the topic.</p>
     </div>
 
     <div class="method-section">
       <h3>Proposal Concept Development</h3>
-      <p>The three proposal concepts (Quantum Materials, Nuclear Security, Water-Energy Nexus) were identified by analyzing patterns in the 37\u00d726 scoring matrix\u2014specifically, areas where multiple UTEP faculty members have strong (3) or moderate (2) scores on the same subset of Genesis challenges, indicating genuine institutional capability rather than isolated individual expertise.</p>
+      <p>The three proposal concepts (Quantum Materials, Nuclear Security, Water-Energy Nexus) were identified by analyzing patterns in the 37\u00d726 scoring matrix - specifically, areas where multiple UTEP faculty members have strong (3) or moderate (2) scores on the same subset of Genesis challenges, indicating genuine institutional capability rather than isolated individual expertise.</p>
       <p>For each proposal concept:</p>
       <ul>
         <li>A <strong>cluster of related challenges</strong> was identified where UTEP\u2019s faculty scores are concentrated.</li>
         <li>A <strong>technical narrative</strong> was developed that connects UTEP\u2019s specific capabilities to current research frontiers, drawing on recent literature (2024\u20132026) from relevant journals and DOE/NNSA program documents.</li>
-        <li><strong>Specific roles</strong> were defined for each team member, describing their concrete expected contribution to the proposal\u2014not just their general expertise area.</li>
+        <li><strong>Specific roles</strong> were defined for each team member, describing their concrete expected contribution to the proposal - not just their general expertise area.</li>
         <li>An <strong>AI integration strategy</strong> was articulated that positions each proposal within the AI-for-science paradigm central to the Genesis Mission\u2019s vision.</li>
       </ul>
-      <p>These concepts are intended as starting points for discussion and refinement by the relevant faculty\u2014not as complete proposals.</p>
+      <p>These concepts are intended as starting points for discussion and refinement by the relevant faculty - not as complete proposals.</p>
     </div>
 
     <div class="method-section">
@@ -785,9 +884,9 @@ function renderMethodology(root){
       <h3>Affiliation Tiers</h3>
       <p>Faculty are categorized into three affiliation tiers reflecting their relationship to the AAII:</p>
       <ul>
-        <li><strong>AAII Affiliate (25 faculty)</strong> \u2014 Currently affiliated with the AAII Institute; the core research community.</li>
-        <li><strong>Previous AAII (3 faculty)</strong> \u2014 Previously affiliated with AAII; retain relevant expertise and institutional connections.</li>
-        <li><strong>Recommended for Outreach (10 faculty)</strong> \u2014 Not currently AAII-affiliated but possess expertise highly relevant to Genesis challenges; recommended for inclusion in proposal teams.</li>
+        <li><strong>AAII Affiliate (25 faculty)</strong>  - Currently affiliated with the AAII Institute; the core research community.</li>
+        <li><strong>Previous AAII (3 faculty)</strong>  - Previously affiliated with AAII; retain relevant expertise and institutional connections.</li>
+        <li><strong>Recommended for Outreach (10 faculty)</strong>  - Not currently AAII-affiliated but possess expertise highly relevant to Genesis challenges; recommended for inclusion in proposal teams.</li>
       </ul>
     </div>
 
@@ -798,7 +897,7 @@ function renderMethodology(root){
         <li>Scores are based on available profile data and may not capture recent shifts in research direction, unpublished work, or collaborative capabilities that emerge through team interaction.</li>
         <li>The 0\u20133 integer scale necessarily simplifies a continuous spectrum of relevance. Borderline cases (especially 1 vs. 2) involve judgment calls.</li>
         <li>Faculty outside the current 37-person pool may have relevant expertise; this mapping covers only the AAII-affiliated and recommended cohort.</li>
-        <li>Proposal competitiveness depends on many factors beyond faculty expertise alignment\u2014including budget, institutional support, DOE relationships, and proposal writing quality\u2014that are outside the scope of this analysis.</li>
+        <li>Proposal competitiveness depends on many factors beyond faculty expertise alignment - including budget, institutional support, DOE relationships, and proposal writing quality - that are outside the scope of this analysis.</li>
       </ul>
     </div>
   `;
