@@ -219,6 +219,13 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
 .score-table td{color:var(--text2)}
 .score-table td:first-child{font-weight:700;text-align:center;width:60px}
 
+/* ═══ SUB-VIEW PILLS ═══ */
+.subview-bar{display:flex;gap:6px;margin-bottom:20px;padding:4px;background:rgba(255,255,255,0.04);border-radius:12px;border:1px solid var(--card-border);width:fit-content}
+.subview-btn{padding:10px 22px;border:none;font-size:12px;font-weight:600;background:transparent;color:var(--text2);border-radius:10px;transition:all 0.2s;cursor:pointer;font-family:var(--font);display:flex;align-items:center;gap:8px}
+.subview-btn:hover{color:#FFF;background:rgba(255,255,255,0.06)}
+.subview-btn.active{color:#FFF;background:linear-gradient(135deg,rgba(255,130,0,0.25),rgba(255,130,0,0.1));box-shadow:0 2px 8px rgba(255,130,0,0.15)}
+.subview-btn svg{width:16px;height:16px}
+
 .hidden{display:none}
 
 @media(max-width:900px){
@@ -230,6 +237,8 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
   div[style*="grid-template-columns: 1fr 1fr"],div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
   div[style*="grid-template-columns:1.5fr 1fr"]{grid-template-columns:1fr!important}
   div[style*="grid-template-columns:repeat(5"]{grid-template-columns:repeat(2,1fr)!important}
+  div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}
+  .subview-bar{width:100%;flex-wrap:wrap}
   .radial-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
@@ -252,7 +261,10 @@ h1{font-size:24px;font-weight:800;letter-spacing:-0.02em;color:#FFF}
       <div class="header-logo"><div class="logo-bar"></div><span class="logo-text">AAII × DOE Genesis Mission</span></div>
       <h1 style="margin-top:6px">Genesis Opportunity Intelligence Platform</h1>
     </div>
-    <div class="header-sub" style="text-align:right">A data-driven platform helping UTEP identify the strongest research teams and build competitive proposal concepts for DOE Genesis Science &amp; Technology challenges.</div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="header-sub" style="text-align:right">A data-driven platform helping UTEP identify the strongest research teams and build competitive proposal concepts for DOE Genesis Science &amp; Technology challenges.</div>
+      <a href="https://www.utep.edu/aaii/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:10px;background:linear-gradient(135deg,rgba(255,130,0,0.2),rgba(255,130,0,0.08));border:1px solid rgba(255,130,0,0.3);color:#FFF;font-size:12px;font-weight:700;letter-spacing:0.04em;white-space:nowrap;text-decoration:none;transition:all 0.2s;flex-shrink:0" onmouseover="this.style.background='linear-gradient(135deg,rgba(255,130,0,0.35),rgba(255,130,0,0.15))';this.style.boxShadow='0 4px 16px rgba(255,130,0,0.2)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(255,130,0,0.2),rgba(255,130,0,0.08))';this.style.boxShadow='none'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Visit AAII</a>
+    </div>
   </div>
 </div>
 <div class="tabs" id="tabs"></div>
@@ -504,8 +516,8 @@ const $=id=>document.getElementById(id);
 const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e};
 
 let currentTab="overview";
-const TABS=["overview","challenges","faculty","heatmap","teams","methodology"];
-const TAB_LABELS={"overview":"Overview","challenges":"Challenges","faculty":"Faculty Profiles","heatmap":"Heat Map","teams":"Strategic Proposal Ideas","methodology":"Methodology"};
+const TABS=["overview","matching","teams","methodology"];
+const TAB_LABELS={"overview":"Overview","matching":"Matching Faculty to Challenges","teams":"Strategic Proposal Ideas","methodology":"Methodology"};
 
 function renderTabs(){
   const tabs=$("tabs");tabs.innerHTML="";
@@ -518,7 +530,7 @@ function renderTabs(){
 
 function renderContent(){
   const c=$("content");c.innerHTML="";
-  ({overview:renderOverview,challenges:renderChallenges,faculty:renderFaculty,heatmap:renderHeatmap,teams:renderTeams,methodology:renderMethodology})[currentTab](c);
+  ({overview:renderOverview,matching:renderMatching,teams:renderTeams,methodology:renderMethodology})[currentTab](c);
 }
 
 // ── OVERVIEW ──
@@ -588,9 +600,7 @@ function renderOverview(root){
 
   // ── Quick navigation ──
   const tabGuides=[
-    {tab:"challenges",icon:ICONS.target,label:"Challenges",desc:"26 DOE S&T areas with AI/ML approaches and aligned faculty.",grad:"var(--grad-blue)"},
-    {tab:"faculty",icon:ICONS.users,label:"Faculty Profiles",desc:"Search and filter by expertise, department, and alignment scores.",grad:"var(--grad-green)"},
-    {tab:"heatmap",icon:ICONS.grid,label:"Heat Map",desc:"Interactive 38\u00d726 scoring matrix with sorting and filtering.",grad:"var(--grad-orange)"},
+    {tab:"matching",icon:ICONS.target,label:"Faculty \u00d7 Challenges",desc:"Browse challenges, search faculty profiles, and explore the full scoring heat map.",grad:"var(--grad-blue)"},
     {tab:"teams",icon:ICONS.lightbulb,label:"Strategic Proposals",desc:"Three data-driven concepts with recommended teams.",grad:"var(--grad-purple)"},
     {tab:"methodology",icon:ICONS.clipboard,label:"Methodology",desc:"Scoring criteria, data sources, and team-building logic.",grad:"linear-gradient(135deg,#4299E1,#7B61FF)"}
   ];
@@ -598,8 +608,8 @@ function renderOverview(root){
   navSection.style.cssText="margin-bottom:20px;padding:24px";
   navSection.innerHTML=`
     <div class="section-title">Explore the Platform</div>
-    <div class="section-desc">Navigate through the tabs below to explore different views of the data, from individual challenges and faculty profiles to the full scoring heat map and strategic proposal concepts.</div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+    <div class="section-desc">Navigate through the tabs below to explore the data \u2014 from matching faculty to challenges and viewing the scoring matrix, to strategic proposal concepts.</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
     ${tabGuides.map(g=>`<div class="how-card" data-tab="${g.tab}" style="text-align:center;padding:20px 12px;cursor:pointer"><div style="width:44px;height:44px;border-radius:12px;background:${g.grad};color:#FFF;display:flex;align-items:center;justify-content:center;margin:0 auto 12px">${g.icon}</div><div style="font-size:12px;font-weight:700;color:#FFF;margin-bottom:4px">${g.label}</div><div style="font-size:10px;color:var(--text3);line-height:1.4">${g.desc}</div></div>`).join("")}
   </div>`;
   root.appendChild(navSection);
@@ -622,30 +632,38 @@ function renderOverview(root){
   barHtml+=`</div></div>`;
   grid.innerHTML+=barHtml;
 
-  // Affiliation Radial Gauges + Dept
-  const affMap={};F.forEach(f=>{affMap[f.a]=(affMap[f.a]||0)+1});
+  // Department Distribution Radial Gauges (ALL departments as circles)
   const deptMap={};F.forEach(f=>{deptMap[f.d]=(deptMap[f.d]||0)+1});
   const depts=Object.entries(deptMap).sort((a,b)=>b[1]-a[1]);
   const total=F.length;
 
-  const affData=[
-    {name:"AAII Affiliates",key:"AAII Affiliate",color:"var(--cyan)",gradId:"rg1",stops:['#0952A5','#0BC5EA'],desc:"Current AAII members with active research"},
-    {name:"Past AAII",key:"Previous AAII",color:"var(--accent)",gradId:"rg2",stops:['#FF8200','#FFB547'],desc:"Former affiliates with relevant expertise"},
-    {name:"Strategic Outreach",key:"Recommended",color:"var(--purple)",gradId:"rg3",stops:['#7B61FF','#0BC5EA'],desc:"Non-AAII faculty recommended to strengthen teams"}
+  const deptColors=[
+    {color:"var(--cyan)",gradId:"dg1",stops:['#0952A5','#0BC5EA']},
+    {color:"var(--accent)",gradId:"dg2",stops:['#FF8200','#FFB547']},
+    {color:"var(--green)",gradId:"dg3",stops:['#01B574','#0BC5EA']},
+    {color:"var(--purple)",gradId:"dg4",stops:['#7B61FF','#0BC5EA']},
+    {color:"var(--blue)",gradId:"dg5",stops:['#4299E1','#7B61FF']},
+    {color:"var(--cyan)",gradId:"dg6",stops:['#0BC5EA','#01B574']},
+    {color:"var(--accent)",gradId:"dg7",stops:['#FF8200','#FF5252']},
+    {color:"var(--purple)",gradId:"dg8",stops:['#7B61FF','#FF8200']},
+    {color:"var(--green)",gradId:"dg9",stops:['#01B574','#4299E1']},
+    {color:"var(--cyan)",gradId:"dg10",stops:['#0952A5','#7B61FF']},
+    {color:"var(--accent)",gradId:"dg11",stops:['#FF8200','#01B574']},
+    {color:"var(--green)",gradId:"dg12",stops:['#01B574','#FFB547']}
   ];
-  let radialHtml=affData.map(a=>{
-    const count=affMap[a.key]||0;
+
+  const deptRadialHtml=depts.map((entry,i)=>{
+    const [dName,count]=entry;
+    const ci=deptColors[i%deptColors.length];
     const pct=Math.round(count/total*100);
     const circ=314;
     const offset=Math.round(circ*(1-count/total));
-    return `<div><div class="radial-ring"><svg width="120" height="120" viewBox="0 0 120 120"><defs><linearGradient id="${a.gradId}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${a.stops[0]}"/><stop offset="100%" stop-color="${a.stops[1]}"/></linearGradient></defs><circle class="track" cx="60" cy="60" r="50"/><circle class="fill" cx="60" cy="60" r="50" stroke="url(#${a.gradId})" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="center-text"><div class="center-num" style="color:${a.color}">${count}</div><div class="center-pct">${pct}%</div></div></div><div class="radial-label">${a.name}</div><div class="radial-desc">${a.desc}</div></div>`;
+    const shortName=dName.split(" ").slice(0,3).join(" ");
+    return `<div><div class="radial-ring"><svg width="120" height="120" viewBox="0 0 120 120"><defs><linearGradient id="${ci.gradId}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${ci.stops[0]}"/><stop offset="100%" stop-color="${ci.stops[1]}"/></linearGradient></defs><circle class="track" cx="60" cy="60" r="50"/><circle class="fill" cx="60" cy="60" r="50" stroke="url(#${ci.gradId})" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="center-text"><div class="center-num" style="color:${ci.color}">${count}</div><div class="center-pct">${pct}%</div></div></div><div class="radial-label" style="font-size:11px">${shortName}</div></div>`;
   }).join("");
 
-  let deptHtml=depts.map(([d,c])=>`<div class="dept-row"><div class="dept-label">${d.split(" ").slice(0,2).join(" ")}</div><div class="dept-track"><div class="dept-fill" style="width:${(c/F.length*100).toFixed(0)}%;background:var(--grad-blue)"></div></div><div class="dept-count">${c}</div></div>`).join("");
-
-  grid.innerHTML+=`<div class="card" style="display:flex;flex-direction:column"><div class="card-title"><div class="icon" style="background:var(--grad-orange)">${ICONS.pieChart}</div>Faculty by Affiliation</div><div style="font-size:11px;color:var(--text3);margin-bottom:20px">Distribution across three institutional tiers</div>
-    <div class="radial-grid">${radialHtml}</div>
-    <div><div style="font-size:13px;font-weight:700;color:#FFF;margin-bottom:10px">Department Distribution</div>${deptHtml}</div>
+  grid.innerHTML+=`<div class="card" style="display:flex;flex-direction:column"><div class="card-title"><div class="icon" style="background:var(--grad-orange)">${ICONS.pieChart}</div>Department Distribution</div><div style="font-size:11px;color:var(--text3);margin-bottom:20px">Faculty count by academic department</div>
+    <div class="radial-grid" style="grid-template-columns:repeat(3,1fr);gap:16px">${deptRadialHtml}</div>
   </div>`;
   root.appendChild(grid);
 
@@ -664,6 +682,34 @@ function renderOverview(root){
   covCard.appendChild(covChart);
   root.appendChild(covCard);
 
+}
+
+// ── MATCHING FACULTY TO CHALLENGES (combined tab) ──
+let matchingSubView="challenges";
+function renderMatching(root){
+  root.innerHTML="";
+
+  // Sub-view pill navigation
+  const bar=el("div","subview-bar");
+  const views=[
+    {id:"challenges",label:"By Challenge",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'},
+    {id:"faculty",label:"By Faculty",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'},
+    {id:"heatmap",label:"Score Matrix",icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>'}
+  ];
+  views.forEach(v=>{
+    const b=el("button","subview-btn"+(matchingSubView===v.id?" active":""));
+    b.innerHTML=`${v.icon}${v.label}`;
+    b.onclick=()=>{matchingSubView=v.id;renderMatching(root)};
+    bar.appendChild(b);
+  });
+  root.appendChild(bar);
+
+  // Render the active sub-view into a container
+  const container=el("div","");
+  root.appendChild(container);
+  if(matchingSubView==="challenges") renderChallenges(container);
+  else if(matchingSubView==="faculty") renderFaculty(container);
+  else renderHeatmap(container);
 }
 
 // ── CHALLENGES ──
